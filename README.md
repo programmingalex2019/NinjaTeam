@@ -1,4 +1,4 @@
-# co1111-shared-project
+# NinjaTeam
 Treasure Hunt
 
 #Team Members: 
