@@ -1,0 +1,20 @@
+*{
+    background-color: #0a1c1b;
+    font-family: "Georgia", serif;
+}
+.ninjahomelogo{
+    display: block;
+    width: 30%;
+    margin: 20% auto 15% auto;
+}
+.startbutton{
+    width: 50%;
+    text-align: center;
+    font-size: 15px;
+    background-color: red;
+    padding: 5px 10px 5px 10px;
+    border: 1px solid red;
+    border-radius: 25px;
+    margin-left: 25%;
+    margin-top: 10%;
+}
