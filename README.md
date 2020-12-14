@@ -12,6 +12,3 @@ Fadi Mohammed Nasir Aldawoud
 
 # team share
 
-hello guys
-
-#amirtest1
