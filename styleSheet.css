@@ -1,3 +1,4 @@
+/* so the whole page does not have padding and margin */
 * {
     margin: 0;
     padding: 0;
@@ -8,14 +9,14 @@
     width: 100%;
     height: 100%;
 }
-
+/* gives the div 50% of the screen and brings it to the left  */
 .leftSide {
     float:left;
     width: 50%;
     background-color: #204a65;
-    height: 100vh;
+    height: 100vh; /* take 100 % of the device height */
 }
-
+/* gives the div 50% of the screen and brings it to the right  */
 .rightSide {
     float: right;
     background-color: #363636;
@@ -24,7 +25,7 @@
 }
 
 .ninjaLogo{
-    position: absolute;
+    position: absolute; /* So it goes on top of the other divs*/
     top:  0;
     left: 0;
     right: 0;
@@ -32,6 +33,7 @@
     margin:auto;
 }
 
+/* Ninja Team text */
 .ninjaTeamText{
     width: 100%;
     text-align: center;
@@ -41,15 +43,17 @@
     color: red;
 }
 
+/* this is the actual div that hold the avatars */
 .faceLogo{
     width: 100%;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
+    display: flex; /* will transform to column if on mobile - WE Will need that when we design for phone */
+    flex-flow: row wrap; /* not quite sure lol */
+    justify-content: space-around; /* spreads the avatars evenly in the parent div */
     position: relative;
     top: 35%;
 }
 
+/* works for all avatars */
 .avatar {
     width: 180px;
     height: 180px;
