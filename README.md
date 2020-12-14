@@ -10,5 +10,3 @@ Fadi Mohammed Nasir Aldawoud
 ! Ninja Team ! 
 
 
-# team share
-
