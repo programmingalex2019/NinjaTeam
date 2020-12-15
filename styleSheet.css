@@ -1,14 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Langar&display=swap');
 /* so the whole page does not have padding and margin */
 * {
     margin: 0;
     padding: 0;
 }
 
-.wrap {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
+
 
 /* gives the div 50% of the screen and brings it to the right  */
 .rightSide {
@@ -19,12 +16,12 @@
     text-align: center;
 }
  .ninjaLogo{
-    margin-top: 40px;
-     height: 200px;
-     width: 200px;
+     margin-top: 140px;
+     height: 350px;
+     width: 350px;
 }
  hr{
-     border-color: red;
+     border: 3px solid black;
  }
 
 /* gives the div 50% of the screen and brings it to the left  */
@@ -33,17 +30,23 @@
     width: 50%;
     height: 100vh;
     font-size: 35px;
-    background-color: #204a65;
+    background-color: #28313B;
 }
+
+
 /* Ninja Team text */
 .ninjaTeamText{
     text-align: center;
     color: red;
+    font-size: 3em;
+    font-weight: bold;
+    margin: 20px 0 20px 0;
+    font-family: 'Langar', cursive;
 }
 
 /* this is the actual div that hold the avatars */
  .faceLogo{
-     margin-top: 20px;
+     margin-top: 50px;
      display: grid;
      justify-content: space-evenly;
      grid-auto-flow: column;
@@ -55,13 +58,25 @@
     max-width: 300px;
     margin: auto;
     text-align: center;
-    border: 3px solid red;
-    border-radius: 0 0 25px 25px;
+    border: 5px solid grey;
+    border-radius: 25px 25px 25px 25px;
+}
+.card .cardName{
+    font-family: 'Langar', cursive;
+    color: white;
+}
+.card .avatarImg{
+    width: 300px;
+    height: 300px;
+    border-radius: 20px 20px 0 0;
+
 }
 
 .title {
     color: grey;
-    font-size: 18px;
+    font-size: 21px;
+    font-style: italic;
+    margin: 7px;
 }
 
 button {
@@ -88,18 +103,28 @@ button:hover, a:hover {
     opacity: 0.7;
 }
 
+/* Right Screen */
+.treasureHuntText{
+    font-size: 60px;
+    color: whitesmoke;
+    margin-top: 30px;
+    font-family: 'Langar', cursive;
+}
+
+.ninjaButton {
+    width: 35%;
+    height: 70px;
+    border-radius: 25px;
+    margin-top: 50px;
+}
 
 
 @media only screen and (max-width: 600px) {
     .leftSide {
         display: none;
     }
-   body {
-       height: 100%;
-   }
 
    .rightSide{
-       max-height:100% ;
         width: 100%;
     }
 }
