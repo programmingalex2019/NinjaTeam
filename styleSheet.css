@@ -43,7 +43,7 @@
 
 /* this is the actual div that hold the avatars */
  .faceLogo .avatar{
-    display: block;
+    display: inline-block;
 }
 
 /* works for all avatars */
