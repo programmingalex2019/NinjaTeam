@@ -12,7 +12,7 @@
 
 /* gives the div 50% of the screen and brings it to the right  */
 .rightSide {
-    height: 440px;
+    height: 100vh;
     float: right;
     background-color: #4a0303;
     width: 50%;
@@ -31,7 +31,7 @@
 .leftSide {
     float:left;
     width: 50%;
-    height: 440px;
+    height: 100vh;
     font-size: 35px;
     background-color: #204a65;
 }
@@ -42,18 +42,54 @@
 }
 
 /* this is the actual div that hold the avatars */
- .faceLogo .avatar{
-    display: inline-block;
+ .faceLogo{
+     margin-top: 20px;
+     display: grid;
+     justify-content: space-evenly;
+     grid-auto-flow: column;
+}
+/* works for all avatars */
+
+.card {
+    box-shadow: 5px 8px 12px 0 rgba(0, 0, 0, 0.5);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    border: 3px solid red;
+    border-radius: 0 0 25px 25px;
 }
 
-/* works for all avatars */
-.avatar {
-    width: 100px;
-    margin-top: 6px;
-    height: 100px;
-    border-radius: 30%;
-    border: 4px solid black;
+.title {
+    color: grey;
+    font-size: 18px;
 }
+
+button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+    border-radius: 0 0 25px 25px;
+}
+
+a {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+}
+
+button:hover, a:hover {
+    opacity: 0.7;
+}
+
+
+
 @media only screen and (max-width: 600px) {
     .leftSide {
         display: none;
