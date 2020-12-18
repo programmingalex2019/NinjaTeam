@@ -1,4 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Langar&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+
+@font-face {
+    font-family: 'AssassinNinja-7BYyR';
+    src: url('fonts/AssassinNinja-7BYyR.ttf');
+}
+
 /* so the whole page does not have padding and margin */
 * {
     margin: 0;
@@ -6,55 +13,147 @@
 }
 
 body {
-    background-color: #171617;
+    background-color: #333;
     text-align: center;
+    overflow: hidden;
 }
+
+img {
+    display: block;
+    width: 100%; /* of parent */
+}
+
+h1, h2 {
+    margin: 0;
+    padding: 0.7em 0;
+}
+
+p {
+    margin: 0;
+    padding: 1em 0;
+}
+
+/* top section */
 
 header {
-    background-color: green;
-    width: 100%;
-    height: 35vh;
+    min-height: 220px;
+    color: #fff;
+    text-align: center;
     position: relative;
-    background-image: url("ninjaPic.jpg");
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover
+    box-shadow: 0 3px 8px rgba(255, 0, 0, 1.0);
 }
 
-header .headerTextBox{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    font-family: 'Langar', cursive;
+header .bg-image {
+    position: absolute; /* it will go over the header */
+    background-image: url("assets/ninjaPic.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 220px; /* has to have same size as header */
+    z-index: -1; /* bring image to the back so we can work with the fade - opacity*/
+    opacity: 0.7;
 }
 
-header .headerTextBox h1{
-    font-size: 6vh;
-}
-header .headerTextBox h2{
-    margin-top: 2vh;
-    font-size: 5vh;
-}
-
-.ninjaLogo{
-    margin-top: 40px;
-    height: 30vh;
+header .headerTitle {
+    padding-top: 25px;
+    padding-bottom: 0;
+    font-size: 50px;
+    font-family: "AssassinNinja-7BYyR" , cursive;
+    text-shadow: 4px 2px black;
 }
 
+/* Main Section */
+
+.mainSectionTitle {
+    padding-top: 25px;
+    padding-bottom: 0;
+    font-size: 30px;
+    font-family: "AssassinNinja-7BYyR" , cursive;
+    color: #fff;
+    letter-spacing: 2px;
+    text-shadow: 4px 2px black;
+}
+
+.avatar-section {
+    width: 100%;
+    height: 100px;
+    clear: both;
+    display: table;
+}
+
+.avatar-section .avatarCard {
+    width: 30%;
+    height: 70%;
+    margin: 30px 0 0 0;
+    display: inline-block;
+}
+.avatar-section .avatarCard img {
+    border-radius: 50%;
+    width: 65px;
+    height: 65px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    box-shadow: 2px 2px 8px rgba(255, 0, 0, 1.0);
+}
+.avatar-section .avatarCard .avatarName {
+    color: #fff;
+    text-shadow: 2px 2px black;
+    font-family: "AssassinNinja-7BYyR" , cursive;
+    font-size: 18px;
+    font-style: italic;
+}
+
+/* Promotion Section */
+
+.promotionDescription {
+    height: 100vh;
+    width: 100%;
+    background-color: #0f1f2f;
+    padding-top: 10px;
+    box-shadow: 1px -2px 8px rgba(255, 0, 0, 1.0);
+}
+
+.promotionDescription .promotionSectionTitle{
+    font-size: 30px;
+    font-family: "AssassinNinja-7BYyR" , cursive;
+    color: #fff;
+    letter-spacing: 2px;
+    text-shadow: 4px 2px black;
+}
+
+.promotionDescription .aboutUsText{
+    padding: 0 10px;
+    color: #fff;
+}
+
+.promotionDescription .socialMediaLinks {
+    width: 100%;
+    height: 100px;
+    clear: both;
+    display: table;
+}
+.promotionDescription .socialMediaLinks img {
+    width: 10%;
+    height: 30%;
+    margin: 40px 40px;
+    display: inline-block;
+}
+
+
+    /* footer */
 .bottomBar
 {/* bar position and color */
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.7);
     overflow: hidden;
     position: fixed;
     display: grid;
     grid-auto-flow: column;
     bottom: 0;
     width: 100%;
-    height: 8vh;
-    left: 0;
+    height: 7vh;
+    box-shadow: 1px -2px 8px rgba(255, 0, 0, 1.0);
 }
 .bottomBar a
 {/* split the bar into 3 buttons size */
@@ -62,11 +161,10 @@ header .headerTextBox h2{
     float: left;
     width: 100%;
     text-align: center;
-    padding: 6px 0;
     color: white;
     font-size: 18px;
-    border: 2px solid red;
     position: relative;
+    font-family: "AssassinNinja-7BYyR" , cursive;
 }
 
 .bottomBar a .menuIcon{
@@ -86,164 +184,6 @@ header .headerTextBox h2{
 }
 
 
-@media only screen and (max-width: 600px) {
-    header {
-        height: 25vh;
-        color: red;
-    }
-    header .headerTextBox h1 {
-       font-size: 30px;
-    }
-    header .headerTextBox h2 {
-        font-size: 25px;
-    }
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*!* gives the div 50% of the screen and brings it to the right  *!*/
-/*.rightSide {*/
-/*    height: 100vh;*/
-/*    float: right;*/
-/*    background-color: #4a0303;*/
-/*    width: 50%;*/
-/*    text-align: center;*/
-/*}*/
-/* .ninjaLogo{*/
-/*     margin-top: 140px;*/
-/*     height: 350px;*/
-/*     width: 350px;*/
-/*}*/
-/* hr{*/
-/*     border: 3px solid black;*/
-/* }*/
-
-/*!* gives the div 50% of the screen and brings it to the left  *!*/
-/*.leftSide {*/
-/*    float:left;*/
-/*    width: 50%;*/
-/*    height: 100vh;*/
-/*    font-size: 35px;*/
-/*    background-color: #28313B;*/
-/*}*/
-
-
-/*!* Ninja Team text *!*/
-/*.ninjaTeamText{*/
-/*    text-align: center;*/
-/*    color: red;*/
-/*    font-size: 3em;*/
-/*    font-weight: bold;*/
-/*    margin: 20px 0 20px 0;*/
-/*    font-family: 'Langar', cursive;*/
-/*}*/
-
-/*!* this is the actual div that hold the avatars *!*/
-/* .faceLogo{*/
-/*     margin-top: 50px;*/
-/*     display: grid;*/
-/*     justify-content: space-evenly;*/
-/*     grid-auto-flow: column;*/
-/*}*/
-/*!* works for all avatars *!*/
-
-/*.card {*/
-/*    box-shadow: 5px 8px 12px 0 rgba(0, 0, 0, 0.5);*/
-/*    max-width: 300px;*/
-/*    margin: auto;*/
-/*    text-align: center;*/
-/*    border: 5px solid grey;*/
-/*    border-radius: 25px 25px 25px 25px;*/
-/*}*/
-/*.card .cardName{*/
-/*    font-family: 'Langar', cursive;*/
-/*    color: white;*/
-/*}*/
-/*.card .avatarImg{*/
-/*    width: 300px;*/
-/*    height: 300px;*/
-/*    border-radius: 20px 20px 0 0;*/
-
-/*}*/
-
-/*.title {*/
-/*    color: grey;*/
-/*    font-size: 21px;*/
-/*    font-style: italic;*/
-/*    margin: 7px;*/
-/*}*/
-
-/*button {*/
-/*    border: none;*/
-/*    outline: 0;*/
-/*    display: inline-block;*/
-/*    padding: 8px;*/
-/*    color: white;*/
-/*    background-color: #000;*/
-/*    text-align: center;*/
-/*    cursor: pointer;*/
-/*    width: 100%;*/
-/*    font-size: 18px;*/
-/*    border-radius: 0 0 25px 25px;*/
-/*}*/
-
-/*a {*/
-/*    text-decoration: none;*/
-/*    font-size: 22px;*/
-/*    color: black;*/
-/*}*/
-
-/*button:hover, a:hover {*/
-/*    opacity: 0.7;*/
-/*}*/
-
-/*!* Right Screen *!*/
-/*.treasureHuntText{*/
-/*    font-size: 60px;*/
-/*    color: whitesmoke;*/
-/*    margin-top: 30px;*/
-/*    font-family: 'Langar', cursive;*/
-/*}*/
-
-/*.ninjaButton {*/
-/*    width: 35%;*/
-/*    height: 70px;*/
-/*    border-radius: 25px;*/
-/*    margin-top: 50px;*/
-/*}*/
-
-
-/*@media only screen and (max-width: 600px) {*/
-/*    .leftSide {*/
-/*        display: none;*/
-/*    }*/
-
-/*   .rightSide{*/
-/*        width: 100%;*/
-/*    }*/
-/*}*/
 
 
 
