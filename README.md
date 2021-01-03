@@ -41,4 +41,4 @@ FINDING OUT RESPONSIVE PROBLEMS
 
 Alex Designs an all platform responsive landing page
 
-Committed and Pulled.
+Committed and Pushed.
