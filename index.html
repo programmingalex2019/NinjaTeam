@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NinjaTreasureHunt</title>
-    <link rel="stylesheet" href="styleSheet.css">
+    <link rel="stylesheet" href="landing.css">
 
 </head>
     <body>
@@ -59,11 +59,11 @@
                 </div>
                 <div class="memberDescriptionPhone">
                     <h1> Ninjas</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias architecto autem, consequatur, dolorem eum excepturi iure laboriosam magnam odit omnis optio qui quibusdam, quidem ullam veniam. A ab aspernatur atque consectetur dicta earum facere fuga impedit incidunt ipsam itaque minus mollitia placeat quam, quas quia recusandae rem sapiente sequi voluptas.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dicta dolores maxime, necessitatibus nostrum similique!</p>
                 </div>
             </section>
             <section class="m-section-2">
-                <iframe src="https://www.youtube.com/embed/fBVhkLr7IJU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe style="border: none;" src="https://www.youtube.com/embed/fBVhkLr7IJU" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </section>
             <section class="m-section-3">
                 <div class="phone-wrapper">
@@ -89,10 +89,20 @@
         <footer>
             <section class="footer-inner-bg">
                 <img src="assets/base/Shuriken.png" alt="shuriken" class="shuriken-f1">
-                <h1>Start Treasure Hunt</h1>
+                <h1 id="startTreasureHunt">Start Treasure Hunt</h1>
                 <img src="assets/base/Shuriken.png" alt="shuriken" class="shuriken-f2">
             </section>
         </footer>
+    
+        <script>
+            //since a tag does not display the text on the mobile version
+            //a custom function was implemented bellow.
+            document.getElementById("startTreasureHunt").onclick = function() {myFunction()};
+
+            function myFunction() {
+                window.location.href = 'treasureHunts.html'
+            }
+        </script>
     </body>
 </html>
 

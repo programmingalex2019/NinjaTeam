@@ -18,7 +18,10 @@ body {
     flex-direction: column;
     height: 100vh; /* height of the whole device */
     background-color: #181717;
-
+}
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 /* header section */
@@ -273,7 +276,6 @@ footer{
 }
 
 
-
 footer .footer-inner-bg{
     background-color: #252523;
     width: 60%;
@@ -281,15 +283,19 @@ footer .footer-inner-bg{
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: "AssassinNinja" , sans-serif;
-    text-shadow: 3px 2px 3px red;
-    font-size: 2.3vh;
+
     border-left: 2px solid red;
     border-right: 2px solid red;
     margin-bottom: 25px;
 }
 
-footer .footer-inner-bg:hover{
+footer .footer-inner-bg h1{
+    font-family: "AssassinNinja" , sans-serif;
+    text-shadow: 3px 2px 3px red;
+    font-size: 2.3vh;
+}
+
+footer .footer-inner-bg h1:hover{
     color: white;
 }
 
@@ -298,7 +304,6 @@ footer .shuriken-f1{
     margin-right: 60px;
     width: 8vh;
     height: 8vh;
-
 }
 
 footer .shuriken-f2{
@@ -479,7 +484,6 @@ footer .shuriken-f2{
     footer .footer-inner-bg{
         font-size: 2vh;
         text-align: center;
-
     }
 
     footer .shuriken-f1{
