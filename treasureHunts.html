@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Geolocation</title>
+    <link rel="stylesheet" href="treasureHunts.css">
+</head>
+<body>
+
+    <section class="form-section">
+
+
+        <form id="form" action="/" method="GET">
+
+            <div class="form-wrapper">
+
+                <div class="name-input">
+                    <label for="name" class="label-text">Name</label>
+                    <input id="name" name="name" type="text" required>
+                </div>
+
+                <div class="password-input">
+                    <label for="surname" class="label-text">Surname</label>
+                    <input id="surname" name="surname" type="text" required>
+                </div>
+
+                <div class="button-style">
+                    <button type="submit"><h3>Start</h3></button>
+                </div>
+                <div id="error-message"></div>
+
+            </div>
+
+
+
+        </form>
+
+    </section>
+
+    <section class="treasure-hunts-section">
+        <ul id="list_of_treasure_hunts">
+            <!-- populated with li elements -->
+
+        </ul>
+
+
+
+
+    </section>
+
+
+
+    <script>
+
+        const name = document.getElementById('name');
+        const surname = document.getElementById('surname');
+        const form = document.getElementById("form");
+        const errorElement = document.getElementById("error-message");
+
+        form.addEventListener('submit', (e)=> {
+            let messages = [];
+            let validLetters = /^[A-Za-z]+$/;
+            if(! ((name.value.trim().match(validLetters)) && (surname.value.trim().match(validLetters)))) {
+                messages.push("A Valid Name and Surname are required");
+            }
+
+            if(messages.length > 0){
+                e.preventDefault();
+                errorElement.innerText = messages.join(', ');
+            }
+
+        })
+
+        function getInputValue(){
+
+
+
+        }
+
+
+        function fetchTreasureHunts() {
+
+            fetch("https://codecyprus.org/th/api/list")
+                .then(response => response.json())
+                .then(jsonObject => {
+
+                    let myList = document.getElementById("list_of_treasure_hunts");
+                    let listOfTreasureHunts = jsonObject.treasureHunts;
+
+                    for(let i = 0; i < listOfTreasureHunts.length; i++){
+
+                        let listItem = document.createElement("li"); //tag name
+                        myList.appendChild(listItem);
+                        let link = document.createElement("a");
+                        link.innerHTML = listOfTreasureHunts[i].name;
+                        link.setAttribute("href", "https://codecyprus.org/th/api/start?player=AlexVanellis1&app=NinjaHunt&treasure-hunt-id=" + listOfTreasureHunts[i].uuid);
+                        listItem.appendChild(link);
+
+                    }
+
+                });
+
+        }
+        //
+        // fetchTreasureHunts();
+        //
+        //
+        //
+        // function getLocation() {
+        //
+        //     if (navigator.geolocation) {
+        //         navigator.geolocation.getCurrentPosition((position) => {
+        //
+        //             alert("Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude);
+        //
+        //              // fetch("https://codecyprus.org/th/api/location?session=YOUR_SESSION_ID&latitude=" + position.coords.latitude + "&longitude=" + position.coords.longitude);
+        //              //use this when having session ID
+        //         });
+        //     }
+        //     else {
+        //         alert("Geolocation is not supported by your browser.");
+        //     }
+        // }
+
+
+
+
+</script>
+
+</body>
+</html>
