@@ -72,7 +72,6 @@ body {
 
 .form-section #form .label-text{
     font-size: 40px;
-    /*padding-top: 20px;*/
     padding-bottom: 5px;
     font-family: "AssassinNinja" , sans-serif;
     text-shadow: 3px 2px 3px red;
@@ -90,33 +89,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: start;
-}
-.form-section #form .form-wrapper .button-style{
-    flex: 1;
-    width: 100%;
-    display: flex;
     justify-content: center;
-    align-items: center;
-}
-
-.form-section #form .form-wrapper .button-style button {
-    width: 70%;
-    height: 40%;
-    border: 2px solid grey;
-    border-radius: 20px;
-}
-
-.form-section #form .form-wrapper .button-style button {
-    width: 70%;
-    height: 50%;
-    border: 2px solid grey;
-    border-radius: 20px;
-    outline: none;
-}
-
-.form-section #form .form-wrapper .button-style button h3{
-    color: white;
 }
 
 .form-section #form .form-wrapper #error-message{
@@ -125,12 +98,33 @@ body {
     font-size: 20px;
     letter-spacing: 2px;
     display: flex;
-    align-items: center;
+    align-items: start;
 }
 
 
 .treasure-hunts-section {
     flex: 1;
     order: 2;
-    background-color: red
+    background-color: #252523;
+    display: flex;
+    width: 100%;
 }
+
+.treasure-hunts-section #generated-api-hunts{
+    display: flex;
+    flex: 1;
+}
+.treasure-hunts-section #generated-api-hunts div{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid red;
+}
+
+.treasure-hunts-section #generated-api-hunts div h1{
+    font-family: "AssassinNinja" , sans-serif;
+    text-shadow: 3px 2px 3px red;
+    font-size: 4vh;
+}
+
