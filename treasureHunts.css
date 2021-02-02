@@ -18,16 +18,42 @@ body {
     flex-direction: column;
     height: 100vh; /* height of the whole device */
     background-color: #181717;
+    border: 2px solid red;
+    margin: 10px;
 }
 
+
+
 .form-section{
+    background-color: #252523;
     flex: 1;
     order: 1;
-    flex-direction: column;
-    background-color: green;
     display: flex;
     justify-content: stretch;
-    align-items: stretch;
+    align-items: center;
+
+}
+
+.form-section .ninjalogo-1{
+    flex: 1;
+    text-align: center;
+}
+
+.form-section .ninjalogo-1 img{
+    width: 20vh;
+    height: 20vh;
+}
+
+.form-section .ninjalogo-2{
+    flex: 1;
+    text-align: center;
+    transform: rotateY(180deg);
+
+}
+
+.form-section .ninjalogo-2 img{
+    width: 20vh;
+    height: 20vh;
 }
 
 .form-section #form{
@@ -35,7 +61,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex: 1;
+    flex: 2;
 }
 
 .form-section #form .form-wrapper{
@@ -119,12 +145,299 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid red;
+    border-top: 2px solid red;
+    border-right: 2px solid red;
 }
 
 .treasure-hunts-section #generated-api-hunts div h1{
     font-family: "AssassinNinja" , sans-serif;
     text-shadow: 3px 2px 3px red;
     font-size: 4vh;
+    padding: 10px;
 }
 
+.treasure-hunts-section #generated-api-hunts div h1:hover{
+    color: white;
+}
+
+/* phones */
+@media only screen and (max-width: 600px) {
+    .form-section{
+        background-color: #252523;
+        flex: 1;
+        order: 1;
+        display: flex;
+        justify-content: stretch;
+        align-items: center;
+        flex-direction: column;
+
+    }
+
+    .form-section .ninjalogo-1{
+        flex: 1;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .form-section .ninjalogo-1 img{
+        width: 20vh;
+        height: 20vh;
+        flex-direction: column;
+    }
+
+    .form-section .ninjalogo-2{
+        display: none;
+    }
+
+
+    .form-section #form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex: 2;
+        border-top: 2px solid red;
+    }
+
+    .form-section #form .form-wrapper{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 240px 45px;
+        height: 100%;
+        text-align: center;
+        font-size: 20px;
+    }
+
+    .form-section #form input[type=text]{
+        height: 6vh;
+        width: 30vw;
+        border-radius: 20px;
+        font-size: 5vh;
+        color: white;
+        text-align: center;
+        border: 2px solid grey;
+    }
+
+    .form-section #form input[type=text]:focus{
+        height: 6vh;
+        width: 30vw;
+        border-radius: 20px;
+        border: 2px dotted red;
+        outline: none;
+        font-size: 4vh;
+        color: white;
+        text-align: center;
+    }
+
+    .form-section #form .label-text{
+        font-size: 55px;
+        padding-bottom: 5px;
+        padding-top: 50px;
+        font-family: "AssassinNinja" , sans-serif;
+        text-shadow: 3px 2px 3px red;
+    }
+
+    .form-section #form .form-wrapper .name-input{
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+    }
+    .form-section #form .form-wrapper .password-input{
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .form-section #form .form-wrapper #error-message{
+        flex: 1;
+        color: red;
+        font-size: 20px;
+        letter-spacing: 2px;
+        display: flex;
+        align-items: start;
+        padding-top: 10px;
+    }
+
+
+    .treasure-hunts-section {
+        flex: 1;
+        order: 2;
+        background-color: #252523;
+        display: flex;
+        width: 100%;
+
+    }
+
+    .treasure-hunts-section #generated-api-hunts{
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+    }
+    .treasure-hunts-section #generated-api-hunts div{
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-top: 2px solid red;
+        border-right: 2px solid red;
+    }
+
+    .treasure-hunts-section #generated-api-hunts div h1{
+        font-family: "AssassinNinja" , sans-serif;
+        text-shadow: 3px 2px 3px red;
+        font-size: 3vh;
+        padding: 10px;
+    }
+
+    .treasure-hunts-section #generated-api-hunts div h1:hover{
+        color: white;
+    }
+}
+
+/* tablets */
+@media only screen and (max-width: 1024px) and (min-width: 600px){
+    .form-section{
+        background-color: #252523;
+        flex: 1;
+        order: 1;
+        display: flex;
+        justify-content: stretch;
+        align-items: center;
+        flex-direction: column;
+
+    }
+
+    .form-section .ninjalogo-1{
+        flex: 1;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .form-section .ninjalogo-1 img{
+        width: 20vh;
+        height: 20vh;
+        flex-direction: column;
+    }
+
+    .form-section .ninjalogo-2{
+        display: none;
+    }
+
+
+    .form-section #form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex: 2;
+        border-top: 2px solid red;
+    }
+
+    .form-section #form .form-wrapper{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 240px 45px;
+        height: 100%;
+        text-align: center;
+        font-size: 20px;
+    }
+
+    .form-section #form input[type=text]{
+        height: 6vh;
+        width: 30vw;
+        border-radius: 20px;
+        font-size: 5vh;
+        color: white;
+        text-align: center;
+        border: 2px solid grey;
+    }
+
+    .form-section #form input[type=text]:focus{
+        height: 6vh;
+        width: 30vw;
+        border-radius: 20px;
+        border: 2px dotted red;
+        outline: none;
+        font-size: 4vh;
+        color: white;
+        text-align: center;
+    }
+
+    .form-section #form .label-text{
+        font-size: 55px;
+        padding-bottom: 5px;
+        padding-top: 50px;
+        font-family: "AssassinNinja" , sans-serif;
+        text-shadow: 3px 2px 3px red;
+    }
+
+    .form-section #form .form-wrapper .name-input{
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+    }
+    .form-section #form .form-wrapper .password-input{
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .form-section #form .form-wrapper #error-message{
+        flex: 1;
+        color: red;
+        font-size: 20px;
+        letter-spacing: 2px;
+        display: flex;
+        align-items: start;
+        padding-top: 10px;
+    }
+
+
+    .treasure-hunts-section {
+        flex: 1;
+        order: 2;
+        background-color: #252523;
+        display: flex;
+        width: 100%;
+
+    }
+
+    .treasure-hunts-section #generated-api-hunts{
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+    }
+    .treasure-hunts-section #generated-api-hunts div{
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-top: 2px solid red;
+        border-right: 2px solid red;
+    }
+
+    .treasure-hunts-section #generated-api-hunts div h1{
+        font-family: "AssassinNinja" , sans-serif;
+        text-shadow: 3px 2px 3px red;
+        font-size: 3vh;
+        padding: 10px;
+    }
+
+    .treasure-hunts-section #generated-api-hunts div h1:hover{
+        color: white;
+    }
+}
