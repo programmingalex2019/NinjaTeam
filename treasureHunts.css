@@ -18,16 +18,42 @@ body {
     flex-direction: column;
     height: 100vh; /* height of the whole device */
     background-color: #181717;
+    border: 2px solid red;
+    margin: 10px;
 }
 
+
+
 .form-section{
+    background-color: #252523;
     flex: 1;
     order: 1;
-    flex-direction: column;
-    background-color: green;
     display: flex;
     justify-content: stretch;
-    align-items: stretch;
+    align-items: center;
+
+}
+
+.form-section .ninjalogo-1{
+    flex: 1;
+    text-align: center;
+}
+
+.form-section .ninjalogo-1 img{
+    width: 20vh;
+    height: 20vh;
+}
+
+.form-section .ninjalogo-2{
+    flex: 1;
+    text-align: center;
+    transform: rotateY(180deg);
+
+}
+
+.form-section .ninjalogo-2 img{
+    width: 20vh;
+    height: 20vh;
 }
 
 .form-section #form{
@@ -35,7 +61,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex: 1;
+    flex: 2;
 }
 
 .form-section #form .form-wrapper{
@@ -119,17 +145,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid red;
+    border-top: 2px solid red;
+    border-right: 2px solid red;
 }
 
 .treasure-hunts-section #generated-api-hunts div h1{
     font-family: "AssassinNinja" , sans-serif;
     text-shadow: 3px 2px 3px red;
     font-size: 4vh;
-<<<<<<< Updated upstream
-}
-
-=======
     padding: 10px;
 }
 
@@ -423,4 +446,3 @@ body {
 .treasure {
     border: none;
 }
->>>>>>> Stashed changes
