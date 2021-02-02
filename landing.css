@@ -45,6 +45,19 @@ header .shuriken{ /* for left and right shuriken container of the header */
 header .shuriken img{ /* shuriken container img */
     width: 8vh;
     height: 8vh;
+    animation-name: spin;
+    animation-duration: 5000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
 }
 
 header .header-inner-bg{ /* center container that will display ninjaLogo and text */
@@ -292,7 +305,7 @@ footer .footer-inner-bg{
 footer .footer-inner-bg h1{
     font-family: "AssassinNinja" , sans-serif;
     text-shadow: 3px 2px 3px red;
-    font-size: 2.3vh;
+    font-size: 3vh;
 }
 
 footer .footer-inner-bg h1:hover{
@@ -304,14 +317,43 @@ footer .shuriken-f1{
     margin-right: 60px;
     width: 8vh;
     height: 8vh;
+    animation-name: spin;
+    animation-duration: 5000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
 }
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
 
 footer .shuriken-f2{
     text-align: center;
     margin-left: 60px;
     width: 8vh;
     height: 8vh;
+    animation-name: spin;
+    animation-duration: 5000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
 }
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+
 
 
 /* phones */
