@@ -158,7 +158,6 @@ body {
 
 .treasure-hunts-section #generated-api-hunts div h1:hover{
     color: white;
-<<<<<<< HEAD
 }
 
 /* phones */
@@ -303,8 +302,6 @@ body {
 
 }
 
-=======
-}
 
 /* phones */
 @media only screen and (max-width: 600px) {
@@ -447,7 +444,6 @@ body {
     }
 }
 
->>>>>>> 99ff9f846defddcb79b4c61b610f4f9cfe859917
 /* tablets */
 @media only screen and (max-width: 1024px) and (min-width: 600px){
     .form-section{
@@ -588,10 +584,9 @@ body {
         color: white;
     }
 }
-<<<<<<< HEAD
+
 
 .treasure {
     border: none;
 }
-=======
->>>>>>> 99ff9f846defddcb79b4c61b610f4f9cfe859917
+
