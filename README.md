@@ -48,10 +48,15 @@ Committed and Pushed.
 Amir ads spinning shuriken functionality 
 
 Amir fixes the design on the landing page
+
 Alex make the second page basic design
+
 Alex implements display treasure hunts and provides basic input validation
+
 Amir takes the basic design and makes it work on on plaftforms
+
 Fadi works on the geolocation
+
 Fadi works on the Google Maps Api 
 
 Comitted and Pushed for Presentation 3/02/21
