@@ -46,6 +46,7 @@ Committed and Pushed.
 -- Week 5 --
 
 Amir ads spinning shuriken functionality 
+
 Amir fixes the design on the landing page
 Alex make the second page basic design
 Alex implements display treasure hunts and provides basic input validation
