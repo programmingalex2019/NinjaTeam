@@ -5,9 +5,9 @@ Treasure Hunt
 
 Alex Vanellis - Full Stack
 
-Amir Al-salman - 
+Amir Al-salman - Design
 
-Fadi Mohammed Nasir Aldawoud - 
+Fadi Mohammed Nasir Aldawoud - Javascript
 
 _Every member of the team contributes and learns every programming and designing parts of the application._
 
