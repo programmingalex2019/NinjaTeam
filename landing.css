@@ -363,13 +363,11 @@ footer .shuriken-f2{
 
     header{
         flex: 3;
-
     }
 
     header .header-inner-bg{
         flex-direction: column;
         flex: 7;
-
     }
 
     header .header-inner-bg .header-img{
