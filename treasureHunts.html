@@ -36,9 +36,6 @@
         </div>
 
 
-
-
-
     </section>
 
 
@@ -46,57 +43,70 @@
     <script>
 
         const name = document.getElementById('name');
-        const surname = document.getElementById('surname');
         const form = document.getElementById("form");
         const errorElement = document.getElementById("error-message");
+        const validLetters = /^[A-Za-z]+$/;
+        const messages = ["A Valid Name and Surname are required", ""];
 
-        form.addEventListener('submit', (e)=> {
-            let messages = [];
-            let validLetters = /^[A-Za-z]+$/;
-            if(! ((name.value.trim().match(validLetters)) && (surname.value.trim().match(validLetters)))) {
-                messages.push("A Valid Name and Surname are required");
-            }
-
-            if(messages.length > 0){
-                e.preventDefault();
-                errorElement.innerText = messages.join(', ');
-            }
-
-            e.preventDefault();
-            console.log(name.value.trim() + surname.value.trim());
-
-        })
 
 
         function fetchTreasureHunts() {
 
+            //fetching treasureHunts from the API
+
             fetch("https://codecyprus.org/th/api/list")
-                .then(response => response.json())
-                .then(jsonObject => {
+                .then(response => response.json()) // taking the json from the response
+                .then(jsonObject => { //awaited ready to use json
 
-                    let myList = document.getElementById("generated-api-hunts");
-                    let listOfTreasureHunts = jsonObject.treasureHunts;
+                    let myList = document.getElementById("generated-api-hunts"); //flexible div that will contain treasure hunts divs
+                    let listOfTreasureHunts = jsonObject.treasureHunts; // the actual list from json containing the treasureHunts
 
-                    // let callURL = "https://codecyprus.org/th/api/start"
-                    //
-                    //     + "?player=" + playerName
-                    //
-                    //     + "&app=" + "MyApp"
-                    //
-                    //     + "&treasure-hunt-id=" + uuid
-                    //
-                    // ;
+                    /* logic */
 
+                    for(let i = 0; i < listOfTreasureHunts.length; i++){ //iterating through each available treasure hunt
+                        let listItem = document.createElement("div"); //creating a div depending on the current treasure hunt
 
-                    for(let i = 0; i < listOfTreasureHunts.length; i++){
-                        let listItem = document.createElement("div"); //tag name
-                        let id = listOfTreasureHunts[i].name;
-                        listItem.innerHTML = "<button type=submit class=treasure form=form id="+id+">" + "<h1>" + listOfTreasureHunts[i].name + "</h1>" + "</button";
-                        myList.appendChild(listItem);
+                        // the div will contain a button which will have an id of the current treasure hunt -> that id will go into on click function -> which can be manipulated
+                        listItem.innerHTML = "<button type=submit class=treasure onclick='startTreasureHunt(id)' id=" + listOfTreasureHunts[i].uuid +">" + "<h1>" + listOfTreasureHunts[i].name + "</h1>" + "</button";
+                        myList.appendChild(listItem); //populating the buttons into the divs
                     }
                 });
         }
+
+        function startTreasureHunt(uid){
+
+
+            console.log(uid);
+            document.getElementById("error-message").innerText = messages[1];
+
+            let callURL = "https://codecyprus.org/th/api/start"
+
+                + "?player=" + name.value
+
+                + "&app=" + "NinjaTeam"
+
+                + "&treasure-hunt-id=" + uid;
+
+            // window.open(callURL, "_self");
+
+            fetch(callURL)
+                .then(response => response.json())
+                .then(jsonObject => {
+                    console.log(jsonObject);
+                    // window.open("https://codecyprus.org/th/api/question?session=" + jsonObject.session);
+                    window.location.href = 'questions.html?session=' + jsonObject.session;
+                });
+        }
+
+
+
+
+
         fetchTreasureHunts();
+
+
+
+
 
 
 
