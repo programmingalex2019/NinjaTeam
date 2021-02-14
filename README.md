@@ -37,13 +37,13 @@ Coming up with new design - pushed and submitted
 
 FINDING OUT RESPONSIVE PROBLEMS
 
--- Week 4 --
+-- Week 4 -- 
 
 Alex Designs an all platform responsive landing page
 
 Committed and Pushed.
 
--- Week 5 --
+-- Week 5 -- (MS call 31/01/21 -> 9pm)
 
 Amir ads spinning shuriken functionality 
 
@@ -60,3 +60,20 @@ Fadi works on the geolocation
 Fadi works on the Google Maps Api 
 
 Comitted and Pushed for Presentation 3/02/21
+
+-- Week 6 -- (MS call 7/02/21 -> 9pm)
+
+Amir and Alex fixed the Second page design after the presentation
+
+-- Week 7 -- (MS call 14/02/21 -> 9pm)
+
+Alex has implemented the initial question fetching version
+MS Teams call to assign targets for next week
+
+TODO: for Week 8
+
+Alex -> implement questions functionality 
+Fadi -> implement questions functionality 
+Amir -> implement UI depending on questions type 
+
+
