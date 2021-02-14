@@ -68,12 +68,15 @@ Amir and Alex fixed the Second page design after the presentation
 -- Week 7 -- (MS call 14/02/21 -> 9pm)
 
 Alex has implemented the initial question fetching version
+
 MS Teams call to assign targets for next week
 
 TODO: for Week 8
 
 Alex -> implement questions functionality 
+
 Fadi -> implement questions functionality 
+
 Amir -> implement UI depending on questions type 
 
 
