@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Testing</title>
+    <link rel="stylesheet" href="testing.css">
+</head>
+<body>
+
+    <div id="question">
+
+    </div>
+
+    <script>
+
+        const question = document.getElementById("question");
+
+        fetch("https://codecyprus.org/th/test-api/question?completed&question-type=INTEGER")
+            .then(response => response.json())
+            .then(jsonObject => {
+
+                buildUI(jsonObject);
+
+
+            });
+
+        function buildUI(jsonObject){
+            switch (jsonObject.questionType){
+
+                case "INTEGER":
+
+                    console.log(jsonObject);
+                    let inputField = document.createElement("input");
+                    inputField.setAttribute('type',"number");
+                    inputField.setAttribute('name',"answer");
+
+
+                    let button = document.createElement("button");
+                    button.setAttribute("type", "submit");
+                    button.setAttribute("onClick", "print()");
+                    button.innerText = "Click Me";
+                    button.setAttribute("class", "buttons");
+
+                    question.innerHTML = jsonObject.questionText;
+                    question.appendChild(inputField);
+                    question.appendChild(button);
+                    break;
+
+            }
+        }
+
+        function print(){
+            console.log("Alex");
+        }
+
+    </script>
+
+
+</body>
+</html>
