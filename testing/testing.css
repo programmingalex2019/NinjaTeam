@@ -1,4 +1,76 @@
-.buttons {
-    width: 500px;
-    height: 500px;
+
+* { /* so the whole page does not have padding and margin */
+    margin: 0;
+    padding: 0;
+    background-color: #252523;
+
+}
+body{
+    border: 2px solid red;
+}
+header{
+    height: 28vh;
+    width: 100%;
+    background-color: #3b5998;
+    color: aliceblue;
+}
+ main{
+    /*margin-top: 100px;*/
+    height: 59vh;
+    width: 100%;
+    background-color: green;
+}
+ main .display{
+     /*for display the buttons*/
+     height: 18vh;
+     width: 100%;
+     background-color: #181717;
+     text-align: center;
+
+ }
+ main .display .buttons{
+     /*buttons size*/
+     height: 6vh;
+     width: 15%;
+     background-color: #4CAF50;
+     margin: 10px 4px;
+ }
+ main .top{
+     /*for the description text */
+     height: 10vh;
+     width: 100%;
+     background-color: silver;
+ }
+ main #left{
+     /*section display button output*/
+     float: left;
+     height: 35vh;
+     width: 50%;
+     background-color: aquamarine;
+     font-size: 20px;
+ }
+ .multi{
+     /*for MCQ start new line*/
+     display: block;
+     margin-top: 10px;
+ }
+ main .right{
+     /*display screenshot for the code*/
+     float: right;
+     height: 35vh;
+     width: 50%;
+     background-color: #C13584;
+
+ }
+footer{
+    /*set for treasurehunt into left and code screen shot on the right */
+    height: 12vh;
+    width: 100%;
+    background-color: yellow;
+}
+@media only screen and (max-width: 600px) {
+    main .display .buttons{
+        height: 4vh;
+        margin: 7px 4px;
+    }
 }
