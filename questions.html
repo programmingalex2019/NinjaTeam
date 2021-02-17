@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Questions</title>
+    <link rel="stylesheet" href="questions.css">
+</head>
+<body>
+
+    <div class="questionContent">
+
+        <div id="scoreBar">
+
+        </div>
+
+        <div id="questionContainer">
+
+        </div>
+
+        <div id="answerContainer" >
+
+        </div>
+
+        <div id="submitContainer" >
+
+        </div>
+
+    </div>
+
+    <script>
+
+        let question = document.getElementById("questionContainer");
+        let answerInput = document.getElementById("answerContainer");
+        let submitContainer = document.getElementById("submitContainer");
+
+
+        let ref = new URLSearchParams(window.location.search);
+        let session = ref.get("session");
+        console.log(session);
+
+        fetch("https://codecyprus.org/th/api/question?session=" + session)
+            .then(response => response.json())
+            .then(jsonObject => {
+
+                buildUI(jsonObject);
+
+            });
+
+        function buildUI(jsonObject){
+
+            //question Container
+            let textContainer = document.createElement("div");
+            textContainer.innerHTML = jsonObject.questionText;
+            question.appendChild(textContainer);
+
+            switch (jsonObject.questionType){
+
+                case "INTEGER":
+
+                    console.log(jsonObject); //for debugging
+                    //attach input field
+                    let inputField = document.createElement("input");
+                    setAttributes(inputField, {type: "number", class: "answerStyle", id: "answer"});
+                    answerInput.appendChild(inputField); //add to inputContainer
+
+                    //attach a button
+                    let button = document.createElement("button");
+                    button.innerText = "Submit";
+                    setAttributes(button, {type: "submit", class: "buttons", onclick: "submitInteger(document.getElementById(\"answer\").value)"});
+                    submitContainer.appendChild(button); //add to answerContainer
+                    //append to UI
+                    break;
+
+                case "BOOLEAN":
+
+                    console.log(jsonObject); //for debugging
+                    let radioContainer = document.createElement("div");
+                    setAttributes(radioContainer, {class: "radioContainer"});
+
+                    let trueButton = document.createElement("input");
+                    setAttributes(trueButton, {type: "radio", name: "choice", value: "yes", class: "radioStyle" , id: "tr"});
+                    let labelTrue = document.createElement("label");
+                    labelTrue.innerText = "True";
+
+                    let falseButton = document.createElement("input");
+                    setAttributes(falseButton, {type: "radio", name: "choice", value: "no", class: "radioStyle", id: "fa"});
+                    let labelFalse = document.createElement("label");
+                    labelFalse.innerText = "False";
+
+
+                    let booleanButton = document.createElement("button");
+                    setAttributes(booleanButton, {type: "submit", class: "buttons", onclick: "submitBoolean(document.querySelectorAll('input[name=\"choice\"]'))"});
+                    booleanButton.innerText = "Submit";
+
+                    radioContainer.appendChild(labelTrue);
+                    radioContainer.appendChild(trueButton);
+                    radioContainer.appendChild(labelFalse);
+                    radioContainer.appendChild(falseButton);
+                    answerInput.appendChild(radioContainer);
+                    submitContainer.appendChild(booleanButton);
+                    break;
+
+                case "NUMERIC":
+                    console.log("NUMERIC");
+                    break;
+                case "MCQ":
+                    console.log("MCQ");
+                    break;
+                case "TEXT":
+                    console.log("TEXT");
+                    break;
+                default:
+                    console.log("something went wrong");
+            }
+
+
+
+        }
+        //easier to set attributes
+        function setAttributes(element, attributes) {
+            Object.keys(attributes).forEach(function(name) {
+                element.setAttribute(name, attributes[name]);
+            })
+        }
+
+        function submitBoolean(value) {
+
+            let selectedValue;
+            for (const rb of value) {
+                if (rb.checked) {
+                    selectedValue = rb.value;
+                    break;
+                }
+            }
+        }
+
+        function submitInteger(value){
+
+            fetch("https://codecyprus.org/th/api/answer?session="+ session +"&answer= "+ value.toString().trim())
+                .then(response => response.json())
+                .then(jsonObject => {
+                    console.log(jsonObject);
+                });
+        }
+
+
+
+    </script>
+
+</body>
+</html>

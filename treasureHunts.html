@@ -43,17 +43,11 @@
     <script>
 
         const name = document.getElementById('name');
-        const form = document.getElementById("form");
         const errorElement = document.getElementById("error-message");
-        const validLetters = /^[A-Za-z]+$/;
-        const messages = ["A Valid Name and Surname are required", ""];
-
-
 
         function fetchTreasureHunts() {
 
             //fetching treasureHunts from the API
-
             fetch("https://codecyprus.org/th/api/list")
                 .then(response => response.json()) // taking the json from the response
                 .then(jsonObject => { //awaited ready to use json
@@ -73,36 +67,24 @@
                 });
         }
 
+        fetchTreasureHunts();
+
         function startTreasureHunt(uid){
 
-
-            console.log(uid);
-            document.getElementById("error-message").innerText = messages[1];
-
-            let callURL = "https://codecyprus.org/th/api/start"
-
-                + "?player=" + name.value
-
-                + "&app=" + "NinjaTeam"
-
-                + "&treasure-hunt-id=" + uid;
-
-            // window.open(callURL, "_self");
-
-            fetch(callURL)
-                .then(response => response.json())
-                .then(jsonObject => {
-                    console.log(jsonObject);
-                    // window.open("https://codecyprus.org/th/api/question?session=" + jsonObject.session);
-                    window.location.href = 'questions.html?session=' + jsonObject.session;
-                });
+            if(name.value.length === 0){
+                errorElement.innerText = "Please enter a Name";
+            }else {
+                let callURL = "https://codecyprus.org/th/api/start" + "?player=" + name.value + "&app=" + "NinjaTeam" + "&treasure-hunt-id=" + uid;
+                fetch(callURL)
+                    .then(response => response.json())
+                    .then(jsonObject => {
+                        console.log(jsonObject);
+                        window.location.href = 'questions.html?session=' + jsonObject.session;
+                    });
+            }
         }
 
 
-
-
-
-        fetchTreasureHunts();
 
 
 
