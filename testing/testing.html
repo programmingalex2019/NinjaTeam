@@ -1,60 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Testing</title>
-    <link rel="stylesheet" href="testing.css">
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Testing</title>
+        <link rel="stylesheet" href="testing.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" type="image/x-icon" href="base/ninjaLogo.png"/>
+    </head>
+    <body>
+    <header>
+        <!--left shuriken-->
+        <section class="shuriken">
+            <img src="base/Shuriken.png" alt="shuriken">
+        </section>
 
-    <div id="question">
+        <!--middle header section-->
+        <section class="header-inner-bg">
+            <div class="header-img">
+                <img src="base/ninjaLogo.png" alt="ninjaLogo">
+            </div>
+        </section>
 
-    </div>
+        <!--right shuriken-->
+        <section class="shuriken">
+            <img src="base/Shuriken.png" alt="shuriken">
+        </section>    </header>
+    <main>
+<!--        <h1>main body str. divide into 3 parts</h1>-->
+        <div class="display">
+            <button class="buttons" name="INTEGER" onclick="questionType(name)">Integer</button>
+            <button class="buttons" name="BOOLEAN" onclick="questionType(name)">Boolean</button>
+            <button class="buttons" name="TEXT" onclick="questionType(name)">Text</button>
+            <button class="buttons" name="MCQ" onclick="questionType(name)">MCQ</button>
+            <button class="buttons" name="NUMERIC" onclick="questionType(name)">Numeric</button>
+            <button type="submit" class="buttons">List</button>
+            <button type="submit" class="buttons">Leader Bored</button>
+            <button type="submit" class="buttons">Score</button>
+            <button type="submit" class="buttons">Skip</button>
+            <button type="submit" class="buttons">Location</button>
+            <button type="submit" class="buttons">Answer</button>
+            <button type="submit" class="buttons">Start</button>
 
-    <script>
+        </div>
+        <div class="top"></div>
+        <div id="left"></div>
+        <div class="right"></div>
+    </main>
+    <footer>
+        <section class="footer-inner-bg">
+            <img src="base/Shuriken.png" alt="shuriken" class="shuriken-f1">
+            <h1 id="startTreasureHunt">testing page</h1>
+            <img src="base/Shuriken.png" alt="shuriken" class="shuriken-f2">
+        </section>
+    </footer>
 
-        const question = document.getElementById("question");
+        <script>
 
-        fetch("https://codecyprus.org/th/test-api/question?completed&question-type=INTEGER")
-            .then(response => response.json())
-            .then(jsonObject => {
+            const question = document.getElementById("left");
+            let button;
 
-                buildUI(jsonObject);
+            function questionType(type){
+                fetch("https://codecyprus.org/th/test-api/question?completed&question-type=" + type)
+                    .then(response => response.json())
+                    .then(jsonObject => {
 
+                        question.innerHTML = jsonObject.questionText + "<br>";
+                        buildUI(jsonObject);
 
-            });
-
-        function buildUI(jsonObject){
-            switch (jsonObject.questionType){
-
-                case "INTEGER":
-
-                    console.log(jsonObject);
-                    let inputField = document.createElement("input");
-                    inputField.setAttribute('type',"number");
-                    inputField.setAttribute('name',"answer");
-
-
-                    let button = document.createElement("button");
-                    button.setAttribute("type", "submit");
-                    button.setAttribute("onClick", "print()");
-                    button.innerText = "Click Me";
-                    button.setAttribute("class", "buttons");
-
-                    question.innerHTML = jsonObject.questionText;
-                    question.appendChild(inputField);
-                    question.appendChild(button);
-                    break;
-
+                    });
             }
-        }
 
-        function print(){
-            console.log("Alex");
-        }
+            function buildUI(jsonObject){
+                switch (jsonObject.questionType){
 
-    </script>
+                    case "INTEGER":
+                        let inputField;
+                        inputField = document.createElement("input");
+                        inputField.setAttribute('type',"number");
+                        inputField.setAttribute('name',"answer");
+                        inputField.setAttribute('class',"int");
 
 
-</body>
+
+                        button = document.createElement("button");
+                        button.setAttribute("type", "submit");
+                        button.innerText = "submit";
+                        button.setAttribute("class", "submitButtons");
+
+                        question.appendChild(inputField);
+                        question.appendChild(button);
+
+                        break;
+
+                    case "TEXT":
+                        let inputText;
+
+                        inputText = document.createElement("textarea");
+                        inputText.setAttribute('type',"text");
+                        inputText.setAttribute('style',"cols:25,rows:3");
+                        inputText.setAttribute('class',"txt");
+
+
+                        button = document.createElement("button");
+                        button.setAttribute("type", "submit");
+                        button.setAttribute("class", "submitButtons");
+                        button.setAttribute("style","margin-top:2px")
+                        button.innerText = "submit";
+
+                        question.appendChild(inputText);
+                        question.appendChild(button);
+
+                        break;
+
+                    case "BOOLEAN":
+                        let inputRadio1,inputRadio2,label1,label2;
+                        inputRadio1 = document.createElement("input");
+                        inputRadio1.setAttribute('type',"radio");
+                        inputRadio1.setAttribute("name","boolean");
+                        inputRadio1.setAttribute("class","bool1");
+
+
+                        label1 = document.createElement("label");
+                        label1.setAttribute("for", "true");
+                        label1.setAttribute("class", "bool2");
+                        label1.innerText = "True";
+
+                        inputRadio2 = document.createElement("input");
+                        inputRadio2.setAttribute('type',"radio");
+                        inputRadio2.setAttribute("name","boolean");
+                        inputRadio2.setAttribute("class","bool1");
+
+
+                        label2 = document.createElement("label");
+                        label2.setAttribute("for", "false");
+                        label2.setAttribute("class", "bool2");
+                        label2.innerText = "False";
+
+                        question.appendChild(inputRadio1);
+                        question.appendChild(label1);
+                        question.appendChild(inputRadio2);
+                        question.appendChild(label2);
+                        // for (let i = 0; i < 2;i++){
+                        //     inputRadio[i] = document.createElement("input");
+                        //     inputRadio[i].setAttribute('type',"radio");
+                        //     inputRadio[i].setAttribute("name","boolean");
+                        //     label[i] = document.createElement("label");
+                        //     label[i].setAttribute("for", "true");
+                        //     label[i].innerText = "True";
+                        //     question.appendChild(inputRadio[i]);
+                        //     question.appendChild(label[i]);
+                        // }
+
+                        break;
+                    case "MCQ":
+                        let choice1,choice2,choice3,choice4;
+
+                        choice1 = document.createElement("input");
+                        choice1.setAttribute("type","checkbox");
+                        choice1.setAttribute("name","MCQ");
+                        choice1.setAttribute("class","multi")
+
+                        choice2 = document.createElement("input");
+                        choice2.setAttribute("type","checkbox");
+                        choice2.setAttribute("name","MCQ");
+                        choice2.setAttribute("class","multi")
+
+                        choice3 = document.createElement("input");
+                        choice3.setAttribute("type","checkbox");
+                        choice3.setAttribute("name","MCQ");
+                        choice3.setAttribute("class","multi")
+
+                        choice4 = document.createElement("input");
+                        choice4.setAttribute("type","checkbox");
+                        choice4.setAttribute("name","MCQ");
+                        choice4.setAttribute("class","multi");
+
+                        question.appendChild(choice1);
+                        question.appendChild(choice2);
+                        question.appendChild(choice3);
+                        question.appendChild(choice4);
+
+                        break;
+                    case "NUMERIC":
+                        let numberInput;
+
+                        numberInput = document.createElement("input");
+                        numberInput.setAttribute('type',"number");
+                        numberInput.setAttribute('name',"answer");
+                        numberInput.setAttribute('class',"numeric");
+
+
+
+                        button = document.createElement("button");
+                        button.setAttribute("type", "submit");
+                        button.innerText = "submit";
+                        button.setAttribute("class", "submitButtons");
+
+                        question.appendChild(numberInput);
+                        question.appendChild(button);
+
+                        break;
+
+                }
+            }
+
+        </script>
+
+
+    </body>
 </html>
