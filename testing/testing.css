@@ -1,4 +1,9 @@
 
+@font-face { /* custom downloaded font */
+    font-family: 'AssassinNinja';
+    src: url('fonts/AssassinNinja-7BYyR.ttf');
+}
+
 * { /* so the whole page does not have padding and margin */
     margin: 0;
     padding: 0;
@@ -6,71 +11,555 @@
 
 }
 body{
-    border: 2px solid red;
+    /*border: 2px solid red;*/
 }
+
 header{
-    height: 28vh;
-    width: 100%;
-    background-color: #3b5998;
-    color: aliceblue;
+    background-color: #252523;
+    flex: 5;
+    order: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid red;
+    margin: 10px 20px 0 10px;
+    border-bottom: none;
 }
+
+header .shuriken{ /* for left and right shuriken container of the header */
+    flex: 1;
+    text-align: center;
+}
+
+header .shuriken img{ /* shuriken container img */
+    width: 8vh;
+    height: 8vh;
+    animation-name: spin;
+    animation-duration: 5000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+header .header-inner-bg{ /* center container that will display ninjaLogo and text */
+    background-color: #252523;
+    width: 60%;
+    height: 100%;
+    flex: 4;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-left: 2px solid red;
+    border-right: 2px solid red;
+}
+
+header .header-inner-bg .header-img{ /* ninja logo container */
+    flex: 2;
+    order: 1;
+    /*height: 50%;*/
+}
+
+header .header-inner-bg .header-img img{ /* ninja logo container img */
+    display: block;
+    height: 20%;
+    width: 15%;
+    margin: 0 40%;
+}
+
+
  main{
-    /*margin-top: 100px;*/
     height: 59vh;
-    width: 100%;
-    background-color: green;
+    width: 98%;
 }
  main .display{
      /*for display the buttons*/
      height: 18vh;
      width: 100%;
-     background-color: #181717;
      text-align: center;
-
+     border: 2px solid red;
+     margin-left: 10px;
+     margin-right: 10px;
+     border-bottom: none;
  }
  main .display .buttons{
      /*buttons size*/
      height: 6vh;
      width: 15%;
-     background-color: #4CAF50;
+     background-color: #343131;
      margin: 10px 4px;
+     text-align: center;
+     color: red;
+     font-weight: bold;
+     font-size: 15px;
+     border: 2px solid red;
  }
  main .top{
      /*for the description text */
      height: 10vh;
      width: 100%;
-     background-color: silver;
+     border: 2px solid red;
+     margin: 0 10px 10px 10px;
  }
  main #left{
      /*section display button output*/
      float: left;
      height: 35vh;
      width: 50%;
-     background-color: aquamarine;
-     font-size: 20px;
+     background-color: #343131;
+     font-size: 25px;
+     margin-bottom: 10px;
+     color: red;
  }
+.submitButtons{
+    padding: 5px;
+    margin: 10px 30px;
+    display: block;
+    border: 2px solid red;
+    color: red;
+}
+ .int{
+     background-color: white;
+     margin: 30px -30px 0 30px;
+     padding: 5px;
+     border: 2px solid red;
+ }
+
+ .bool1{
+     background-color: #343131;
+     margin: 30px;
+     text-align: center;
+ }
+
+.bool2{
+    background-color: #343131;
+    margin: -10px;
+    text-align: center;
+}
+.txt{
+    background-color: white;
+    margin: 30px -30px 0 30px;
+    border: 2px solid red;
+}
  .multi{
      /*for MCQ start new line*/
      display: block;
      margin-top: 10px;
+     margin-left: 10px;
+ }
+ .numeric{
+     background-color: white;
+     padding: 5px;
+     margin: 10px 30px 0 30px;
+     border: 2px solid red;
  }
  main .right{
      /*display screenshot for the code*/
      float: right;
      height: 35vh;
      width: 50%;
-     background-color: #C13584;
-
+     background-color: red;
+     margin-bottom: 10px;
+     color: black;
  }
 footer{
-    /*set for treasurehunt into left and code screen shot on the right */
-    height: 12vh;
-    width: 100%;
-    background-color: yellow;
+    background-color: #252523;
+    flex: 1.4;
+    order: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid red;
+    margin: 0 10px 10px 10px;
+    padding-top: 30px;
+
+}
+
+
+footer .footer-inner-bg{
+    background-color: #252523;
+    width: 60%;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-left: 2px solid red;
+    border-right: 2px solid red;
+    margin-bottom: 25px;
+}
+
+footer .footer-inner-bg h1{
+    font-family: "AssassinNinja" , sans-serif;
+    text-shadow: 3px 2px 3px red;
+    font-size: 4vh;
+}
+
+footer .footer-inner-bg h1:hover{
+    color: white;
+}
+
+footer .shuriken-f1{
+    text-align: center;
+    margin-right: 60px;
+    width: 8vh;
+    height: 8vh;
+    animation-name: spin;
+    animation-duration: 5000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+
+footer .shuriken-f2{
+    text-align: center;
+    margin-left: 60px;
+    width: 8vh;
+    height: 8vh;
+    animation-name: spin;
+    animation-duration: 5000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
 }
 @media only screen and (max-width: 600px) {
     main .display .buttons{
         height: 4vh;
         margin: 7px 4px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+
+    /* header section */
+    header {
+        flex: 3;
+        border: none;
+    }
+
+    header .header-inner-bg {
+        flex-direction: column;
+        flex: 7;
+        border: none;
+    }
+
+    header .header-inner-bg .header-img {
+        padding-top: 10px;
+        padding-right: 10px;
+        margin: 0 35px 20px 0;
+    }
+    header .header-inner-bg .header-img img{
+        height: 75%;
+        width: 50%;
+
+    }
+
+    header .shuriken img {
+        display: none;
+
+    }
+
+    /*main*/
+
+    main{
+        height: 59vh;
+        width: 100%;
+    }
+
+    main .display{
+        /*for display the buttons*/
+        height: 25vh;
+        width: 100%;
+        text-align: center;
+        border: none;
+    }
+
+    main .display .buttons{
+        /*buttons size*/
+        height: 6vh;
+        width: 20%;
+        background-color: #343131;
+        text-align: center;
+        color: red;
+        font-weight: bold;
+        font-size: 13px;
+        border: 2px solid red;
+    }
+
+    main .top{
+        /*for the description text */
+        height: 10vh;
+        width: 100%;
+        border: 2px solid red;
+        margin: 0 10px 10px 10px;
+    }
+
+    main #left{
+        /*section display button output*/
+        float: left;
+        height: 35vh;
+        width: 50%;
+        background-color: #343131;
+        font-size: 20px;
+        margin-bottom: 10px;
+        color: red;
+    }
+
+    .submitButtons{
+        padding: 10px;
+        margin: 5% 30%;
+        display: block;
+        border: 2px solid red;
+        color: red;
+        font-size: 20px;
+    }
+
+    .int{
+        background-color: white;
+        margin: 15% 1%;
+        padding: 5px;
+        border: 2px solid red;
+    }
+
+    .bool1{
+        background-color: #343131;
+        margin: 30px;
+        text-align: center;
+    }
+
+    .bool2{
+        background-color: #343131;
+        margin: -30px;
+        text-align: center;
+    }
+
+    .txt{
+        background-color: white;
+        margin: 30px 30px 10px 15px;
+        border: 2px solid red;
+    }
+
+    .multi{
+        /*for MCQ start new line*/
+        display: block;
+        margin-top: 30px;
+        margin-left: 10px;
+    }
+
+    .numeric{
+        background-color: white;
+        padding: 5px;
+        margin: 30px 30px 10px 3px;
+        border: 2px solid red;
+    }
+
+    main .right{
+        /*display screenshot for the code*/
+        float: right;
+        height: 35vh;
+        width: 50%;
+        background-color: red;
+        margin-bottom: 10px;
+        color: black;
+    }
+
+    /* footer section */
+
+    footer{
+        flex: 1;
+        width: 100%;
+    }
+
+    footer .footer-inner-bg{
+        font-size: 2vh;
+        text-align: center;
+    }
+
+    footer .shuriken-f1{
+        display: none;
+    }
+
+    footer .shuriken-f2{
+        display: none;
+    }
+}
+
+/* tablets */
+@media only screen and (max-width: 1024px) and (min-width: 600px) {
+    /* header section */
+    header {
+        flex: 3;
+        border: none;
+    }
+
+    header .header-inner-bg {
+        flex-direction: column;
+        flex: 7;
+        border: none;
+    }
+
+    header .header-inner-bg .header-img {
+        padding-top: 10px;
+        padding-right: 10px;
+        margin: 0 35px 20px 0;
+    }
+    header .header-inner-bg .header-img img{
+        height: 75%;
+        width: 50%;
+
+    }
+
+    header .shuriken img {
+        display: block;
+        margin: 0 20px;
+
+    }
+
+    /*main*/
+
+    main{
+        height: 59vh;
+        width: 100%;
+    }
+
+    main .display{
+        /*for display the buttons*/
+        height: 25vh;
+        width: 100%;
+        text-align: center;
+        border: none;
+        margin-bottom: 10px;
+    }
+
+    main .display .buttons{
+        /*buttons size*/
+        height: 6vh;
+        width: 20%;
+        background-color: #343131;
+        text-align: center;
+        color: red;
+        font-weight: normal;
+        font-size: 25px;
+        border: 2px solid red;}
+
+    main .top{
+        /*for the description text */
+        height: 10vh;
+        width: 100%;
+        border: 2px solid red;
+        margin: 0 10px 10px 10px;
+    }
+
+    main #left{
+        /*section display button output*/
+        float: left;
+        height: 35vh;
+        width: 50%;
+        background-color: #343131;
+        font-size: 30px;
+        margin-bottom: 10px;
+        color: red;
+    }
+
+    .submitButtons{
+        padding: 15px;
+        margin: 1% 35%;
+        display: block;
+        border: 2px solid red;
+        color: red;
+        font-size: 25px;
+    }
+
+    .int{
+        background-color: white;
+        margin: 15% 20%;
+        padding: 15px;
+        border: 2px solid red;
+    }
+
+    .bool1{
+        background-color: #343131;
+        margin: 60px;
+        text-align: center;
+    }
+
+    .bool2{
+        background-color: #343131;
+        margin: -30px;
+        text-align: center;
+    }
+
+    .txt{
+        background-color: white;
+        margin: 10% 10% 10% 25%;
+        border: 2px solid red;
+        padding: 5px;
+    }
+
+    .multi{
+        /*for MCQ start new line*/
+        display: block;
+        margin-top: 12%;
+        margin-left: 10%;
+    }
+
+    .numeric{
+        background-color: white;
+        padding: 10px;
+        margin: 10% 10% 10% 25%;
+        border: 2px solid red;
+    }
+
+    main .right{
+        /*display screenshot for the code*/
+        float: right;
+        height: 35vh;
+        width: 50%;
+        background-color: red;
+        margin-bottom: 10px;
+        color: black;
+    }
+
+    /* footer section */
+
+    footer{
+        flex: 1;
+        width: 100%;
+    }
+
+    footer .footer-inner-bg{
+        font-size: 2vh;
+        text-align: center;
+    }
+
+    footer .shuriken-f1{
+        display: none;
+    }
+
+    footer .shuriken-f2{
+        display: none;
     }
 }

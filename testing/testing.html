@@ -5,11 +5,26 @@
         <title>Testing</title>
         <link rel="stylesheet" href="testing.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" type="image/x-icon" href="base/ninjaLogo.png"/>
     </head>
     <body>
     <header>
-<!--        <h1>head logo for the page</h1>-->
-    </header>
+        <!--left shuriken-->
+        <section class="shuriken">
+            <img src="base/Shuriken.png" alt="shuriken">
+        </section>
+
+        <!--middle header section-->
+        <section class="header-inner-bg">
+            <div class="header-img">
+                <img src="base/ninjaLogo.png" alt="ninjaLogo">
+            </div>
+        </section>
+
+        <!--right shuriken-->
+        <section class="shuriken">
+            <img src="base/Shuriken.png" alt="shuriken">
+        </section>    </header>
     <main>
 <!--        <h1>main body str. divide into 3 parts</h1>-->
         <div class="display">
@@ -19,7 +34,7 @@
             <button class="buttons" name="MCQ" onclick="questionType(name)">MCQ</button>
             <button class="buttons" name="NUMERIC" onclick="questionType(name)">Numeric</button>
             <button type="submit" class="buttons">List</button>
-            <button type="submit" class="buttons">LeaderBored</button>
+            <button type="submit" class="buttons">Leader Bored</button>
             <button type="submit" class="buttons">Score</button>
             <button type="submit" class="buttons">Skip</button>
             <button type="submit" class="buttons">Location</button>
@@ -31,7 +46,13 @@
         <div id="left"></div>
         <div class="right"></div>
     </main>
-    <footer></footer>
+    <footer>
+        <section class="footer-inner-bg">
+            <img src="base/Shuriken.png" alt="shuriken" class="shuriken-f1">
+            <h1 id="startTreasureHunt">testing page</h1>
+            <img src="base/Shuriken.png" alt="shuriken" class="shuriken-f2">
+        </section>
+    </footer>
 
         <script>
 
@@ -57,6 +78,8 @@
                         inputField = document.createElement("input");
                         inputField.setAttribute('type',"number");
                         inputField.setAttribute('name',"answer");
+                        inputField.setAttribute('class',"int");
+
 
 
                         button = document.createElement("button");
@@ -75,6 +98,8 @@
                         inputText = document.createElement("textarea");
                         inputText.setAttribute('type',"text");
                         inputText.setAttribute('style',"cols:25,rows:3");
+                        inputText.setAttribute('class',"txt");
+
 
                         button = document.createElement("button");
                         button.setAttribute("type", "submit");
@@ -92,17 +117,23 @@
                         inputRadio1 = document.createElement("input");
                         inputRadio1.setAttribute('type',"radio");
                         inputRadio1.setAttribute("name","boolean");
+                        inputRadio1.setAttribute("class","bool1");
+
 
                         label1 = document.createElement("label");
                         label1.setAttribute("for", "true");
+                        label1.setAttribute("class", "bool2");
                         label1.innerText = "True";
 
                         inputRadio2 = document.createElement("input");
                         inputRadio2.setAttribute('type',"radio");
                         inputRadio2.setAttribute("name","boolean");
+                        inputRadio2.setAttribute("class","bool1");
+
 
                         label2 = document.createElement("label");
                         label2.setAttribute("for", "false");
+                        label2.setAttribute("class", "bool2");
                         label2.innerText = "False";
 
                         question.appendChild(inputRadio1);
@@ -156,6 +187,8 @@
                         numberInput = document.createElement("input");
                         numberInput.setAttribute('type',"number");
                         numberInput.setAttribute('name',"answer");
+                        numberInput.setAttribute('class',"numeric");
+
 
 
                         button = document.createElement("button");
