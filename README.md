@@ -15,7 +15,7 @@ _Every member of the team contributes and learns every programming and designing
 
 #MEETINGS:
 
--- Week 1 --
+**! Week 1 !** 
 
 First meeting at Costa Coffee to discuss the treasure hunt project:
     Outcomes: 
@@ -23,12 +23,12 @@ First meeting at Costa Coffee to discuss the treasure hunt project:
         Fadi - work more on the java-script part
         Alex - work on both design and java-script 
 
--- Week 2 --
+**! Week 2 !** 
 
 Established Git Hub - Assigned Team Roles - Started sketching the website in Canva.
-Amir Designed first prototype
+Amir Designed first prototype.
 
--- Week 3 --
+**! Week 3 !** 
 
 Teams Meeting ( Alex And Fadi ) 
 
@@ -37,39 +37,30 @@ Coming up with new design - pushed and submitted
 
 FINDING OUT RESPONSIVE PROBLEMS
 
--- Week 4 -- 
+**! Week 4 !** 
 
 Alex Designs an all platform responsive landing page
 
 Committed and Pushed.
 
--- Week 5 -- (MS call 31/01/21 -> 9pm)
+**! Week 5 !**  (MS call 31/01/21 -> 9pm)
 
-Amir ads spinning shuriken functionality 
+Amir ads spinning "Shuriken" functionality and fixes the design on the landing page. Also takes the basic design and makes it work on platforms.
 
-Amir fixes the design on the landing page
+Alex makes the second page basic design and implements display treasure hunts and provides basic input validation
 
-Alex make the second page basic design
+Fadi works on the Geo location, and the Google Maps Api. 
 
-Alex implements display treasure hunts and provides basic input validation
+Pushed for Presentation 3/02/21.
 
-Amir takes the basic design and makes it work on on plaftforms
-
-Fadi works on the geolocation
-
-Fadi works on the Google Maps Api 
-
-Comitted and Pushed for Presentation 3/02/21
-
--- Week 6 -- (MS call 7/02/21 -> 9pm)
+**! Week 6 !**  (MS call 7/02/21 -> 9pm)
 
 Amir and Alex fixed the Second page design after the presentation
 
--- Week 7 -- (MS call 14/02/21 -> 9pm)
+**! Week 7 !** (MS call 14/02/21 -> 9pm)
 
-Alex has implemented the initial question fetching version
-
-MS Teams call to assign targets for next week
+Alex has implemented the initial question fetching version.
+MS Teams call to assign targets for next week.
 
 TODO: for Week 8
 
@@ -79,4 +70,7 @@ Fadi -> implement questions functionality
 
 Amir -> implement UI depending on questions type 
 
+**! Week 8 !**
 
+Alex has implemented functionality for every type of questions and the submission of the answer.
+Amir and Fadi working on the testing page and basic design for it.

@@ -2,7 +2,7 @@
 
 @font-face { /* custom downloaded font */
     font-family: 'AssassinNinja';
-    src: url('fonts/AssassinNinja-7BYyR.ttf');
+    src: url('../fonts/AssassinNinja-7BYyR.ttf');
 }
 
 * { /* so the whole page does not have padding and margin */

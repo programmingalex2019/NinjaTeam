@@ -3,55 +3,58 @@
     <head>
         <meta charset="UTF-8">
         <title>Testing</title>
-        <link rel="stylesheet" href="testing.css">
+        <link rel="stylesheet" href="../css/testing.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" type="image/x-icon" href="base/ninjaLogo.png"/>
+        <link rel="shortcut icon" type="image/x-icon" href="../assets/base/ninjaLogo.png"/>
     </head>
     <body>
     <header>
         <!--left shuriken-->
         <section class="shuriken">
-            <img src="base/Shuriken.png" alt="shuriken">
+            <img src="../assets/base/Shuriken.png" alt="shuriken">
         </section>
 
         <!--middle header section-->
         <section class="header-inner-bg">
             <div class="header-img">
-                <img src="base/ninjaLogo.png" alt="ninjaLogo">
+                <img src="../assets/base/ninjaLogo.png" alt="ninjaLogo">
             </div>
         </section>
 
         <!--right shuriken-->
         <section class="shuriken">
-            <img src="base/Shuriken.png" alt="shuriken">
+            <img src="../assets/base/Shuriken.png" alt="shuriken">
         </section>    </header>
     <main>
 <!--        <h1>main body str. divide into 3 parts</h1>-->
         <div class="display">
-            <button class="buttons" name="INTEGER" onclick="questionType(name)">Integer</button>
-            <button class="buttons" name="BOOLEAN" onclick="questionType(name)">Boolean</button>
-            <button class="buttons" name="TEXT" onclick="questionType(name)">Text</button>
-            <button class="buttons" name="MCQ" onclick="questionType(name)">MCQ</button>
-            <button class="buttons" name="NUMERIC" onclick="questionType(name)">Numeric</button>
-            <button type="submit" class="buttons">List</button>
-            <button type="submit" class="buttons">Leader Bored</button>
-            <button type="submit" class="buttons">Score</button>
-            <button type="submit" class="buttons">Skip</button>
-            <button type="submit" class="buttons">Location</button>
-            <button type="submit" class="buttons">Answer</button>
-            <button type="submit" class="buttons">Start</button>
-
+            <div class="elements">
+                <button class="buttons" name="INTEGER" onclick="questionType(name)">Integer</button>
+                <button class="buttons" name="BOOLEAN" onclick="questionType(name)">Boolean</button>
+                <button class="buttons" name="TEXT" onclick="questionType(name)">Text</button>
+                <button class="buttons" name="MCQ" onclick="questionType(name)">MCQ</button>
+                <button class="buttons" name="NUMERIC" onclick="questionType(name)">Numeric</button>
+                <button type="submit" class="buttons">List</button>
+                <button type="submit" class="buttons">Leaderboard</button>
+                <button type="submit" class="buttons">Score</button>
+                <button type="submit" class="buttons">Skip</button>
+                <button type="submit" class="buttons">Location</button>
+                <button type="submit" class="buttons">Answer</button>
+                <button type="submit" class="buttons">Start</button>
+            </div>
         </div>
-        <div class="top"></div>
-        <div id="left"></div>
-        <div class="right"></div>
+
+        <div class ="testContainer" id="left">
+            <h1>Testing</h1>
+        </div>
+
     </main>
     <footer>
-        <section class="footer-inner-bg">
-            <img src="base/Shuriken.png" alt="shuriken" class="shuriken-f1">
-            <h1 id="startTreasureHunt">testing page</h1>
-            <img src="base/Shuriken.png" alt="shuriken" class="shuriken-f2">
-        </section>
+
+        <img src="../assets/base/Shuriken.png" alt="shuriken" class="shuriken-f1">
+        <h1 id="startTreasureHunt">Testing page</h1>
+        <img src="../assets/base/Shuriken.png" alt="shuriken" class="shuriken-f2">
+
     </footer>
 
         <script>

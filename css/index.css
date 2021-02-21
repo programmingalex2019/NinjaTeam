@@ -2,7 +2,7 @@
 
 @font-face { /* custom downloaded font */
     font-family: 'AssassinNinja';
-    src: url('fonts/AssassinNinja-7BYyR.ttf');
+    src: url('../fonts/AssassinNinja-7BYyR.ttf');
 }
 
 * { /* so the whole page does not have padding and margin */
@@ -43,8 +43,8 @@ header .shuriken{ /* for left and right shuriken container of the header */
 }
 
 header .shuriken img{ /* shuriken container img */
-    width: 8vh;
-    height: 8vh;
+    width: 10vh;
+    height: 10vh;
     animation-name: spin;
     animation-duration: 5000ms;
     animation-iteration-count: infinite;
@@ -63,12 +63,11 @@ header .shuriken img{ /* shuriken container img */
 header .header-inner-bg{ /* center container that will display ninjaLogo and text */
     background-color: #252523;
     width: 60%;
-    height: 100%;
+    height: 90%;
     flex: 4;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    border: 2px solid red;
 }
 
 header .header-inner-bg .header-img{ /* ninja logo container */
@@ -178,31 +177,27 @@ main .m-section-1 .memberSectionTitle{
 main .m-section-1 .memberCard .memberCardDescription{
     font-family: sans-serif;
     color: white;
-    font-size: 2vh;
+    font-size: 2.5vh;
     padding-right: 10px;
 }
 main .m-section-1 .memberCardRight .memberCardDescriptionRight{
     font-family: sans-serif;
     color: white;
-    font-size: 2vh;
+    font-size: 2.5vh;
     padding-left: 10px;
 }
 
 main .m-section-2{
     margin: 0 10px;
     display: flex;
-    /*border: 2px solid red;*/
     flex: 1.3;
 }
-
 
 
 main .m-section-2 iframe{
     flex: 1;
     width: 100% !important;
-    /*padding-bottom: 2px;*/
     margin: 0 -9px 0 -9px;
-
 }
 
 main .m-section-3{
@@ -277,7 +272,7 @@ main .m-section-3 .phone-wrapper .twitter{
 
 footer{
     background-color: #252523;
-    flex: 1.4;
+    flex: 1;
     order: 3;
     display: flex;
     justify-content: center;
@@ -296,16 +291,13 @@ footer .footer-inner-bg{
     display: flex;
     align-items: center;
     justify-content: center;
-
-    border-left: 2px solid red;
-    border-right: 2px solid red;
     margin-bottom: 25px;
 }
 
 footer .footer-inner-bg h1{
     font-family: "AssassinNinja" , sans-serif;
     text-shadow: 3px 2px 3px red;
-    font-size: 3vh;
+    font-size: 4vh;
 }
 
 footer .footer-inner-bg h1:hover{
@@ -438,8 +430,11 @@ footer .shuriken-f2{
         height: 180px;
         display: flex;
         flex-direction: column;
-        font-family: "AssassinNinja" , sans-serif;
-        text-shadow: 3px 2px 3px red;
+        /*font-family: "AssassinNinja" , sans-serif;*/
+    }
+
+    main .m-section-1 .memberDescriptionPhone h1{
+        color: white;
     }
 
     main .m-section-1 .memberDescriptionPhone p{
@@ -487,8 +482,6 @@ footer .shuriken-f2{
 
     }
 
-
-
     main .m-section-3{
         flex: 1.1;
         margin: 0;
@@ -522,8 +515,11 @@ footer .shuriken-f2{
     }
 
     footer .footer-inner-bg{
-        font-size: 2vh;
+
         text-align: center;
+    }
+    footer .footer-inner-bg h1{
+        font-size: 2.5vh;
     }
 
     footer .shuriken-f1{
@@ -555,6 +551,11 @@ footer .shuriken-f2{
 
     header .shuriken img{
         display: none;
+    }
+
+    header .header-inner-bg .header-img img{
+        width: 50%;
+
     }
 
     header .header-inner-bg .header-text h1{
@@ -597,7 +598,7 @@ footer .shuriken-f2{
         flex-direction: row;
         align-items: center;
         justify-content: center;
-        flex: 1.5;
+        flex: 2;
     }
 
     main .m-section-1 .memberDescriptionPhone{
@@ -605,13 +606,15 @@ footer .shuriken-f2{
         text-align: center;
         justify-content: space-evenly;
         padding: 5px;
-        font-size: 2.1vh;
+        font-size: 2.5vh;
         height: 180px;
         display: flex;
         flex-direction: column;
-        font-family: "AssassinNinja" , sans-serif;
-        text-shadow: 3px 2px 3px red;
-        margin-top: 10px;
+        /*margin-top: 10px;*/
+    }
+
+    main .m-section-1 .memberDescriptionPhone h1{
+        color: white;
     }
 
     main .m-section-1 .memberDescriptionPhone p{
@@ -687,7 +690,7 @@ footer .shuriken-f2{
     }
 
     footer .footer-inner-bg{
-        font-size: 2.5vh;
+        font-size: 2vh;
     }
 
     footer .shuriken-f1{
