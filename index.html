@@ -6,9 +6,8 @@
     <title>NinjaTreasureHunt</title>
     <link rel="stylesheet" href="css/index.css">
     <link rel="shortcut icon" type="image/x-icon" href="assets/base/ninjaLogo.png"/>
-
-
 </head>
+
     <body>
     <!-- top section -->
         <header>
@@ -41,7 +40,7 @@
                         <img src="assets/avatars/FadiLogo.jpg" alt="Fadi" class="memberCardImg">
                         <div class="memberCardDescription">
                             <h1>Fadi</h1>
-                            <p>Loves Women! But not as much as Java Script and some API queries.</p>
+                            <p>Loves Women! But not as much as Java-Script and some API queries.</p>
                         </div>
                     </div>
                     <div class="memberCardRight">
@@ -55,7 +54,7 @@
                         <img src="assets/avatars/amirLogo.JPG" alt="Alex" class="memberCardImg">
                         <div class="memberCardDescription">
                             <h1>Amir</h1>
-                            <p>Brings code to life with a Picasso touch of Css</p>
+                            <p>Brings code to life with a Picasso touch of Css.</p>
                         </div>
                     </div>
                 </div>
@@ -71,16 +70,16 @@
                 <div class="phone-wrapper">
                     <div class="socialMediaDescription">
                         <p>This Treasure Hunt Game was fully tested to provide you the best experience while playing. Press here to see how we were testing some parts of the game</p>
+                        <img src="assets/socialMedia/testing.png" alt="settings" onclick="testingFunction()">
+
                     </div>
                     <div class="facebook-instagram-twitter">
-                        <a href="https://www.facebook.com/permalink.php?story_fbid=102728548531448&id=102723878531915"><h1 class="facebook-text">Facebook</h1></a>
-                        <a href="#"><h1 class="instagram-text">Instagram</h1></a>
-                        <img src="assets/socialMedia/facebook.png" alt="facebook" onclick="facebookFunction()">
-                        <img src="assets/socialMedia/instagram.png" alt="instagram" onclick="instagramFunction()">
                         <img src="assets/socialMedia/twitter.png" alt="twitter" onclick="TwitterFunction()">
+                        <img src="assets/socialMedia/testing.png" alt="settings" onclick="testingFunction()">
+
                     </div>
                     <div class="twitter">
-                        <a class="twitter-timeline" data-tweet-limit="1" data-theme="dark" href="https://twitter.com/AlexVanellis?ref_src=twsrc%5Etfw">Tweets by AlexVanellis
+                        <a class="twitter-timeline" style="height: 0" data-tweet-limit="1" data-theme="dark" href="https://twitter.com/AlexVanellis?ref_src=twsrc%5Etfw">
                         </a>
                         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                     </div>
@@ -104,15 +103,14 @@
             function myFunction() {
                 window.location.href = 'html/treasureHunts.html'
             }
-            function facebookFunction(){
-                window.location.href = "https://www.facebook.com/permalink.php?story_fbid=349104302994515&id=349097889661823";
-            }
             function TwitterFunction(){
                 window.location.href = "https://twitter.com/AlexVanellis?ref_src=twsrc%5Etfw";
             }
-            function instagramFunction(){
-                window.location.href = "instagram link"
+
+            function testingFunction(){
+                window.location.href = "html/testing.html";
             }
+
         </script>
     </body>
 </html>
