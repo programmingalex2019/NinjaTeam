@@ -108,7 +108,7 @@ main .display .elements{
      width: 15%;
      background-color: #343131;
      text-align: center;
-     color: red;
+     color: #AD090D;
      font-weight: bold;
      font-size: 20px;
      border: 2px solid red;
@@ -117,7 +117,7 @@ main .display .elements{
      flex: 1.5;
      width: 100%;
      font-size: 25px;
-     color: red;
+     color: #AD090D;
      display: flex;
      flex-direction: column;
      justify-content: center;
@@ -128,7 +128,7 @@ main .display .elements{
     margin: 10px 30px;
     display: block;
     border: 2px solid red;
-    color: red;
+    color: #AD090D;
 }
  .int{
      background-color: white;
@@ -183,7 +183,8 @@ footer .footer-inner-bg{
 
 footer h1{
     font-family: "AssassinNinja" , sans-serif;
-    text-shadow: 3px 2px 3px red;
+    text-shadow: 3px 2px 3px black;
+    color: #AD090D;
     font-size: 4vh;
 }
 

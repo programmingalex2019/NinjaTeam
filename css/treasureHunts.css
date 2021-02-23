@@ -89,7 +89,8 @@ body {
     text-align: center;
     padding-bottom: 5px;
     font-family: "AssassinNinja" , sans-serif;
-    text-shadow: 3px 2px 3px red;
+    text-shadow: 3px 2px 3px black;
+    color: #AD090D;
 }
 
 .form-section #form input[type=text]{
@@ -116,7 +117,7 @@ body {
 
 
 .form-section #form  #error-message{
-    color: red;
+    color: #AD090D;
     font-size: 20px;
     letter-spacing: 2px;
     display: flex;
@@ -150,7 +151,8 @@ body {
 
 .treasure-hunts-section #generated-api-hunts div h1{
     font-family: "AssassinNinja" , sans-serif;
-    text-shadow: 3px 2px 3px red;
+    text-shadow: 3px 2px 3px black;
+    color: #AD090D;
     font-size: 4vh;
     padding: 10px;
 }
@@ -208,7 +210,8 @@ body {
         font-size: 35px;
         padding-bottom: 5px;
         padding-top: 30px;
-        text-shadow: 3px 2px 3px red;
+        text-shadow: 3px 2px 3px black;
+        color: #AD090D;
     }
 
 
