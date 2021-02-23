@@ -34,8 +34,8 @@
                 <button class="buttons" name="TEXT" onclick="questionType(name)">Text</button>
                 <button class="buttons" name="MCQ" onclick="questionType(name)">MCQ</button>
                 <button class="buttons" name="NUMERIC" onclick="questionType(name)">Numeric</button>
-                <button type="submit" class="buttons">List</button>
-                <button type="submit" class="buttons">Leaderboard</button>
+                <button type="submit" class="buttons" onclick="displayList()">List</button>
+                <button type="submit" class="buttons" onclick="LeaderBoard()">Leaderboard</button>
                 <button type="submit" class="buttons">Score</button>
                 <button type="submit" class="buttons">Skip</button>
                 <button type="submit" class="buttons">Location</button>
@@ -61,6 +61,55 @@
 
             const question = document.getElementById("left");
             let button;
+            function LeaderBoard(){
+                let treasureHuntTableName = document.createElement("h2");
+
+                fetch("https://codecyprus.org/th/test-api/leaderboard?sorted&hasPrize&size=5")
+                    .then(response => response.json())
+                    .then(jsonObject => {
+
+
+                        treasureHuntTableName.innerText = jsonObject.treasureHuntName;
+                        question.appendChild(treasureHuntTableName);
+                        const leaderTable = document.createElement("table");
+
+                        let tableContain = "";
+
+                        leaderTable.innerHTML = "<tr><th>Player Name</th><th>Score</th></tr>";
+                        for (let i = 0; i < jsonObject.leaderboard.length; i++){
+                            const entry = jsonObject.leaderboard[i];
+                            const playerName = entry.player;
+                            const score = entry.score;
+
+                            tableContain += "<tr>" +
+                                "<td>"+ playerName+"</td>" +
+                                "<td>"+ score+"</td>" +
+                                "</tr>"
+                        }
+                        leaderTable.innerHTML += tableContain;
+
+                        question.appendChild(treasureHuntTableName);
+                        question.appendChild(leaderTable);
+
+                    });
+            }
+            function displayList(){
+
+                let listOfTreasure = document.createElement("ol");
+                let treasureContain = "";
+
+                fetch("https://codecyprus.org/th/test-api/list?number-of-ths=2")
+                    .then(response => response.json())
+                    .then(jsonObject => {
+                        for (let i = 0; i < jsonObject.treasureHunts.length; i++){
+                            let treasureName = jsonObject.treasureHunts[i].description
+                            treasureContain += "<li>"+ treasureName +"</li>"
+                        }
+                        listOfTreasure.innerHTML += treasureContain;
+                        question.appendChild(listOfTreasure);
+
+                    });
+            }
 
             function questionType(type){
                 fetch("https://codecyprus.org/th/test-api/question?completed&question-type=" + type)
