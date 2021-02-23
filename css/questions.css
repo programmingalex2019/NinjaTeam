@@ -107,8 +107,8 @@ body {
 }
 
 .questionContent #questionContainer .questionContainerContent .upperRow h1{
-    text-shadow: 3px 2px 3px red;
-    color: white;
+    text-shadow: 3px 2px 3px black;
+    color: #AD090D;
     font-size: 2.5em;
     padding: 5px;
 }

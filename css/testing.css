@@ -8,8 +8,8 @@
     margin: 0;
     padding: 0;
     background-color: #252523;
-
 }
+
 body{
     /*border: 2px solid red;*/
     height: 100vh;
@@ -25,7 +25,7 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid red;
+    /*border: 2px solid red;*/
     border-bottom: none;
 }
 
@@ -35,8 +35,8 @@ header .shuriken{ /* for left and right shuriken container of the header */
 }
 
 header .shuriken img{ /* shuriken container img */
-    width: 8vh;
-    height: 8vh;
+    width: 6vh;
+    height: 6vh;
     animation-name: spin;
     animation-duration: 5000ms;
     animation-iteration-count: infinite;
@@ -59,8 +59,8 @@ header .header-inner-bg{ /* center container that will display ninjaLogo and tex
     display: flex;
     justify-content: center;
     align-items: center;
-    border-left: 2px solid red;
-    border-right: 2px solid red;
+    /*border-left: 2px solid red;*/
+    /*border-right: 2px solid red;*/
     background-color: #252523;
 }
 
@@ -94,7 +94,7 @@ header .header-inner-bg .header-img img{ /* ninja logo container img */
      display: flex;
      align-items: center;
      text-align: center;
-     border: 2px solid red;
+     /*border: 2px solid red;*/
  }
 
 main .display .elements{
@@ -108,7 +108,7 @@ main .display .elements{
      width: 15%;
      background-color: #343131;
      text-align: center;
-     color: red;
+     color: #AD090D;
      font-weight: bold;
      font-size: 20px;
      border: 2px solid red;
@@ -117,22 +117,22 @@ main .display .elements{
      flex: 1.5;
      width: 100%;
      font-size: 25px;
-     color: red;
+     color: #AD090D;
      display: flex;
      flex-direction: column;
      justify-content: center;
      align-items: center;
  }
 .submitButtons{
-    padding: 5px;
-    margin: 10px 30px;
+    /*padding: 5px;*/
+    /*margin: 10px 30px;*/
     display: block;
     border: 2px solid red;
-    color: red;
+    color: #AD090D;
 }
  .int{
      background-color: white;
-     padding: 5px;
+     /*padding: 5px;*/
      border: 2px solid red;
  }
 
@@ -143,7 +143,7 @@ main .display .elements{
 
 .bool2{
     background-color: #343131;
-    margin: -10px;
+    /*margin: -10px;*/
     text-align: center;
 }
 .txt{
@@ -153,8 +153,8 @@ main .display .elements{
  .multi{
      /*for MCQ start new line*/
      display: block;
-     margin-top: 6%;
-     margin-left: 10px;
+     /*margin-top: 6%;*/
+     /*margin-left: 10px;*/
  }
  .numeric{
      background-color: white;
@@ -167,7 +167,7 @@ footer{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    border: 2px solid red;
+    /*border: 2px solid red;*/
 
 }
 
@@ -183,7 +183,8 @@ footer .footer-inner-bg{
 
 footer h1{
     font-family: "AssassinNinja" , sans-serif;
-    text-shadow: 3px 2px 3px red;
+    text-shadow: 3px 2px 3px black;
+    color: #AD090D;
     font-size: 4vh;
 }
 
@@ -212,8 +213,8 @@ footer .shuriken-f1{
 
 footer .shuriken-f2{
     text-align: center;
-    width: 8vh;
-    height: 8vh;
+    width: 6vh;
+    height: 6vh;
     animation-name: spin;
     animation-duration: 5000ms;
     animation-iteration-count: infinite;
