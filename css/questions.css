@@ -21,6 +21,8 @@ body {
     justify-content: center;
 }
 
+
+
 .questionContent{
     display: flex;
     flex-direction: column;
@@ -120,10 +122,15 @@ body {
     align-items: center;
 }
 
+
 .questionContent #questionContainer .questionContainerContent .middleRow p{
     text-align: center;
     color: white;
     font-size: 2.5em;
+}
+
+.questionContent #questionContainer .questionContainerContent .middleRow p a{
+    color: white;
 }
 
 .questionContent #questionContainer .questionContainerContent .bottomRow{

@@ -83,10 +83,18 @@
                     .then(response => response.json())
                     .then(jsonObject => {
                         console.log(jsonObject);
+
                         if(jsonObject.status === "ERROR"){
                             errorElement.innerText = jsonObject.errorMessages[0];
                         }
                         // window.location.href = 'questions.html?session=' + jsonObject.session;
+
+                        //save the cookie first time -> for the session id and the inputed player name.
+
+                        //
+                        //if cookie.name = name.value -> get cookie session -> fetch(url cookie name, cookie session);
+
+
                     });
             }
         }
