@@ -85,12 +85,12 @@ body {
 }
 
 .form-section #form .label-text h1{
-    font-size: 40px;
+    font-size: 4em;
     text-align: center;
-    padding-bottom: 5px;
+    padding-bottom: 0.6em;
     font-family: "AssassinNinja" , sans-serif;
     text-shadow: 3px 2px 3px black;
-    color: #AD090D;
+    color: #d3161d;
 }
 
 .form-section #form input[type=text]{
@@ -117,13 +117,16 @@ body {
 
 
 .form-section #form  #error-message{
-    color: #AD090D;
-    font-size: 20px;
+    color: #d3161d;
+    font-size: 2.5em;
+    font-weight: bold;
     letter-spacing: 2px;
     display: flex;
     align-items: start;
-    padding-top: 10px;
+    padding-top: 1em;
     text-align: center;
+    font-family: "AssassinNinja" , sans-serif;
+    text-shadow: 3px 2px 3px black;
 }
 
 
@@ -169,8 +172,6 @@ body {
 /* phones - tables */
 @media only screen and (max-width: 1024px) {
 
-
-
     .form-section{
         flex-direction: column;
         justify-content: center; /* row */
@@ -211,7 +212,7 @@ body {
         padding-bottom: 5px;
         padding-top: 30px;
         text-shadow: 3px 2px 3px black;
-        color: #AD090D;
+        color: #d3161d;
     }
 
 
@@ -229,7 +230,8 @@ body {
 
     .form-section #form #error-message{
         flex: 1;
-        padding-top: 12px;
+        font-size: 1.2em;
+        padding: 1em;
     }
 
 /* treasure hunts */

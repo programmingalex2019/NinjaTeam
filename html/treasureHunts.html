@@ -73,6 +73,8 @@
 
         function startTreasureHunt(uid){
 
+            errorElement.innerText = "";
+
             if(name.value.length === 0){
                 errorElement.innerText = "Please enter a Name";
             }else {
@@ -81,7 +83,10 @@
                     .then(response => response.json())
                     .then(jsonObject => {
                         console.log(jsonObject);
-                        window.location.href = 'questions.html?session=' + jsonObject.session;
+                        if(jsonObject.status === "ERROR"){
+                            errorElement.innerText = jsonObject.errorMessages[0];
+                        }
+                        // window.location.href = 'questions.html?session=' + jsonObject.session;
                     });
             }
         }

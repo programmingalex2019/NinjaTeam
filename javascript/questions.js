@@ -27,9 +27,9 @@ function buildUI(jsonObject){
 
 
     //question text
-    if(jsonObject.questionType !== "MCQ"){
-        questionContentJS.innerHTML = jsonObject.questionText;
-    }
+
+    questionContentJS.innerHTML = jsonObject.questionText;
+
 
     //skip button if required
     let skip = document.createElement("button");
@@ -124,7 +124,6 @@ function buildUI(jsonObject){
             /*content*/
 
             middleRowJS.style.flexDirection = "column";
-            questionContentJS.innerText = "Which is the correct way of creating a paragraph element using java-script DOM interface"
 
             let multiQuestionSelectionContainer = document.createElement("div");
             setAttributes(multiQuestionSelectionContainer, {class: "multiQuestionSelectionContainer"});
