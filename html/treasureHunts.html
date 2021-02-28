@@ -80,85 +80,51 @@
         }
         else {
 
-            if(document.cookie === name.value){
-                window.location.href = 'questions.html?session=' + cookie.session;
+            let cookieName = readCookie("Name");
+            let cookieSession = readCookie("Session");
+
+            if(name.value === cookieName){
+                window.location.href = 'questions.html?session=' + cookieSession;
+            }else{
+                let callURL = "https://codecyprus.org/th/api/start" + "?player="
+                    + name.value + "&app=" + "NinjaTeam" + "&treasure-hunt-id=" + uid;
+                fetch(callURL)
+                    .then(response => response.json())
+                    .then(jsonObject => {
+
+                        console.log(jsonObject);
+                        if(jsonObject.status === "ERROR"){
+                            errorElement.innerText = jsonObject.errorMessages[0];
+                        }
+                        else {
+
+                            setCookie("Name", name.value, 1);
+                            setCookie("Session", jsonObject.session, 1);
+
+                            window.location.href = 'questions.html?session=' + jsonObject.session;
+                        }
+                    });
             }
-
-            let callURL = "https://codecyprus.org/th/api/start" + "?player="
-                + name.value + "&app=" + "NinjaTeam" + "&treasure-hunt-id=" + uid;
-            fetch(callURL)
-                .then(response => response.json())
-                .then(jsonObject => {
-                    console.log(jsonObject);
-
-                    if(jsonObject.status === "ERROR"){
-                        errorElement.innerText = jsonObject.errorMessages[0];
-                    }
-                    else {
-
-                        setCookie(name.value,jsonObject.session,1);
-                        window.location.href = 'questions.html?session=' + jsonObject.session;
-                    }
-
-
-                    //save the cookie first time -> for the session id and the inputed player name.
-
-                    //
-                    //if cookie.name = name.value -> get cookie session -> fetch(url cookie name, cookie session);
-
-
-                });
         }
     }
 
-    function getCookie(playerName,sessionID,index) {
-        let name = playerName + "=";
-        let decodedCookie = decodeURIComponent(document.cookie);
-        let  decode = decodedCookie.split(';');
-        for(let i = 0; i <decode.length; i++) {
-            let n = decode[i];
-            while (n.charAt(index) === ' ') {
-                n = n.substring(index +1);
-            }
-            if (n.indexOf(name) === index) {
-                return c.substring(name.length, n.length);
-            }
+    function readCookie(name) {
+        let nameEQ = name + "=";
+        let ca = document.cookie.split(';');
+        for(let i = 0;i < ca.length;i++) {
+            let c = ca[i];
+            while (c.charAt(0) === ' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length,c.length);
         }
-        return "";
+        return null;
     }
 
-
-    function setCookie(cookieName, cookieSession, expireTime) {
+    function setCookie(cookieName, cookieValue, expireDays) {
         let date = new Date();
-        date.setTime(date.getTime() + (expireTime * 60 * 60 * 1000));
+        date.setTime(date.getTime() + (expireDays * 24 * 60 * 60 * 1000));
         let expires = "expires=" + date.toUTCString();
-        document.cookie = "Name" + "=" + cookieName + ";" + "Session" + "=" + cookieSession + ";" + expires + ";path=/";
+        document.cookie = cookieName + "=" + cookieValue + ";" + expires + ";path=/";
     }
-
-
-
-
-    //
-    // fetchTreasureHunts();
-    //
-    //
-    //
-    // function getLocation() {
-    //
-    //     if (navigator.geolocation) {
-    //         navigator.geolocation.getCurrentPosition((position) => {
-    //
-    //             alert("Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude);
-    //
-    //              // fetch("https://codecyprus.org/th/api/location?session=YOUR_SESSION_ID&latitude=" + position.coords.latitude + "&longitude=" + position.coords.longitude);
-    //              //use this when having session ID
-    //         });
-    //     }
-    //     else {
-    //         alert("Geolocation is not supported by your browser.");
-    //     }
-    // }
-
 
 
 
