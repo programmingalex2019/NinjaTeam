@@ -6,94 +6,162 @@
     <link rel="stylesheet" href="../css/treasureHunts.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/x-icon" href="../assets/base/ninjaLogo.png"/>
+
 </head>
 <body>
 
-    <section class="form-section">
+<section class="form-section">
 
-       <section class="ninja-logo-1">
-           <img src="../assets/base/ninjaLogo.png" alt="ninja logo">
-       </section>
-
-        <form id="form" action="/" method="GET">
-            <div class="name-input">
-                <div class="label-text"><h1>Name</h1></div>
-                <label for="name"></label><input id="name" name="name" type="text" required>
-                <div id="error-message"><h1></h1></div>
-            </div>
-        </form>
-
-        <section class="ninja-logo-2">
-            <img src="../assets/base/ninjaLogo.png" alt="ninja logo">
-        </section>
-
+    <section class="ninja-logo-1">
+        <img src="../assets/base/ninjaLogo.png" alt="ninja logo">
     </section>
 
-    <section class="treasure-hunts-section">
-
-
-        <div id="generated-api-hunts">
-
+    <form id="form" action="/" method="GET">
+        <div class="name-input">
+            <div class="label-text"><h1>Name</h1></div>
+            <label for="name"></label><input id="name" name="name" type="text" required>
+            <div id="error-message"><h1></h1></div>
         </div>
+    </form>
 
-
+    <section class="ninja-logo-2">
+        <img src="../assets/base/ninjaLogo.png" alt="ninja logo">
     </section>
 
-    <script>
+</section>
 
-        const name = document.getElementById('name');
-        const errorElement = document.getElementById("error-message");
+<section class="treasure-hunts-section">
 
-        function fetchTreasureHunts() {
 
-            //fetching treasureHunts from the API
-            fetch("https://codecyprus.org/th/api/list")
-                .then(response => response.json()) // taking the json from the response
-                .then(jsonObject => { //awaited ready to use json
+    <div id="generated-api-hunts">
 
-                    let myList = document.getElementById("generated-api-hunts"); //flexible div that will contain treasure hunts divs
-                    let listOfTreasureHunts = jsonObject.treasureHunts; // the actual list from json containing the treasureHunts
+    </div>
 
-                    /* logic */
 
-                    for(let i = 0; i < listOfTreasureHunts.length; i++){ //iterating through each available treasure hunt
-                        let listItem = document.createElement("div"); //creating a div depending on the current treasure hunt
+</section>
 
-                        // the div will contain a button which will have an id of the current treasure hunt -> that id will go into on click function -> which can be manipulated
-                        listItem.innerHTML = "<button type=submit class=treasure onclick='startTreasureHunt(id)' id=" + listOfTreasureHunts[i].uuid +">" + "<h1>" + listOfTreasureHunts[i].name + "</h1>" + "</button";
-                        myList.appendChild(listItem); //populating the buttons into the divs
+
+
+<script>
+
+    const name = document.getElementById('name');
+    const errorElement = document.getElementById("error-message");
+
+    function fetchTreasureHunts() {
+
+        //fetching treasureHunts from the API
+        fetch("https://codecyprus.org/th/api/list")
+            .then(response => response.json()) // taking the json from the response
+            .then(jsonObject => { //awaited ready to use json
+
+                let myList = document.getElementById("generated-api-hunts"); //flexible div that will contain treasure hunts divs
+                let listOfTreasureHunts = jsonObject.treasureHunts; // the actual list from json containing the treasureHunts
+
+                /* logic */
+
+                for(let i = 0; i < listOfTreasureHunts.length; i++){ //iterating through each available treasure hunt
+                    let listItem = document.createElement("div"); //creating a div depending on the current treasure hunt
+
+                    // the div will contain a button which will have an id of the current treasure hunt -> that id will go into on click function -> which can be manipulated
+                    listItem.innerHTML = "<button type=submit class=treasure onclick='startTreasureHunt(id)' id=" + listOfTreasureHunts[i].uuid +">" + "<h1>" + listOfTreasureHunts[i].name + "</h1>" + "</button";
+                    myList.appendChild(listItem); //populating the buttons into the divs
+                }
+            });
+    }
+
+    fetchTreasureHunts();
+
+    function startTreasureHunt(uid){
+
+        errorElement.innerText = "";
+
+        if(name.value.length === 0){
+            errorElement.innerText = "Please enter a Name";
+        }
+        else {
+
+            if(document.cookie === name.value){
+                window.location.href = 'questions.html?session=' + cookie.session;
+            }
+
+            let callURL = "https://codecyprus.org/th/api/start" + "?player="
+                + name.value + "&app=" + "NinjaTeam" + "&treasure-hunt-id=" + uid;
+            fetch(callURL)
+                .then(response => response.json())
+                .then(jsonObject => {
+                    console.log(jsonObject);
+
+                    if(jsonObject.status === "ERROR"){
+                        errorElement.innerText = jsonObject.errorMessages[0];
                     }
+                    else {
+
+                        setCookie(name.value,jsonObject.session,1);
+                        window.location.href = 'questions.html?session=' + jsonObject.session;
+                    }
+
+
+                    //save the cookie first time -> for the session id and the inputed player name.
+
+                    //
+                    //if cookie.name = name.value -> get cookie session -> fetch(url cookie name, cookie session);
+
+
                 });
         }
+    }
 
-        fetchTreasureHunts();
-
-        function startTreasureHunt(uid){
-
-            errorElement.innerText = "";
-
-            if(name.value.length === 0){
-                errorElement.innerText = "Please enter a Name";
-            }else {
-                let callURL = "https://codecyprus.org/th/api/start" + "?player=" + name.value + "&app=" + "NinjaTeam" + "&treasure-hunt-id=" + uid;
-                fetch(callURL)
-                    .then(response => response.json())
-                    .then(jsonObject => {
-                        console.log(jsonObject);
-
-                        if(jsonObject.status === "ERROR"){
-                            errorElement.innerText = jsonObject.errorMessages[0];
-                        }
-                        window.location.href = 'questions.html?session=' + jsonObject.session;
-
-                        //save the cookie first time -> for the session id and the inputed player name.
-
-                        //
-                        //if cookie.name = name.value -> get cookie session -> fetch(url cookie name, cookie session);
-
-                    });
+    function getCookie(playerName,sessionID,index) {
+        let name = playerName + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let  decode = decodedCookie.split(';');
+        for(let i = 0; i <decode.length; i++) {
+            let n = decode[i];
+            while (n.charAt(index) === ' ') {
+                n = n.substring(index +1);
+            }
+            if (n.indexOf(name) === index) {
+                return c.substring(name.length, n.length);
             }
         }
+        return "";
+    }
+
+
+    function setCookie(cookieName, cookieSession, expireTime) {
+        let date = new Date();
+        date.setTime(date.getTime() + (expireTime * 60 * 60 * 1000));
+        let expires = "expires=" + date.toUTCString();
+        document.cookie = "Name" + "=" + cookieName + ";" + "Session" + "=" + cookieSession + ";" + expires + ";path=/";
+    }
+
+
+
+
+    //
+    // fetchTreasureHunts();
+    //
+    //
+    //
+    // function getLocation() {
+    //
+    //     if (navigator.geolocation) {
+    //         navigator.geolocation.getCurrentPosition((position) => {
+    //
+    //             alert("Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude);
+    //
+    //              // fetch("https://codecyprus.org/th/api/location?session=YOUR_SESSION_ID&latitude=" + position.coords.latitude + "&longitude=" + position.coords.longitude);
+    //              //use this when having session ID
+    //         });
+    //     }
+    //     else {
+    //         alert("Geolocation is not supported by your browser.");
+    //     }
+    // }
+
+
+
+
 </script>
 
 </body>
