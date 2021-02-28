@@ -85,7 +85,7 @@ body {
 }
 
 .form-section #form .label-text h1{
-    font-size: 4em;
+    font-size: 8vh;
     text-align: center;
     padding-bottom: 0.6em;
     font-family: "AssassinNinja" , sans-serif;
@@ -118,7 +118,7 @@ body {
 
 .form-section #form  #error-message{
     color: #d3161d;
-    font-size: 2.5em;
+    font-size: 4vh;
     font-weight: bold;
     letter-spacing: 2px;
     display: flex;
@@ -155,8 +155,8 @@ body {
 .treasure-hunts-section #generated-api-hunts div h1{
     font-family: "AssassinNinja" , sans-serif;
     text-shadow: 3px 2px 3px black;
-    color: #AD090D;
-    font-size: 4vh;
+    color: #f50b0e;
+    font-size: 5vh;
     padding: 10px;
 }
 

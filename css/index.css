@@ -94,7 +94,7 @@ header .header-inner-bg .header-text{ /* title of the header */
     justify-content: center;
     font-family: "AssassinNinja" , sans-serif;
     text-shadow: 3px 2px 3px black;
-    color: #AD090D;
+    color: #f50b0e;
 }
 
 header .header-inner-bg .header-text h1{
@@ -296,7 +296,7 @@ footer .footer-inner-bg{
 footer .footer-inner-bg h1{
     font-family: "AssassinNinja" , sans-serif;
     text-shadow: 3px 2px 3px black;
-    color: #AD090D;
+    color: #f50b0e;
     font-size: 4vh;
 }
 

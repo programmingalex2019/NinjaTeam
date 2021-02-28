@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="../css/leaderboard.css">
+</head>
+<body>
+
+    <div class="leaderboardContainer" id="leaderboardContainer">
+
+        <div class="leaderboardHeader">
+
+            <h1 class="leaderboardTitle">Leaderboard</h1>
+
+        </div>
+
+        <div class="scoresContainer" id="scoresContainer">
+
+            <div class="playerRow">
+                <p class="playerRowTitle">Name</p>
+                <p class="playerRowScore">Score</p>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <h1>Home</h1>
+        </div>
+
+    </div>
+
+
+    <script>
+
+        let ref = new URLSearchParams(window.location.search);
+        let session = ref.get("session");
+
+        let scoresContainer = document.getElementById("scoresContainer");
+
+        fetch("https://codecyprus.org/th/api/leaderboard?session=" + session + " &sorted&limit=5")
+            .then(response => response.json())
+            .then(jsonObject => {
+
+                console.log(jsonObject);
+
+                for(let i = 0; i < jsonObject.limit; i++){
+
+                    let playerDivRow = document.createElement("div");
+                    playerDivRow.setAttribute("class", "playerRow");
+
+                    let playerName = document.createElement("p");
+                    let playerScore = document.createElement("p");
+
+                    playerName.innerHTML = jsonObject.leaderboard[i].player + ": ";
+                    playerScore.innerHTML = jsonObject.leaderboard[i].score + " points";
+
+                    playerDivRow.appendChild(playerName);
+                    playerDivRow.appendChild(playerScore);
+
+                    scoresContainer.appendChild(playerDivRow);
+
+                }
+            });
+
+    </script>
+
+</body>
+</html>

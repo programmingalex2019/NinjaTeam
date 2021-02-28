@@ -48,7 +48,7 @@ body {
 }
 
 .header .shuriken img{ /* shuriken container img */
-    width: 5em;
+    width: 4em;
     animation-name: spin;
     animation-duration: 5000ms;
     animation-iteration-count: infinite;
@@ -75,10 +75,8 @@ body {
 }
 
 .header .header-inner-bg .header-img img{ /* ninja logo container img */
-    width: 35%;
+    width: 6em;
 }
-
-
 
 
 .questionContent #questionContainer{
@@ -93,7 +91,7 @@ body {
 
     width: 85%;
     height: 90%;
-    border: 2px dotted red;
+    border: 2px dotted #f50b0e;
     display: flex;
     flex-direction: column;
     padding: 10px;
@@ -110,7 +108,7 @@ body {
 
 .questionContent #questionContainer .questionContainerContent .upperRow h1{
     text-shadow: 3px 2px 3px black;
-    color: #AD090D;
+    color: #f50b0e;
     font-size: 2.5em;
     padding: 5px;
 }
@@ -143,7 +141,7 @@ body {
 /* ACTS FOR ALL TYPES OF QUESTIONS */
 .questionContent #questionContainer .questionContainerContent .bottomRow .submit{
 
-    border: 2px solid red;
+    border: 2px solid #f50b0e;
     color: white;
     padding: 0.5em;
     font-size: 1.5em;
@@ -151,7 +149,7 @@ body {
 }
 
 .questionContent #questionContainer .questionContainerContent .bottomRow .skip{
-    border: 2px solid red;
+    border: 2px solid #f50b0e;
     color: white;
     padding: 0.5em;
     font-size: 1.5em;
@@ -161,7 +159,7 @@ body {
 
 /* INTEGER */
 .questionContent #questionContainer .questionContainerContent .bottomRow .intAndText{
-    border: 2px solid red;
+    border: 2px solid #f50b0e;
     color: white;
     padding: 0.5em;
     font-size: 1.5em;
@@ -213,6 +211,98 @@ body {
 .questionContent #questionContainer .questionContainerContent .bottomRow .multiContainer .labelStyle{
     color: white;
     font-size: 2.5em;
+}
+
+/* phones - tables */
+@media only screen and (max-width: 1024px) {
+
+    .questionContent #questionContainer .questionContainerContent{
+        width: 100%;
+    }
+
+    .header .shuriken img{
+        width: 7em;
+    }
+
+    .header .header-inner-bg{
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .header .header-inner-bg .header-img img{
+        width: 13em;
+    }
+
+    .questionContent #questionContainer .questionContainerContent .middleRow{
+        flex: 3;
+    }
+
+    .questionContent #questionContainer .questionContainerContent .upperRow h1{
+        font-size: 4.0em;
+    }
+
+    .questionContent #questionContainer .questionContainerContent .middleRow p{
+        font-size: 3.8em;
+    }
+
+    .questionContent #questionContainer .questionContainerContent .bottomRow{
+        flex: 4;
+        flex-direction: column;
+    }
+
+    /* INTEGER */
+    .questionContent #questionContainer .questionContainerContent .bottomRow .intAndText{
+        width: 40%;
+        height: 10%;
+        font-size: 3.5em;
+    }
+
+    /* BOOLEAN */
+    .questionContent #questionContainer .questionContainerContent .bottomRow .radioContainer{
+        width: 100%;
+    }
+
+    .questionContent #questionContainer .questionContainerContent .bottomRow .radioContainer .radioStyle{
+        height: 5.5em;
+        width: 5.5em;
+    }
+
+    .questionContent #questionContainer .questionContainerContent .bottomRow .radioContainer .labelStyle{
+        font-size: 4.5em;
+    }
+
+    /* MCQ */
+    .questionContent #questionContainer .questionContainerContent .middleRow .multiQuestionSelectionContainer{
+        padding-top: 3em;
+    }
+
+    .questionContent #questionContainer .questionContainerContent .bottomRow .multiContainer{
+        width: 100%;
+    }
+    .questionContent #questionContainer .questionContainerContent .bottomRow .multiContainer .multi{
+        height: 4.5em;
+        width: 4.5em;
+    }
+    .questionContent #questionContainer .questionContainerContent .bottomRow .multiContainer .labelStyle{
+        font-size: 4.5em;
+    }
+
+    .questionContent #questionContainer .questionContainerContent .bottomRow .submit{
+        padding: 0.1em;
+        width: 40%;
+        height: 15%;
+        font-size: 2.5em;
+    }
+
+    .questionContent #questionContainer .questionContainerContent .bottomRow .skip{
+        padding: 0.1em;
+        width: 40%;
+        height: 15%;
+        font-size: 2.5em;
+    }
+
+
 }
 
 

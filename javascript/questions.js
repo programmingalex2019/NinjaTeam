@@ -4,11 +4,37 @@ let questionScoreJS = document.getElementById("currentScoreJS");
 let questionContentJS = document.getElementById("questionContentJS");
 let inputSectionJS = document.getElementById("inputSectionJS");
 let middleRowJS = document.getElementById("middleRowJS");
+let locationCoordinates;
 
 //getting data(session Id) from the chose Treasure Hunt -> previous page
 let ref = new URLSearchParams(window.location.search);
 let session = ref.get("session");
 
+
+/*GET LOCATION*/
+function getLocation() {
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+
+            fetch("https://codecyprus.org/th/api/location?session="+ session + "&latitude=" + position.coords.latitude + "&longitude=" + position.coords.longitude)
+                .then(response => response.json())
+                .then(jsonObject => {
+                    console.log(jsonObject)
+                });
+        });
+    }
+    else {
+        console.log("Geolocation is not supported by your browser.");
+    }
+
+}
+
+//fetch location every 31 seconds.
+// locationCoordinates = setInterval(function () { getLocation(); }, 31000);
+/*GET LOCATION*/
+
+//Get current question depending on the session
 fetch("https://codecyprus.org/th/api/question?session=" + session)
     .then(response => response.json())
     .then(jsonObject => {
@@ -17,203 +43,229 @@ fetch("https://codecyprus.org/th/api/question?session=" + session)
 
     });
 
+//build the ui with fetched json object accordingly to the type of question
 function buildUI(jsonObject){
 
-    //Current Question Number
-    questionNumberJS.innerText = "Question:  " + (jsonObject.currentQuestionIndex + 1).toString();
 
-    //Fetch Current Score Based on Id
-    fetchCurrentScore(questionScoreJS, session);
+    if(jsonObject.completed === true){
 
+        window.location.href = 'leaderboard.html?session=' + session;
 
-    //question text
+    }else{
 
-    questionContentJS.innerHTML = jsonObject.questionText;
+        //Current Question Number
+        questionNumberJS.innerText = "Question:  " + (jsonObject.currentQuestionIndex + 1).toString();
 
+        //Fetch Current Score Based on Id
+        fetchCurrentScore(questionScoreJS, session);
 
-    //skip button if required
-    let skip = document.createElement("button");
-    skip.innerText = "Skip";
-    setAttributes(skip, {type: "button", class: "skip", onclick: "skipQuestion(session)"});
+        //question text
+        questionContentJS.innerHTML = jsonObject.questionText;
 
+        //skip button if required
+        let skip = document.createElement("button");
+        skip.innerText = "Skip";
+        setAttributes(skip, {type: "button", class: "skip", onclick: "skipQuestion(session)"});
 
+        if(jsonObject.requiresLocation === true){
 
-    switch (jsonObject.questionType){
+            //35.008424, 33.696828
 
-        case "INTEGER":
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition((position) => {
 
-            console.log(jsonObject); //for debugging
-            //attach input field
-            let inputField = document.createElement("input");
-            setAttributes(inputField, {type: "number", class: "intAndText", id: "answer"});
-            inputSectionJS.appendChild(inputField); //add to inputContainer
-
-            //attach a button
-            let button = document.createElement("button");
-            button.innerText = "Submit";
-            setAttributes(button, {type: "button", class: "submit", onclick: "submitIntegerNumericText(document.getElementById(\"answer\").value, session)"});
-            inputSectionJS.appendChild(button); //add to answerContainer
-
-            //attach skip
-            if(jsonObject.canBeSkipped === true){
-                inputSectionJS.appendChild(skip); //add to answerContainer
+                    fetch("https://codecyprus.org/th/api/location?session="+ session + "&latitude=" + position.coords.latitude + "&longitude=" + position.coords.longitude)
+                        .then(response => response.json())
+                        .then(jsonObject => {
+                            console.log(jsonObject)
+                        });
+                });
+            }
+            else {
+                console.log("Geolocation is not supported by your browser.");
             }
 
-            //append to UI
-            break;
+        }
 
-        case "BOOLEAN":
+        switch (jsonObject.questionType){
 
-            console.log(jsonObject); //for debugging
-            let radioContainer = document.createElement("div");
-            setAttributes(radioContainer, {class: "radioContainer"});
+            case "INTEGER":
 
-            let trueButton = document.createElement("input");
-            setAttributes(trueButton, {type: "radio", name: "choice", value: true, class: "radioStyle" , id: "tr"});
-            let labelTrue = document.createElement("p");
-            labelTrue.setAttribute("class", "labelStyle");
-            labelTrue.innerText = "True";
+                console.log(jsonObject); //for debugging
+                //attach input field
+                let inputField = document.createElement("input");
+                setAttributes(inputField, {type: "number", class: "intAndText", id: "answer"});
+                inputSectionJS.appendChild(inputField); //add to inputContainer
 
-            let falseButton = document.createElement("input");
-            setAttributes(falseButton, {type: "radio", name: "choice", value: false, class: "radioStyle", id: "fa"});
-            let labelFalse = document.createElement("p");
-            labelFalse.setAttribute("class", "labelStyle");
-            labelFalse.innerText = "False";
+                //attach a button
+                let button = document.createElement("button");
+                button.innerText = "Submit";
+                setAttributes(button, {type: "button", class: "submit", onclick: "submitIntegerNumericText(document.getElementById(\"answer\").value, session)"});
+                inputSectionJS.appendChild(button); //add to answerContainer
 
-            //separated
-            let booleanButton = document.createElement("button");
-            setAttributes(booleanButton, {type: "submit", class: "submit", onclick: "submitMultiAndBoolean(document.querySelectorAll('input[name=\"choice\"]'),session)"});
-            booleanButton.innerText = "Submit";
+                //attach skip
+                if(jsonObject.canBeSkipped === true){
+                    inputSectionJS.appendChild(skip); //add to answerContainer
+                }
 
-            radioContainer.appendChild(labelTrue);
-            radioContainer.appendChild(trueButton);
-            radioContainer.appendChild(labelFalse);
-            radioContainer.appendChild(falseButton);
-            inputSectionJS.appendChild(radioContainer);
-            inputSectionJS.appendChild(booleanButton);
+                //append to UI
+                break;
 
-            if(jsonObject.canBeSkipped === true){
-                inputSectionJS.appendChild(skip); //add to answerContainer
-            }
+            case "BOOLEAN":
 
-            break;
+                console.log(jsonObject); //for debugging
+                let radioContainer = document.createElement("div");
+                setAttributes(radioContainer, {class: "radioContainer"});
 
-        case "NUMERIC":
-            console.log(jsonObject); //for debugging
-            //attach input field
-            let inputFieldNumeric = document.createElement("input");
-            setAttributes(inputFieldNumeric, {type: "number", step: "any",class: "intAndText", id: "answer"});
-            inputSectionJS.appendChild(inputFieldNumeric); //add to inputContainer
+                let trueButton = document.createElement("input");
+                setAttributes(trueButton, {type: "radio", name: "choice", value: true, class: "radioStyle" , id: "tr"});
+                let labelTrue = document.createElement("p");
+                labelTrue.setAttribute("class", "labelStyle");
+                labelTrue.innerText = "True";
 
-            //attach a button
-            let buttonNumeric = document.createElement("button");
-            buttonNumeric.innerText = "Submit";
-            setAttributes(buttonNumeric, {type: "button", class: "submit", onclick: "submitIntegerNumericText(document.getElementById(\"answer\").value, session)"});
-            inputSectionJS.appendChild(buttonNumeric); //add to answerContainer
+                let falseButton = document.createElement("input");
+                setAttributes(falseButton, {type: "radio", name: "choice", value: false, class: "radioStyle", id: "fa"});
+                let labelFalse = document.createElement("p");
+                labelFalse.setAttribute("class", "labelStyle");
+                labelFalse.innerText = "False";
 
-            //attach skip
-            if(jsonObject.canBeSkipped === true){
-                inputSectionJS.appendChild(skip); //add to answerContainer
-            }
+                //separated
+                let booleanButton = document.createElement("button");
+                setAttributes(booleanButton, {type: "submit", class: "submit", onclick: "submitMultiAndBoolean(document.querySelectorAll('input[name=\"choice\"]'),session)"});
+                booleanButton.innerText = "Submit";
 
-            break;
+                radioContainer.appendChild(labelTrue);
+                radioContainer.appendChild(trueButton);
+                radioContainer.appendChild(labelFalse);
+                radioContainer.appendChild(falseButton);
+                inputSectionJS.appendChild(radioContainer);
+                inputSectionJS.appendChild(booleanButton);
 
-        case "MCQ":
-            console.log(jsonObject); //for debugging
+                if(jsonObject.canBeSkipped === true){
+                    inputSectionJS.appendChild(skip); //add to answerContainer
+                }
 
-            /*content*/
+                break;
 
-            middleRowJS.style.flexDirection = "column";
+            case "NUMERIC":
+                console.log(jsonObject); //for debugging
+                //attach input field
+                let inputFieldNumeric = document.createElement("input");
+                setAttributes(inputFieldNumeric, {type: "number", step: "any",class: "intAndText", id: "answer"});
+                inputSectionJS.appendChild(inputFieldNumeric); //add to inputContainer
 
-            let multiQuestionSelectionContainer = document.createElement("div");
-            setAttributes(multiQuestionSelectionContainer, {class: "multiQuestionSelectionContainer"});
+                //attach a button
+                let buttonNumeric = document.createElement("button");
+                buttonNumeric.innerText = "Submit";
+                setAttributes(buttonNumeric, {type: "button", class: "submit", onclick: "submitIntegerNumericText(document.getElementById(\"answer\").value, session)"});
+                inputSectionJS.appendChild(buttonNumeric); //add to answerContainer
 
-            let multiQuestionAnswerA= document.createElement("p");
-            multiQuestionAnswerA.innerText = "A answer";
+                //attach skip
+                if(jsonObject.canBeSkipped === true){
+                    inputSectionJS.appendChild(skip); //add to answerContainer
+                }
 
-            let multiQuestionAnswerB= document.createElement("p");
-            multiQuestionAnswerB.innerText = "B answer";
+                break;
 
-            let multiQuestionAnswerC= document.createElement("p");
-            multiQuestionAnswerC.innerText = "C answer";
+            case "MCQ":
+                console.log(jsonObject); //for debugging
 
-            let multiQuestionAnswerD= document.createElement("p");
-            multiQuestionAnswerD.innerText = "D answer";
+                /*content*/
 
-            multiQuestionSelectionContainer.appendChild(multiQuestionAnswerA);
-            multiQuestionSelectionContainer.appendChild(multiQuestionAnswerB);
-            multiQuestionSelectionContainer.appendChild(multiQuestionAnswerC);
-            multiQuestionSelectionContainer.appendChild(multiQuestionAnswerD);
+                middleRowJS.style.flexDirection = "column";
 
-            middleRowJS.appendChild(multiQuestionSelectionContainer);
-            /*content*/
+                let multiQuestionSelectionContainer = document.createElement("div");
+                setAttributes(multiQuestionSelectionContainer, {class: "multiQuestionSelectionContainer"});
 
-            let multiContainer = document.createElement("div");
-            setAttributes(multiContainer, {class: "multiContainer"});
+                let multiQuestionAnswerA= document.createElement("p");
+                multiQuestionAnswerA.innerText = "A answer";
 
-            let checkBoxA = document.createElement("input");
-            setAttributes(checkBoxA, {type: "radio", value: "A", class: "multi", name:"multiChoice"});
-            let labelA = document.createElement("p");
-            labelA.setAttribute("class", "labelStyle");
-            labelA.innerText = "A";
+                let multiQuestionAnswerB= document.createElement("p");
+                multiQuestionAnswerB.innerText = "B answer";
 
-            let checkBoxB = document.createElement("input");
-            setAttributes(checkBoxB, {type: "radio", value: "B", class: "multi", name:"multiChoice"});
-            let labelB = document.createElement("p");
-            labelB.setAttribute("class", "labelStyle");
-            labelB.innerText = "B";
+                let multiQuestionAnswerC= document.createElement("p");
+                multiQuestionAnswerC.innerText = "C answer";
 
-            let checkBoxC = document.createElement("input");
-            setAttributes(checkBoxC, {type: "radio", value: "C", class: "multi", name:"multiChoice"});
-            let labelC = document.createElement("p");
-            labelC.setAttribute("class", "labelStyle");
-            labelC.innerText = "C";
+                let multiQuestionAnswerD= document.createElement("p");
+                multiQuestionAnswerD.innerText = "D answer";
 
-            let checkBoxD = document.createElement("input");
-            setAttributes(checkBoxD, {type: "radio", value: "D", class: "multi", name:"multiChoice"});
-            let labelD = document.createElement("p");
-            labelD.setAttribute("class", "labelStyle");
-            labelD.innerText = "D";
+                multiQuestionSelectionContainer.appendChild(multiQuestionAnswerA);
+                multiQuestionSelectionContainer.appendChild(multiQuestionAnswerB);
+                multiQuestionSelectionContainer.appendChild(multiQuestionAnswerC);
+                multiQuestionSelectionContainer.appendChild(multiQuestionAnswerD);
 
-            let multiButton = document.createElement("button");
-            setAttributes(multiButton, {type: "submit", class: "submit", onclick: "submitMultiAndBoolean(document.querySelectorAll('input[name=\"multiChoice\"]'), session)"});
-            multiButton.innerText = "Submit";
+                middleRowJS.appendChild(multiQuestionSelectionContainer);
+                /*content*/
 
-            multiContainer.appendChild(labelA);
-            multiContainer.appendChild(checkBoxA);
-            multiContainer.appendChild(labelB);
-            multiContainer.appendChild(checkBoxB);
-            multiContainer.appendChild(labelC);
-            multiContainer.appendChild(checkBoxC);
-            multiContainer.appendChild(labelD);
-            multiContainer.appendChild(checkBoxD);
+                let multiContainer = document.createElement("div");
+                setAttributes(multiContainer, {class: "multiContainer"});
 
-            inputSectionJS.appendChild(multiContainer);
-            inputSectionJS.appendChild(multiButton);
-            if(jsonObject.canBeSkipped === true){
-                inputSectionJS.appendChild(skip); //add to answerContainer
-            }
-            break;
+                let checkBoxA = document.createElement("input");
+                setAttributes(checkBoxA, {type: "radio", value: "A", class: "multi", name:"multiChoice"});
+                let labelA = document.createElement("p");
+                labelA.setAttribute("class", "labelStyle");
+                labelA.innerText = "A";
 
-        case "TEXT":
-            console.log(jsonObject); //for debugging
-            //attach input field
-            let inputFieldText = document.createElement("input");
-            setAttributes(inputFieldText , {type: "text", class: "intAndText", id: "answer"});
-            inputSectionJS.appendChild(inputFieldText ); //add to inputContainer
+                let checkBoxB = document.createElement("input");
+                setAttributes(checkBoxB, {type: "radio", value: "B", class: "multi", name:"multiChoice"});
+                let labelB = document.createElement("p");
+                labelB.setAttribute("class", "labelStyle");
+                labelB.innerText = "B";
 
-            //attach a button
-            let buttonText = document.createElement("button");
-            buttonText.innerText = "Submit";
-            setAttributes(buttonText, {type: "button", class: "submit", onclick: "submitIntegerNumericText(document.getElementById(\"answer\").value, session)"});
-            inputSectionJS.appendChild(buttonText); //add to answerContainer
+                let checkBoxC = document.createElement("input");
+                setAttributes(checkBoxC, {type: "radio", value: "C", class: "multi", name:"multiChoice"});
+                let labelC = document.createElement("p");
+                labelC.setAttribute("class", "labelStyle");
+                labelC.innerText = "C";
 
-            //attach skip
-            if(jsonObject.canBeSkipped === true){
-                inputSectionJS.appendChild(skip); //add to answerContainer
-            }
-            break;
-        default:
-            console.log("something went wrong");
+                let checkBoxD = document.createElement("input");
+                setAttributes(checkBoxD, {type: "radio", value: "D", class: "multi", name:"multiChoice"});
+                let labelD = document.createElement("p");
+                labelD.setAttribute("class", "labelStyle");
+                labelD.innerText = "D";
+
+                let multiButton = document.createElement("button");
+                setAttributes(multiButton, {type: "submit", class: "submit", onclick: "submitMultiAndBoolean(document.querySelectorAll('input[name=\"multiChoice\"]'), session)"});
+                multiButton.innerText = "Submit";
+
+                multiContainer.appendChild(labelA);
+                multiContainer.appendChild(checkBoxA);
+                multiContainer.appendChild(labelB);
+                multiContainer.appendChild(checkBoxB);
+                multiContainer.appendChild(labelC);
+                multiContainer.appendChild(checkBoxC);
+                multiContainer.appendChild(labelD);
+                multiContainer.appendChild(checkBoxD);
+
+                inputSectionJS.appendChild(multiContainer);
+                inputSectionJS.appendChild(multiButton);
+                if(jsonObject.canBeSkipped === true){
+                    inputSectionJS.appendChild(skip); //add to answerContainer
+                }
+                break;
+
+            case "TEXT":
+                console.log(jsonObject); //for debugging
+                //attach input field
+                let inputFieldText = document.createElement("input");
+                setAttributes(inputFieldText , {type: "text", class: "intAndText", id: "answer"});
+                inputSectionJS.appendChild(inputFieldText ); //add to inputContainer
+
+                //attach a button
+                let buttonText = document.createElement("button");
+                buttonText.innerText = "Submit";
+                setAttributes(buttonText, {type: "button", class: "submit", onclick: "submitIntegerNumericText(document.getElementById(\"answer\").value, session)"});
+                inputSectionJS.appendChild(buttonText); //add to answerContainer
+
+                //attach skip
+                if(jsonObject.canBeSkipped === true){
+                    inputSectionJS.appendChild(skip); //add to answerContainer
+                }
+                break;
+            default:
+                console.log("something went wrong");
+        }
     }
+
+
 }
