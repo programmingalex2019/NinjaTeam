@@ -29,48 +29,42 @@ body .leaderboardContainer{
 }
 
 body .leaderboardContainer .leaderboardHeader{
-    flex: 1;
     display: flex;
+    flex: 1;
     justify-content: center;
     align-items: center;
     color: #d3161d;
     font-family: "AssassinNinja", sans-seri, serif;
     font-size: 2.5vh;
-    order: 1;
 }
 
-body .leaderboardContainer .scoresContainer{
 
+body .leaderboardContainer .scoresContainer{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     flex: 3;
-    width: 50%;
-    order: 2;
-    margin-left: 25%;
 }
 
 body .leaderboardContainer .scoresContainer .playerRow{
-    width: 70%;
+    width: 30%;
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 2%;
     border: 2px solid red;
-
 }
 
 body .leaderboardContainer .scoresContainer .playerRow .playerRowTitle{
     text-align: center;
     font-size: 2.5em;
-
 }
+
 body .leaderboardContainer .scoresContainer .playerRow .playerRowScore{
     text-align: center;
     font-size: 2.5em;
-
 }
 
 
@@ -90,7 +84,7 @@ body .leaderboardContainer .footer{
     font-family: "AssassinNinja" , sans-serif;
     text-shadow: 3px 2px 3px black;
     font-size: 4vh;
-    order: 3;
+
 }
 
 body .leaderboardContainer .footer a{

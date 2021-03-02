@@ -198,8 +198,8 @@ footer .home a:hover{
 
 footer .shuriken-f1{
     text-align: center;
-    width: 8vh;
-    height: 8vh;
+    width: 6vh;
+    height: 6vh;
     animation-name: spin;
     animation-duration: 5000ms;
     animation-iteration-count: infinite;
