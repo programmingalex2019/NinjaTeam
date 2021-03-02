@@ -128,7 +128,8 @@ body {
 }
 
 .questionContent #questionContainer .questionContainerContent .middleRow p a{
-    color: white;
+    color: lightseagreen;
+    text-decoration: none;
 }
 
 .questionContent #questionContainer .questionContainerContent .bottomRow{

@@ -30,15 +30,29 @@ body {
     align-items: center;
 }
 
-.form-section .ninja-logo-1{
+.form-section .sheriken-1{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
     flex: 1;
     order: 1;
-
+    width: 8vh;
+    height: 8vh;
+    animation-name: spin;
+    animation-duration: 9000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
 }
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
 
 .form-section #form{
     display: flex;
@@ -51,15 +65,28 @@ body {
 }
 
 
-.form-section .ninja-logo-2{
+.form-section .sheriken-2{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
     flex: 1;
     order: 3;
     text-align: center;
-    transform: rotateY(180deg);
+    width: 8vh;
+    height: 8vh;
+    animation-name: spin;
+    animation-duration: 9000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
 }
 
 .form-section img{

@@ -33,6 +33,10 @@ body .leaderboardContainer .leaderboardHeader{
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #d3161d;
+    font-family: "AssassinNinja", sans-seri, serif;
+    font-size: 2.5vh;
+    order: 1;
 }
 
 body .leaderboardContainer .scoresContainer{
@@ -42,7 +46,9 @@ body .leaderboardContainer .scoresContainer{
     justify-content: center;
     align-items: center;
     flex: 3;
-
+    width: 50%;
+    order: 2;
+    margin-left: 25%;
 }
 
 body .leaderboardContainer .scoresContainer .playerRow{
@@ -51,15 +57,20 @@ body .leaderboardContainer .scoresContainer .playerRow{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 2%;
+    border: 2px solid red;
+
 }
 
 body .leaderboardContainer .scoresContainer .playerRow .playerRowTitle{
     text-align: center;
     font-size: 2.5em;
+
 }
 body .leaderboardContainer .scoresContainer .playerRow .playerRowScore{
     text-align: center;
     font-size: 2.5em;
+
 }
 
 
@@ -67,6 +78,7 @@ body .leaderboardContainer .scoresContainer .playerRow p{
     /*text-shadow: 3px 2px 3px black;*/
     color: #f50b0e;
     font-size: 1.5em;
+
 }
 
 
@@ -75,6 +87,19 @@ body .leaderboardContainer .footer{
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: "AssassinNinja" , sans-serif;
+    text-shadow: 3px 2px 3px black;
+    font-size: 4vh;
+    order: 3;
+}
+
+body .leaderboardContainer .footer a{
+    text-decoration: none;
+    color: #f50b0e;
+}
+
+body .leaderboardContainer .footer a:hover{
+    color: white;
 }
 
 
