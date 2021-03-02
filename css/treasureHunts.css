@@ -205,11 +205,11 @@ body {
         align-items: center;
     }
 
-    .form-section .ninja-logo-1{
+    .form-section .sheriken-1{
         width: 100%;
     }
 
-    .form-section .ninja-logo-1 img{
+    .form-section .ninja-logo img{
         width: 18vh;
         height: 18vh;
         padding-top: 15px;
@@ -219,7 +219,10 @@ body {
         width: 100%;
     }
 
-    .form-section .ninja-logo-2{
+    .form-section .sheriken-1{
+        display: none;
+    }
+    .form-section .sheriken-2{
         display: none;
     }
 
