@@ -89,6 +89,10 @@ body {
     }
 }
 
+.ninja-logo{
+    display: none;
+}
+
 .form-section img{
     width: 25vh;
     height: 25vh;
