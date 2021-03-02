@@ -181,21 +181,25 @@ footer .footer-inner-bg{
     justify-content: center;
 }
 
-footer h1{
+footer .home{
     font-family: "AssassinNinja" , sans-serif;
     text-shadow: 3px 2px 3px black;
     color: #AD090D;
     font-size: 4vh;
 }
+footer .home a{
+    text-decoration: none;
+    color: #AD090D;
+}
 
-footer h1:hover{
+footer .home a:hover{
     color: white;
 }
 
 footer .shuriken-f1{
     text-align: center;
-    width: 8vh;
-    height: 8vh;
+    width: 6vh;
+    height: 6vh;
     animation-name: spin;
     animation-duration: 5000ms;
     animation-iteration-count: infinite;

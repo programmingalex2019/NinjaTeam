@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Leaderboard</title>
     <link rel="stylesheet" href="../css/leaderboard.css">
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/base/ninjaLogo.png"/>
+
 </head>
 <body>
 
@@ -16,16 +18,14 @@
         </div>
 
         <div class="scoresContainer" id="scoresContainer">
-
             <div class="playerRow">
                 <p class="playerRowTitle">Name</p>
                 <p class="playerRowScore">Score</p>
             </div>
-
         </div>
 
         <div class="footer">
-            <h1>Home</h1>
+            <a href="../index.html">Home</a>
         </div>
 
     </div>
@@ -37,7 +37,7 @@
         let session = ref.get("session");
 
         let scoresContainer = document.getElementById("scoresContainer");
-
+  
         fetch("https://codecyprus.org/th/api/leaderboard?session=" + session + " &sorted&limit=5")
             .then(response => response.json())
             .then(jsonObject => {
