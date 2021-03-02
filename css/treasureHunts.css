@@ -195,12 +195,10 @@ body {
         width: 100%;
     }
 
-    .form-section .shuriken-1{
+    .form-section .shuriken{
         display: none;
     }
-    .form-section .shuriken-2{
-        display: none;
-    }
+   
 
     .form-section #form .name-input{
         justify-content: space-between;
