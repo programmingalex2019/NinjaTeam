@@ -70,7 +70,12 @@ Fadi -> implement questions functionality
 
 Amir -> implement UI depending on questions type 
 
-**! Week 8 !**
+**! Week 8 !** (MS call 25/02/21 -> 9pm)
 
-Alex has implemented functionality for every type of questions and the submission of the answer.
-Amir and Fadi working on the testing page and basic design for it.
+We added the leaderboard functionality with,
+Fadi and Alex added the cookies functionality. 
+
+**! Week 8 !** (MS call 02/03/21 -> 9pm)
+
+We discussed to make the text even lighter, 
+We discussed what to include for the testing. 
