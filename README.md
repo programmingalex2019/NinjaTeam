@@ -75,7 +75,7 @@ Amir -> implement UI depending on questions type
 We added the leaderboard functionality with,
 Fadi and Alex added the cookies functionality. 
 
-**! Week 8 !** (MS call 02/03/21 -> 9pm)
+**! Week 9 !** (MS call 02/03/21 -> 9pm)
 
 We discussed to make the text even lighter, 
 We discussed what to include for the testing. 
