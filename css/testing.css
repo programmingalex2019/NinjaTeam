@@ -11,73 +11,12 @@
 }
 
 body{
-    /*border: 2px solid red;*/
     height: 100vh;
     width: 100vw;
     display: flex;
     flex-direction: column;
 }
 
-header{
-    background-color: #252523;
-    flex: 1;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /*border: 2px solid red;*/
-    border-bottom: none;
-}
-
-header .shuriken{ /* for left and right shuriken container of the header */
-    flex: 1;
-    text-align: center;
-}
-
-header .shuriken img{ /* shuriken container img */
-    width: 6vh;
-    height: 6vh;
-    animation-name: spin;
-    animation-duration: 5000ms;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-}
-
-@keyframes spin {
-    from {
-        transform:rotate(0deg);
-    }
-    to {
-        transform:rotate(360deg);
-    }
-}
-
-header .header-inner-bg{ /* center container that will display ninjaLogo and text */
-    flex: 4;
-    width: 60%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /*border-left: 2px solid red;*/
-    /*border-right: 2px solid red;*/
-    background-color: #252523;
-}
-
-header .header-inner-bg .header-img{ /* ninja logo container */
-    flex: 2;
-    order: 1;
-    display: flex;
-    justify-content: center;
-    /*height: 50%;*/
-}
-
-header .header-inner-bg .header-img img{ /* ninja logo container img */
-    display: block;
-    height: 20%;
-    width: 15%;
-    /*margin: 0 40%;*/
-}
 
 
  main{
@@ -89,50 +28,98 @@ header .header-inner-bg .header-img img{ /* ninja logo container img */
 
  main .display{
      /*for display the buttons*/
-     flex: 1;
+     flex: 1.5;
      width: 100%;
      display: flex;
+     flex-direction: column;
      align-items: center;
+     justify-content: center;
      text-align: center;
-     /*border: 2px solid red;*/
  }
 
 main .display .elements{
-    flex: 1;
+    flex: 2;
     width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
- main .display .elements .buttons{
-     /*buttons size*/
-     height: 6vh;
+ main .display .elements .buttons-heuristics-testing{
+     height: 9vh;
      width: 15%;
      background-color: #343131;
      text-align: center;
-     color: #AD090D;
+     color: #f50b0e;
      font-weight: bold;
-     font-size: 20px;
+     font-size: 3vh;
+     padding: 1vh;
      border: 2px solid red;
  }
- main .testContainer{
-     flex: 1.5;
-     width: 100%;
-     font-size: 25px;
+
+main .display .unitTestContainer{
+    width: 100%;
+    flex: 1.5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main .display .unitTestContainer .buttons-unit-testing{
+    height: 9vh;
+    width: 15%;
+    background-color: #343131;
+    text-align: center;
+    color: lightseagreen;
+    padding: 1vh;
+    font-weight: bold;
+    font-size: 3vh;
+    border: 2px solid lightseagreen;
+}
+
+ main .heuristics{
+     flex: 2;
+     display: flex;
+     align-items: center;
+     justify-content: space-evenly;
+ }
+
+ main .testContainerInitial{
+     flex: 1;
+     font-size: 3.5vh;
      color: #AD090D;
      display: flex;
      flex-direction: column;
      justify-content: center;
      align-items: center;
+     text-align: center;
+     height: 100%;
  }
+
+main .testContainerFeedback{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+main .testContainerChanges{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .submitButtons{
-    /*padding: 5px;*/
-    /*margin: 10px 30px;*/
     display: block;
     border: 2px solid red;
     color: #AD090D;
 }
  .int{
      background-color: white;
-     /*padding: 5px;*/
      border: 2px solid red;
  }
 
@@ -143,7 +130,6 @@ main .display .elements{
 
 .bool2{
     background-color: #343131;
-    /*margin: -10px;*/
     text-align: center;
 }
 .txt{
@@ -151,23 +137,18 @@ main .display .elements{
     border: 2px solid red;
 }
  .multi{
-     /*for MCQ start new line*/
      display: block;
-     /*margin-top: 6%;*/
-     /*margin-left: 10px;*/
  }
  .numeric{
      background-color: white;
-     padding: 5px;
      border: 2px solid red;
  }
 footer{
     background-color: #252523;
-    flex: 2;
+    flex: 1;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    /*border: 2px solid red;*/
 
 }
 
@@ -189,7 +170,7 @@ footer .home{
 }
 footer .home a{
     text-decoration: none;
-    color: #AD090D;
+    color: #f50b0e;
 }
 
 footer .home a:hover{

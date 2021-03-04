@@ -33,7 +33,7 @@ body .leaderboardContainer .leaderboardHeader{
     flex: 1;
     justify-content: center;
     align-items: center;
-    color: #d3161d;
+    color: #f50b0e;
     font-family: "AssassinNinja", sans-seri, serif;
     font-size: 2.5vh;
 }
@@ -94,6 +94,13 @@ body .leaderboardContainer .footer a{
 
 body .leaderboardContainer .footer a:hover{
     color: white;
+}
+
+@media only screen and (max-width: 1024px) {
+    body .leaderboardContainer .scoresContainer .playerRow{
+        width: 90%;
+        font-size: 1.7vh;
+    }
 }
 
 

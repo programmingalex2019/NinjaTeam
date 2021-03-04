@@ -8,45 +8,33 @@
         <link rel="shortcut icon" type="image/x-icon" href="../assets/base/ninjaLogo.png"/>
     </head>
     <body>
-    <header>
-        <!--left shuriken-->
-        <section class="shuriken">
-            <img src="../assets/base/Shuriken.png" alt="shuriken">
-        </section>
-
-        <!--middle header section-->
-        <section class="header-inner-bg">
-            <div class="header-img">
-                <img src="../assets/base/ninjaLogo.png" alt="ninjaLogo">
-            </div>
-        </section>
-
-        <!--right shuriken-->
-        <section class="shuriken">
-            <img src="../assets/base/Shuriken.png" alt="shuriken">
-        </section>    </header>
     <main>
-<!--        <h1>main body str. divide into 3 parts</h1>-->
         <div class="display">
             <div class="elements">
-                <button class="buttons" name="INTEGER" onclick="questionType(name)">Integer</button>
-                <button class="buttons" name="BOOLEAN" onclick="questionType(name)">Boolean</button>
-                <button class="buttons" name="TEXT" onclick="questionType(name)">Text</button>
-                <button class="buttons" name="MCQ" onclick="questionType(name)">MCQ</button>
-                <button class="buttons" name="NUMERIC" onclick="questionType(name)">Numeric</button>
-                <button type="submit" class="buttons" onclick="displayList()">List</button>
-                <button type="submit" class="buttons" onclick="LeaderBoard()">Leaderboard</button>
-                <button type="submit" class="buttons">Score</button>
-                <button type="submit" class="buttons">Skip</button>
-                <button type="submit" class="buttons">Location</button>
-                <button type="submit" class="buttons">Answer</button>
-                <button type="submit" class="buttons">Start</button>
+                <button class="buttons-heuristics-testing" name="INTEGER" onclick="questionType(name)">Integer</button>
+                <button class="buttons-heuristics-testing" name="BOOLEAN" onclick="questionType(name)">Boolean</button>
+                <button class="buttons-heuristics-testing" name="TEXT" onclick="questionType(name)">Text</button>
+                <button class="buttons-heuristics-testing" name="MCQ" onclick="questionType(name)">MCQ</button>
+                <button class="buttons-heuristics-testing" name="NUMERIC" onclick="questionType(name)">Numeric</button>
+            </div>
+            <div class="unitTestContainer">
+                <button type="submit" class="buttons-unit-testing" onclick="LeaderBoard()">Leaderboard</button>
             </div>
         </div>
 
-        <div class ="testContainer" id="left">
+        <div class="heuristics">
+            <div class ="testContainerInitial" id="heuI">
+
+            </div>
+            <div class ="testContainerFeedback" id="heuF">
+                <h1>Feedback</h1>
+            </div>
+            <div class ="testContainerChanges" id="heuC">
+                <h1>Changes</h1>
+            </div>
 
         </div>
+
 
     </main>
     <footer>
@@ -62,15 +50,20 @@
 
         <script>
 
-            const question = document.getElementById("left");
+            const question = document.getElementById("heuI");
             let button;
+
             function LeaderBoard(){
+
                 let treasureHuntTableName = document.createElement("h2");
 
-                fetch("https://codecyprus.org/th/test-api/leaderboard?sorted&hasPrize&size=5")
+                fetch("https://codecyprus.org/th/test-api/leaderboard?&hasPrize&size=5") //1 2 3
                     .then(response => response.json())
                     .then(jsonObject => {
 
+                        question.innerHTML = " ";
+
+                        console.log(jsonObject);
 
                         treasureHuntTableName.innerText = jsonObject.treasureHuntName;
                         question.appendChild(treasureHuntTableName);
@@ -96,24 +89,6 @@
 
                     });
             }
-            function displayList(){
-
-                let listOfTreasure = document.createElement("ol");
-                let treasureContain = "";
-
-                fetch("https://codecyprus.org/th/test-api/list?number-of-ths=2")
-                    .then(response => response.json())
-                    .then(jsonObject => {
-                        for (let i = 0; i < jsonObject.treasureHunts.length; i++){
-                            let treasureName = jsonObject.treasureHunts[i].description
-                            treasureContain += "<li>"+ treasureName +"</li>"
-                        }
-                        listOfTreasure.innerHTML += treasureContain;
-                        question.appendChild(listOfTreasure);
-
-                    });
-            }
-
             function questionType(type){
                 fetch("https://codecyprus.org/th/test-api/question?completed&question-type=" + type)
                     .then(response => response.json())
@@ -131,11 +106,8 @@
                     case "INTEGER":
                         let inputField;
                         inputField = document.createElement("input");
-                        inputField.setAttribute('type',"number");
                         inputField.setAttribute('name',"answer");
                         inputField.setAttribute('class',"int");
-
-
 
                         button = document.createElement("button");
                         button.setAttribute("type", "submit");
@@ -154,7 +126,6 @@
                         inputText.setAttribute('type',"text");
                         inputText.setAttribute('style',"cols:25,rows:3");
                         inputText.setAttribute('class',"txt");
-
 
                         button = document.createElement("button");
                         button.setAttribute("type", "submit");
@@ -195,16 +166,6 @@
                         question.appendChild(label1);
                         question.appendChild(inputRadio2);
                         question.appendChild(label2);
-                        // for (let i = 0; i < 2;i++){
-                        //     inputRadio[i] = document.createElement("input");
-                        //     inputRadio[i].setAttribute('type',"radio");
-                        //     inputRadio[i].setAttribute("name","boolean");
-                        //     label[i] = document.createElement("label");
-                        //     label[i].setAttribute("for", "true");
-                        //     label[i].innerText = "True";
-                        //     question.appendChild(inputRadio[i]);
-                        //     question.appendChild(label[i]);
-                        // }
 
                         break;
                     case "MCQ":
@@ -243,8 +204,6 @@
                         numberInput.setAttribute('type',"number");
                         numberInput.setAttribute('name',"answer");
                         numberInput.setAttribute('class',"numeric");
-
-
 
                         button = document.createElement("button");
                         button.setAttribute("type", "submit");

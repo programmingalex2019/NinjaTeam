@@ -34,15 +34,16 @@ body {
     align-items: center;
     justify-content: center;
     flex: 1;
-    animation-name: spin;
-    animation-duration: 9000ms;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
+
 }
 
 .form-section .shuriken img{
     width: 10vh;
     height: 10vh;
+    animation-name: spin;
+    animation-duration: 9000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
 }
 
 @keyframes spin {
@@ -184,6 +185,11 @@ body {
     .form-section .shuriken-1{
         width: 100%;
     }
+
+    .ninja-logo{
+        display: block;
+    }
+
 
     .form-section .ninja-logo img{
         width: 18vh;

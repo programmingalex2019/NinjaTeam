@@ -37,7 +37,9 @@
         let session = ref.get("session");
 
         let scoresContainer = document.getElementById("scoresContainer");
-  
+
+
+
         fetch("https://codecyprus.org/th/api/leaderboard?session=" + session + " &sorted&limit=5")
             .then(response => response.json())
             .then(jsonObject => {
@@ -51,9 +53,11 @@
 
                     let playerName = document.createElement("p");
                     let playerScore = document.createElement("p");
+                    let playerTime = document.createElement("p");
 
                     playerName.innerHTML = jsonObject.leaderboard[i].player + ": ";
                     playerScore.innerHTML = jsonObject.leaderboard[i].score + " points";
+                    playerTime.innerHTML = jsonObject.leaderboard[i]
 
                     playerDivRow.appendChild(playerName);
                     playerDivRow.appendChild(playerScore);
