@@ -25,18 +25,25 @@ fetch("https://codecyprus.org/th/api/question?session=" + session)
 /*CAMERA*/
 
 function openCamera(){
-    modalCamera.style.display = "block";
+    modalCamera.style.display = "flex";
 
     let scanner = new Instascan.Scanner(opts);
 
     Instascan.Camera.getCameras().then(function (cameras) {
         if (cameras.length > 0) {
             scanner.start(cameras[0]);
-            for(let i = 0; i < cameras.length; i++){
-                if(cameras[i].name.indexOf('back') !== -1){
-                    scanner.start(cameras[i]);
+            let spanCameraSwitch = document.getElementsByClassName("switch-camera")[0];
+            spanCameraSwitch.onclick = function(){
+                console.log("switched");
+                for(let i = 0; i < cameras.length; i++){
+                    if(cameras[i].name.indexOf('back') !== -1){
+                        scanner.start(cameras[i]);
+                    }else{
+                        console.log("no other cameras");
+                    }
                 }
             }
+
         } else {
             console.error('No cameras found.');
             alert("No cameras found.");
@@ -46,6 +53,10 @@ function openCamera(){
     });
 
     scanner.addListener('scan', function (content) {
+
+
+
+
         console.log(content);
         if(jsonForCamera.questionType === "INTEGER"){
             document.getElementById("answer").value = parseInt(content);
