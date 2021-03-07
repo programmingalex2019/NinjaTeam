@@ -31,7 +31,7 @@ function openCamera(){
 
     Instascan.Camera.getCameras().then(function (cameras) {
         if (cameras.length > 0) {
-            scanner.start(cameras[1]);
+            scanner.start(cameras[0]);
             for(let i = 0; i < cameras.length; i++){
                 if(cameras[i].name.indexOf('back') !== -1){
                     scanner.start(cameras[i]);
