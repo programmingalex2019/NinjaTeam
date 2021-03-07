@@ -5,12 +5,12 @@ let questionContentJS = document.getElementById("questionContentJS");
 let inputSectionJS = document.getElementById("inputSectionJS");
 let middleRowJS = document.getElementById("middleRowJS");
 
-
-
 //getting data(session Id) from the chose Treasure Hunt -> previous page
 let ref = new URLSearchParams(window.location.search);
 let session = ref.get("session");
 let requiresLocation = false;
+
+let jsonForCamera;
 
 //Get current question depending on the session
 fetch("https://codecyprus.org/th/api/question?session=" + session)
@@ -18,8 +18,55 @@ fetch("https://codecyprus.org/th/api/question?session=" + session)
     .then(jsonObject => {
 
         buildUI(jsonObject);
+        jsonForCamera = jsonObject;
 
     });
+
+/*CAMERA*/
+
+function openCamera(){
+    modalCamera.style.display = "block";
+
+    let scanner = new Instascan.Scanner(opts);
+
+    Instascan.Camera.getCameras().then(function (cameras) {
+        if (cameras.length > 0) {
+            scanner.start(cameras[0]);
+        } else {
+            console.error('No cameras found.');
+            alert("No cameras found.");
+        }
+    }).catch(function (e) {
+        
+    });
+
+    scanner.addListener('scan', function (content) {
+        console.log(content);
+        if(jsonForCamera.questionType === "INTEGER"){
+            document.getElementById("answer").value = parseInt(content);
+            modalCamera.style.display = "none";
+        }
+        if(jsonForCamera.questionType === "NUMERIC"){
+            document.getElementById("answer").value = parseFloat(content);
+            modalCamera.style.display = "none";
+        }
+        if(jsonForCamera.questionType === "TEXT"){
+            document.getElementById("answer").value = content;
+            modalCamera.style.display = "none";
+        }
+    });
+}
+
+spanCamera.onclick = function() {
+    modalCamera.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target === modalCamera) {
+        modalCamera.style.display = "none";
+    }
+}
 
 //build the ui with fetched json object accordingly to the type of question
 function buildUI(jsonObject){
@@ -79,6 +126,8 @@ function buildUI(jsonObject){
 
             case "BOOLEAN":
 
+                document.getElementById("openCamera").style.display = "none";
+
                 console.log(jsonObject); //for debugging
                 let radioContainer = document.createElement("div");
                 setAttributes(radioContainer, {class: "radioContainer"});
@@ -134,6 +183,9 @@ function buildUI(jsonObject){
                 break;
 
             case "MCQ":
+
+                document.getElementById("openCamera").style.display = "none";
+
                 console.log(jsonObject); //for debugging
 
                 /*content*/

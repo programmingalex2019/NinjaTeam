@@ -5,7 +5,7 @@
     <title>Questions</title>
     <link rel="stylesheet" href="../css/questions.css">
     <link rel="shortcut icon" type="image/x-icon" href="../assets/base/ninjaLogo.png"/>
-
+    <script type="text/javascript" src="../javascript/instascan.min.js"></script>
 </head>
 <body>
 
@@ -38,16 +38,32 @@
 
                 <!-- Modal content -->
                 <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <h1>Are you sure?</h1>
-                    <button id="myBtn" onclick="setToYes()">Yes</button>
+                    <div class="modal-wrapper">
+                        <span class="close">&times;</span>
+                        <div class="confirmQuestion">
+                            <h1>Are you sure?</h1>
+                        </div>
+                        <div class="confirmButtons">
+                            <button id="myBtnYes" onclick="setToYes()">Yes</button>
+                            <button id="myBtnNo" onclick="setToNo()">No</button>
+                        </div>
+                    </div>
                 </div>
+            </div>
 
+            <div id="myModalCamera" class="modalCamera">
+                <div class="modal-content-camera">
+                    <div class="modal-wrapper-camera">
+                        <div class="exitCamera"><span class="close-camera">&times;</span></div>
+                        <video id="preview"></video>
+                    </div>
+                </div>
             </div>
 
             <section class="questionContainerContent">
                 <div class="upperRow">
                     <h1 id="questionNumberJS">Question: </h1>
+                    <button type="button" onclick="openCamera()" id="openCamera">Scan</button>
                     <h1 id="currentScoreJS">Score: </h1>
                 </div>
 

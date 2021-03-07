@@ -182,9 +182,11 @@ body {
         align-items: center;
     }
 
-    .form-section .shuriken-1{
-        width: 100%;
+    .form-section .shuriken{
+        display: none;
     }
+
+
 
     .ninja-logo{
         display: block;
