@@ -4,35 +4,13 @@ let questionScoreJS = document.getElementById("currentScoreJS");
 let questionContentJS = document.getElementById("questionContentJS");
 let inputSectionJS = document.getElementById("inputSectionJS");
 let middleRowJS = document.getElementById("middleRowJS");
-let locationCoordinates;
 
 //getting data(session Id) from the chose Treasure Hunt -> previous page
 let ref = new URLSearchParams(window.location.search);
 let session = ref.get("session");
+let requiresLocation = false;
 
-
-/*GET LOCATION*/
-function getLocation() {
-
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((position) => {
-
-            fetch("https://codecyprus.org/th/api/location?session="+ session + "&latitude=" + position.coords.latitude + "&longitude=" + position.coords.longitude)
-                .then(response => response.json())
-                .then(jsonObject => {
-                    console.log(jsonObject)
-                });
-        });
-    }
-    else {
-        console.log("Geolocation is not supported by your browser.");
-    }
-
-}
-
-//fetch location every 31 seconds.
-// locationCoordinates = setInterval(function () { getLocation(); }, 31000);
-/*GET LOCATION*/
+let jsonForCamera;
 
 //Get current question depending on the session
 fetch("https://codecyprus.org/th/api/question?session=" + session)
@@ -40,8 +18,55 @@ fetch("https://codecyprus.org/th/api/question?session=" + session)
     .then(jsonObject => {
 
         buildUI(jsonObject);
+        jsonForCamera = jsonObject;
 
     });
+
+/*CAMERA*/
+
+function openCamera(){
+    modalCamera.style.display = "block";
+
+    let scanner = new Instascan.Scanner(opts);
+
+    Instascan.Camera.getCameras().then(function (cameras) {
+        if (cameras.length > 0) {
+            scanner.start(cameras[0]);
+        } else {
+            console.error('No cameras found.');
+            alert("No cameras found.");
+        }
+    }).catch(function (e) {
+        
+    });
+
+    scanner.addListener('scan', function (content) {
+        console.log(content);
+        if(jsonForCamera.questionType === "INTEGER"){
+            document.getElementById("answer").value = parseInt(content);
+            modalCamera.style.display = "none";
+        }
+        if(jsonForCamera.questionType === "NUMERIC"){
+            document.getElementById("answer").value = parseFloat(content);
+            modalCamera.style.display = "none";
+        }
+        if(jsonForCamera.questionType === "TEXT"){
+            document.getElementById("answer").value = content;
+            modalCamera.style.display = "none";
+        }
+    });
+}
+
+spanCamera.onclick = function() {
+    modalCamera.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target === modalCamera) {
+        modalCamera.style.display = "none";
+    }
+}
 
 //build the ui with fetched json object accordingly to the type of question
 function buildUI(jsonObject){
@@ -67,29 +92,17 @@ function buildUI(jsonObject){
         skip.innerText = "Skip";
         setAttributes(skip, {type: "button", class: "skip", onclick: "skipQuestion(session)"});
 
-        if(jsonObject.requiresLocation === true){
 
-            //35.008424, 33.696828
+        requiresLocation = jsonObject.requiresLocation;
 
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition((position) => {
 
-                    fetch("https://codecyprus.org/th/api/location?session="+ session + "&latitude=" + position.coords.latitude + "&longitude=" + position.coords.longitude)
-                        .then(response => response.json())
-                        .then(jsonObject => {
-                            console.log(jsonObject)
-                        });
-                });
-            }
-            else {
-                console.log("Geolocation is not supported by your browser.");
-            }
-
-        }
 
         switch (jsonObject.questionType){
 
             case "INTEGER":
+
+                // const val = jsonObject.requiresLocation;
+                // console.log(val);
 
                 console.log(jsonObject); //for debugging
                 //attach input field
@@ -100,7 +113,7 @@ function buildUI(jsonObject){
                 //attach a button
                 let button = document.createElement("button");
                 button.innerText = "Submit";
-                setAttributes(button, {type: "button", class: "submit", onclick: "submitIntegerNumericText(document.getElementById(\"answer\").value, session)"});
+                setAttributes(button, {type: "button", class: "submit", onclick: "submitIntegerNumericText(document.getElementById(\"answer\").value, session, requiresLocation)"});
                 inputSectionJS.appendChild(button); //add to answerContainer
 
                 //attach skip
@@ -112,6 +125,8 @@ function buildUI(jsonObject){
                 break;
 
             case "BOOLEAN":
+
+                document.getElementById("openCamera").style.display = "none";
 
                 console.log(jsonObject); //for debugging
                 let radioContainer = document.createElement("div");
@@ -131,7 +146,7 @@ function buildUI(jsonObject){
 
                 //separated
                 let booleanButton = document.createElement("button");
-                setAttributes(booleanButton, {type: "submit", class: "submit", onclick: "submitMultiAndBoolean(document.querySelectorAll('input[name=\"choice\"]'),session)"});
+                setAttributes(booleanButton, {type: "submit", class: "submit", onclick: "submitMultiAndBoolean(document.querySelectorAll('input[name=\"choice\"]'),session, requiresLocation)"});
                 booleanButton.innerText = "Submit";
 
                 radioContainer.appendChild(labelTrue);
@@ -157,7 +172,7 @@ function buildUI(jsonObject){
                 //attach a button
                 let buttonNumeric = document.createElement("button");
                 buttonNumeric.innerText = "Submit";
-                setAttributes(buttonNumeric, {type: "button", class: "submit", onclick: "submitIntegerNumericText(document.getElementById(\"answer\").value, session)"});
+                setAttributes(buttonNumeric, {type: "button", class: "submit", onclick: "submitIntegerNumericText(document.getElementById(\"answer\").value, session, requiresLocation)"});
                 inputSectionJS.appendChild(buttonNumeric); //add to answerContainer
 
                 //attach skip
@@ -168,6 +183,9 @@ function buildUI(jsonObject){
                 break;
 
             case "MCQ":
+
+                document.getElementById("openCamera").style.display = "none";
+
                 console.log(jsonObject); //for debugging
 
                 /*content*/
@@ -225,7 +243,7 @@ function buildUI(jsonObject){
                 labelD.innerText = "D";
 
                 let multiButton = document.createElement("button");
-                setAttributes(multiButton, {type: "submit", class: "submit", onclick: "submitMultiAndBoolean(document.querySelectorAll('input[name=\"multiChoice\"]'), session)"});
+                setAttributes(multiButton, {type: "submit", class: "submit", onclick: "submitMultiAndBoolean(document.querySelectorAll('input[name=\"multiChoice\"]'), session, requiresLocation)"});
                 multiButton.innerText = "Submit";
 
                 multiContainer.appendChild(labelA);
@@ -254,7 +272,7 @@ function buildUI(jsonObject){
                 //attach a button
                 let buttonText = document.createElement("button");
                 buttonText.innerText = "Submit";
-                setAttributes(buttonText, {type: "button", class: "submit", onclick: "submitIntegerNumericText(document.getElementById(\"answer\").value, session)"});
+                setAttributes(buttonText, {type: "button", class: "submit", onclick: "submitIntegerNumericText(document.getElementById(\"answer\").value, session, requiresLocation)"});
                 inputSectionJS.appendChild(buttonText); //add to answerContainer
 
                 //attach skip

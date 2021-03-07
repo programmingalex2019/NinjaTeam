@@ -18,10 +18,12 @@
         </div>
 
         <div class="scoresContainer" id="scoresContainer">
-            <div class="playerRow">
-                <p class="playerRowTitle">Name</p>
-                <p class="playerRowScore">Score</p>
+            <div class="playerAchievements">
+                <div class="playerRowTitleContainer" id="playerRowTitleContainer">
+
+                </div>
             </div>
+
         </div>
 
         <div class="footer">
@@ -36,29 +38,68 @@
         let ref = new URLSearchParams(window.location.search);
         let session = ref.get("session");
 
-        let scoresContainer = document.getElementById("scoresContainer");
-  
-        fetch("https://codecyprus.org/th/api/leaderboard?session=" + session + " &sorted&limit=5")
+        let scoresContainer = document.getElementById("playerRowTitleContainer");
+
+        fetch("https://codecyprus.org/th/api/leaderboard?session=" + session + "&sorted&limit=5")
             .then(response => response.json())
             .then(jsonObject => {
 
                 console.log(jsonObject);
 
+                let generatedRowTitle = document.createElement("div");
+                generatedRowTitle.setAttribute("class", "generatedRow");
+
+                let playerDivRowTitle = document.createElement("div");
+                playerDivRowTitle.setAttribute("class", "playerRow");
+
+                let playerNameTitle = document.createElement("p");
+                playerNameTitle.innerText = "Name";
+                playerNameTitle.style.color = "lightseagreen";
+                playerNameTitle.style.fontSize = "4vh";
+                let playerScoreTitle = document.createElement("p");
+                playerScoreTitle.innerText = "Score";
+                playerScoreTitle.style.color = "lightseagreen";
+                playerScoreTitle.style.fontSize = "4vh";
+
+                playerDivRowTitle.appendChild(playerNameTitle);
+                playerDivRowTitle.appendChild(playerScoreTitle);
+
+                generatedRowTitle.appendChild(playerDivRowTitle)
+
+                scoresContainer.appendChild(generatedRowTitle);
+
                 for(let i = 0; i < jsonObject.limit; i++){
+
+                    let generatedRow = document.createElement("div");
+                    generatedRow.setAttribute("class", "generatedRow");
 
                     let playerDivRow = document.createElement("div");
                     playerDivRow.setAttribute("class", "playerRow");
-
                     let playerName = document.createElement("p");
                     let playerScore = document.createElement("p");
 
                     playerName.innerHTML = jsonObject.leaderboard[i].player + ": ";
                     playerScore.innerHTML = jsonObject.leaderboard[i].score + " points";
 
+
+                    let playerDivTime = document.createElement("div");
+                    playerDivTime.setAttribute("class", "playerTimeContainer");
+
+                    let playerTime = document.createElement("p");
+                    let seconds = parseInt(jsonObject.leaderboard[i].completionTime);
+                    let dateObject = new Date(seconds);
+
+                    playerTime.innerHTML = "Completion Time: " + dateObject.getSeconds() + " seconds";
+                    playerTime.style.color = "lightseagreen";
+                    playerDivTime.appendChild(playerTime);
+
+
                     playerDivRow.appendChild(playerName);
                     playerDivRow.appendChild(playerScore);
 
-                    scoresContainer.appendChild(playerDivRow);
+                    generatedRow.appendChild(playerDivRow);
+                    generatedRow.appendChild(playerDivTime);
+                    scoresContainer.appendChild(generatedRow);
 
                 }
             });
