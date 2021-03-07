@@ -5,78 +5,78 @@ let questionContentJS = document.getElementById("questionContentJS");
 let inputSectionJS = document.getElementById("inputSectionJS");
 let middleRowJS = document.getElementById("middleRowJS");
 
-//getting data(session Id) from the chose Treasure Hunt -> previous page
-let ref = new URLSearchParams(window.location.search);
-let session = ref.get("session");
-let requiresLocation = false;
-
-let jsonForCamera;
+//Variables throughout the script
+let ref = new URLSearchParams(window.location.search); //getting data(session Id) from the chose Treasure Hunt -> previous page
+let session = ref.get("session"); //getting the session
+let requiresLocation = false; //variable to be used when submitting an answer
+let switched = false; //toggle variable for front and back camera
+let jsonForCamera; //to pass into function and check whether string to int/text/numeric -> then passed into answer value
 
 //Get current question depending on the session
 fetch("https://codecyprus.org/th/api/question?session=" + session)
     .then(response => response.json())
     .then(jsonObject => {
-
         buildUI(jsonObject);
-        jsonForCamera = jsonObject;
-
+        jsonForCamera = jsonObject; //for correct QR string conversion -> to be used in scanner listener
     });
 
 /*CAMERA*/
-
 function openCamera(){
-    modalCamera.style.display = "flex";
+
+    modalCamera.style.display = "flex"; //content of camera modal
 
     let scanner = new Instascan.Scanner(opts);
-
     Instascan.Camera.getCameras().then(function (cameras) {
         if (cameras.length > 0) {
-            scanner.start(cameras[0]);
-            let spanCameraSwitch = document.getElementsByClassName("switch-camera")[0];
-            spanCameraSwitch.onclick = function(){
-                console.log("switched");
-                for(let i = 0; i < cameras.length; i++){
-                    if(cameras[i].name.indexOf('back') !== -1){
-                        scanner.start(cameras[i]);
-                    }else{
-                        console.log("no other cameras");
+            scanner.start(cameras[0]); //assign to first found camera
+
+            let spanCameraSwitch = document.getElementsByClassName("switch-camera")[0]; //span from html
+            spanCameraSwitch.onclick = function(){ //executes when span clicked
+                if(switched === false){ //using toggle variable
+                    for(let i = 0; i < cameras.length; i++){
+                        if(cameras[i].name.indexOf('back') !== -1){ //check whether there is a back camera
+                            scanner.start(cameras[i]); //switch to back camera -> will work on the phone
+                        }else{
+                            console.log("no other cameras"); //TODO: display error message
+                        }
                     }
+                    switched = true; //toggle variable for future clicks
+                }else{
+                    scanner.start(cameras[0]); //assign back to first found (front camera)
+                    switched = false;//toggle variable for future clicks
                 }
             }
-
         } else {
             console.error('No cameras found.');
             alert("No cameras found.");
         }
     }).catch(function (e) {
-        
+        //Outputs to many errors -> not used -> coming from the instascan itself
     });
 
+    /*CONTENT MANIPULATION FROM QR READER*/
     scanner.addListener('scan', function (content) {
-
-
-
-
-        console.log(content);
+        //convert string to int in case Integer question
         if(jsonForCamera.questionType === "INTEGER"){
             document.getElementById("answer").value = parseInt(content);
             modalCamera.style.display = "none";
         }
+        //convert string to numeric/double in case Numeric question
         if(jsonForCamera.questionType === "NUMERIC"){
             document.getElementById("answer").value = parseFloat(content);
             modalCamera.style.display = "none";
         }
+        //convert string to text in case Text question
         if(jsonForCamera.questionType === "TEXT"){
             document.getElementById("answer").value = content;
             modalCamera.style.display = "none";
         }
     });
 }
-
+//closing the modal
 spanCamera.onclick = function() {
     modalCamera.style.display = "none";
 }
-
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
     if (event.target === modalCamera) {
@@ -87,11 +87,8 @@ window.onclick = function(event) {
 //build the ui with fetched json object accordingly to the type of question
 function buildUI(jsonObject){
 
-
     if(jsonObject.completed === true){
-
-        window.location.href = 'leaderboard.html?session=' + session;
-
+        window.location.href = 'leaderboard.html?session=' + session; //switch to leaderboard screen
     }else{
 
         //Current Question Number
@@ -108,17 +105,13 @@ function buildUI(jsonObject){
         skip.innerText = "Skip";
         setAttributes(skip, {type: "button", class: "skip", onclick: "skipQuestion(session)"});
 
-
+        //will be used so that the location is uploaded before checking if answer correct
         requiresLocation = jsonObject.requiresLocation;
 
-
-
+        //output specific UI according the question type from json
         switch (jsonObject.questionType){
 
             case "INTEGER":
-
-                // const val = jsonObject.requiresLocation;
-                // console.log(val);
 
                 console.log(jsonObject); //for debugging
                 //attach input field
@@ -136,12 +129,12 @@ function buildUI(jsonObject){
                 if(jsonObject.canBeSkipped === true){
                     inputSectionJS.appendChild(skip); //add to answerContainer
                 }
-
                 //append to UI
                 break;
 
             case "BOOLEAN":
 
+                //CAMERA not displayed for BOOLEAN AND MCQ
                 document.getElementById("openCamera").style.display = "none";
 
                 console.log(jsonObject); //for debugging
@@ -175,10 +168,10 @@ function buildUI(jsonObject){
                 if(jsonObject.canBeSkipped === true){
                     inputSectionJS.appendChild(skip); //add to answerContainer
                 }
-
                 break;
 
             case "NUMERIC":
+
                 console.log(jsonObject); //for debugging
                 //attach input field
                 let inputFieldNumeric = document.createElement("input");
@@ -195,16 +188,14 @@ function buildUI(jsonObject){
                 if(jsonObject.canBeSkipped === true){
                     inputSectionJS.appendChild(skip); //add to answerContainer
                 }
-
                 break;
 
             case "MCQ":
 
-                document.getElementById("openCamera").style.display = "none";
-
                 console.log(jsonObject); //for debugging
 
-                /*content*/
+                //CAMERA not displayed for BOOLEAN AND MCQ
+                document.getElementById("openCamera").style.display = "none";
 
                 middleRowJS.style.flexDirection = "column";
 
@@ -229,7 +220,6 @@ function buildUI(jsonObject){
                 multiQuestionSelectionContainer.appendChild(multiQuestionAnswerD);
 
                 middleRowJS.appendChild(multiQuestionSelectionContainer);
-                /*content*/
 
                 let multiContainer = document.createElement("div");
                 setAttributes(multiContainer, {class: "multiContainer"});
@@ -279,6 +269,7 @@ function buildUI(jsonObject){
                 break;
 
             case "TEXT":
+
                 console.log(jsonObject); //for debugging
                 //attach input field
                 let inputFieldText = document.createElement("input");
@@ -296,10 +287,9 @@ function buildUI(jsonObject){
                     inputSectionJS.appendChild(skip); //add to answerContainer
                 }
                 break;
+
             default:
                 console.log("something went wrong");
         }
     }
-
-
 }

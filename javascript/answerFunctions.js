@@ -33,31 +33,25 @@ let opts = {
     scanPeriod: 1
 };
 
-
-
-
-//easier to set attributes
+//easier to set attributes //USED in questions.js
 function setAttributes(element, attributes) {
     Object.keys(attributes).forEach(function(name) {
         element.setAttribute(name, attributes[name]);
     })
 }
 
-//fetch Current Score
+//fetch Current Score //addition to question.js
 function fetchCurrentScore(element, session){
     fetch("https://codecyprus.org/th/api/score?session=" + session)
         .then(response => response.json())
         .then(jsonObject => {
-
             element.innerText = "Score:  " + jsonObject.score;
-
         });
 }
 
+//when questions allows to skip
 function skipQuestion(session){
-
     modal.style.display = "block";
-
     if(skipOrNot){
         fetch("https://codecyprus.org/th/api/skip?session="+ session)
             .then(response => response.json())
@@ -68,18 +62,19 @@ function skipQuestion(session){
     }
 }
 
+//answer feedback
 function setToYes(){
     skipOrNot = true;
     modal.style.display = "none";
     skipQuestion(session);
 }
-
+//answer feedback
 function setToNo(){
     skipOrNot = false;
     modal.style.display = "none";
     console.log(skipOrNot);
 }
-
+//close modal on span click
 span.onclick = function() {
     modal.style.display = "none";
 }
@@ -91,8 +86,6 @@ window.onclick = function(event) {
     }
 }
 
-
-
 function submitIntegerNumericText(value, session, requiresLocation){
 
     if(requiresLocation === true){
@@ -102,7 +95,6 @@ function submitIntegerNumericText(value, session, requiresLocation){
                 fetch("https://codecyprus.org/th/api/location?session="+ session + "&latitude=" + position.coords.latitude + "&longitude=" + position.coords.longitude)
                     .then(response => response.json())
                     .then(jsonObject => {
-                        //ONCE FETCHED =>
                         fetch("https://codecyprus.org/th/api/answer?session=" + session +"&answer= " + value.toString())
                             .then(response => response.json())
                             .then(jsonObject => {
@@ -115,16 +107,14 @@ function submitIntegerNumericText(value, session, requiresLocation){
         else {
             console.log("Geolocation is not supported by your browser.");
         }
-    }else{
-        fetch("https://codecyprus.org/th/api/answer?session=" + session +"&answer= " + value.toString())
+    }else {
+        fetch("https://codecyprus.org/th/api/answer?session=" + session + "&answer= " + value.toString())
             .then(response => response.json())
             .then(jsonObject => {
                 console.log(jsonObject);
                 location.reload();
             });
     }
-
-
 }
 
 function submitMultiAndBoolean(value, session) {
@@ -174,7 +164,4 @@ function submitMultiAndBoolean(value, session) {
             }
         }
     }
-
-
-
 }
