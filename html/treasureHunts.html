@@ -18,10 +18,10 @@
     <section class="ninja-logo">
         <img src="../assets/base/ninjaLogo.png" alt="ninja logo">
     </section>
-    <form id="form" action="/" method="GET">
+    <form id="form" onkeydown="return event.key !== 'Enter';">
         <div class="name-input">
             <div class="label-text"><h1>Name</h1></div>
-            <label for="name"></label><input id="name" name="name" type="text" required>
+            <label for="name"></label><input id="name" name="name" type="text" autocomplete="off" required>
             <div id="error-message"><h1></h1></div>
         </div>
     </form>

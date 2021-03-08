@@ -182,6 +182,11 @@ main .m-section-1 .memberCard .memberCardDescription{
     padding-right: 10px;
     text-shadow: 3px 3px 3px black;
 }
+
+main .m-section-1 .memberCard .memberCardDescription h1{
+    color: lightseagreen;
+}
+
 main .m-section-1 .memberCardRight .memberCardDescriptionRight{
     font-family: sans-serif;
     color: white;
@@ -190,12 +195,15 @@ main .m-section-1 .memberCardRight .memberCardDescriptionRight{
     text-shadow: 3px 3px 3px black;
 }
 
+main .m-section-1 .memberCardRight .memberCardDescriptionRight h1{
+    color: lightseagreen;
+}
+
 main .m-section-2{
     margin: 0 10px;
     display: flex;
     flex: 1.4;
 }
-
 
 main .m-section-2 iframe{
     flex: 1;

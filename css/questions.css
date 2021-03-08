@@ -21,8 +21,6 @@ body {
     justify-content: center;
 }
 
-
-
 .questionContent{
     display: flex;
     flex-direction: column;
@@ -48,7 +46,7 @@ body {
 }
 
 .header .shuriken img{ /* shuriken container img */
-    width: 4em;
+    width: 6em;
     animation-name: spin;
     animation-duration: 5000ms;
     animation-iteration-count: infinite;
@@ -75,9 +73,21 @@ body {
 }
 
 .header .header-inner-bg .header-img img{ /* ninja logo container img */
-    width: 6em;
+    width: 10em;
 }
 
+.questionContent .answerFeedback {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0.5;
+    width: 100%;
+}
+
+.questionContent .answerFeedback #answerFeedbackP{
+    color: lightseagreen;
+    font-size: 4vh;
+}
 
 .questionContent #questionContainer{
     flex: 3;
@@ -93,23 +103,19 @@ body {
     border: 2px dotted #f50b0e;
     display: flex;
     flex-direction: column;
-    padding: 10px;
-
 }
 
 .questionContent #questionContainer .questionContainerContent .upperRow{
     flex: 1;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
-
 }
 
 .questionContent #questionContainer .questionContainerContent .upperRow h1{
     text-shadow: 3px 2px 3px black;
     color: #f50b0e;
-    font-size: 2.5em;
-    padding: 5px;
+    font-size: 3vh;
 }
 
 .questionContent #questionContainer .questionContainerContent .middleRow{
@@ -123,7 +129,7 @@ body {
 .questionContent #questionContainer .questionContainerContent .middleRow p{
     text-align: center;
     color: white;
-    font-size: 2em;
+    font-size: 4vh;
 }
 
 .questionContent #questionContainer .questionContainerContent .middleRow p a{
@@ -141,28 +147,26 @@ body {
 /* ACTS FOR ALL TYPES OF QUESTIONS */
 
 .questionContent #questionContainer .questionContainerContent .upperRow #openCamera{
-    border: 2px solid lightseagreen;
-    color: white;
+    /*border: 2px solid lightseagreen;*/
+    color: lightseagreen;
     font-weight: bold;
-    padding: 0.5em;
-    font-size: 2.5em;
-    width: 30%;
-    height: 70%;
+    font-size: 4vh;
+    text-shadow: 3px 2px 3px black;
 }
 
 .questionContent #questionContainer .questionContainerContent .bottomRow .submit{
     border: 2px solid #f50b0e;
     color: white;
-    padding: 0.5em;
-    font-size: 1.5em;
+    padding: 2vh;
+    font-size: 3vh;
     width: 20%;
 }
 
 .questionContent #questionContainer .questionContainerContent .bottomRow .skip{
-    border: 2px solid #f50b0e;
+    border: 2px solid lightseagreen;
     color: white;
-    padding: 0.5em;
-    font-size: 1.5em;
+    padding: 2vh;
+    font-size: 3vh;
     width: 20%;
 }
 /* ACTS FOR ALL TYPES OF QUESTIONS */
@@ -171,8 +175,8 @@ body {
 .questionContent #questionContainer .questionContainerContent .bottomRow .intAndText{
     border: 2px solid #f50b0e;
     color: white;
-    padding: 0.5em;
-    font-size: 1.5em;
+    padding: 2vh;
+    font-size: 3vh;
     text-align: center;
     width: 20%;
 }
@@ -188,13 +192,13 @@ body {
 }
 
 .questionContent #questionContainer .questionContainerContent .bottomRow .radioContainer .radioStyle{
-    height: 2.5em;
-    width: 2.5em;
+    height: 3vh;
+    width: 3vh;
 }
 
 .questionContent #questionContainer .questionContainerContent .bottomRow .radioContainer .labelStyle{
     color: white;
-    font-size: 2.5em;
+    font-size: 4vh;
 }
 /* BOOLEAN */
 
@@ -215,12 +219,12 @@ body {
     align-items: center;
 }
 .questionContent #questionContainer .questionContainerContent .bottomRow .multiContainer .multi{
-    height: 2.5em;
-    width: 2.5em;
+    height: 3vh;
+    width: 3vh;
 }
 .questionContent #questionContainer .questionContainerContent .bottomRow .multiContainer .labelStyle{
     color: white;
-    font-size: 2.5em;
+    font-size: 4vh;
 }
 
 /* The Modal (background) */
@@ -419,11 +423,11 @@ body {
     }
 
     .questionContent #questionContainer .questionContainerContent .upperRow h1{
-        font-size: 4.0em;
+        font-size: 3vh;
     }
 
     .questionContent #questionContainer .questionContainerContent .middleRow p{
-        font-size: 3.8em;
+        font-size: 3vh;
     }
 
     .questionContent #questionContainer .questionContainerContent .bottomRow{
@@ -435,7 +439,7 @@ body {
     .questionContent #questionContainer .questionContainerContent .bottomRow .intAndText{
         width: 40%;
         height: 10%;
-        font-size: 3.5em;
+        font-size: 3vh;
     }
 
     /* BOOLEAN */
@@ -444,8 +448,8 @@ body {
     }
 
     .questionContent #questionContainer .questionContainerContent .bottomRow .radioContainer .radioStyle{
-        height: 5.5em;
-        width: 5.5em;
+        height: 4vh;
+        width: 4vh;
     }
 
     .questionContent #questionContainer .questionContainerContent .bottomRow .radioContainer .labelStyle{
@@ -461,25 +465,27 @@ body {
         width: 100%;
     }
     .questionContent #questionContainer .questionContainerContent .bottomRow .multiContainer .multi{
-        height: 4.5em;
-        width: 4.5em;
+        height: 4vh;
+        width: 4vh;
     }
     .questionContent #questionContainer .questionContainerContent .bottomRow .multiContainer .labelStyle{
-        font-size: 4.5em;
+        font-size: 4vh;
     }
 
     .questionContent #questionContainer .questionContainerContent .bottomRow .submit{
-        padding: 0.1em;
         width: 40%;
         height: 15%;
-        font-size: 2.5em;
+        padding: 0;
+        font-size: 2vh;
+        font-weight: bold;
     }
 
     .questionContent #questionContainer .questionContainerContent .bottomRow .skip{
-        padding: 0.1em;
         width: 40%;
         height: 15%;
-        font-size: 2.5em;
+        padding: 0;
+        font-size: 2vh;
+        font-weight: bold;
     }
 
 

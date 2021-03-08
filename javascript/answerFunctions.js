@@ -99,7 +99,17 @@ function submitIntegerNumericText(value, session, requiresLocation){
                             .then(response => response.json())
                             .then(jsonObject => {
                                 console.log(jsonObject);
-                                location.reload();
+                                if (jsonObject.correct === true){
+                                    document.getElementById("answerFeedbackP").innerText = jsonObject.message;
+                                    location.reload();
+                                }else{
+                                    if(jsonObject.message.length > 15){
+                                        document.getElementById("answerFeedbackP").style.fontSize = "2.5vh";
+                                        document.getElementById("answerFeedbackP").style.textAlign = "center";
+                                        document.getElementById("answerFeedbackP").innerText = jsonObject.message;
+                                    }
+                                    document.getElementById("answerFeedbackP").innerText = jsonObject.message;
+                                }
                             });
                     });
             });
@@ -111,8 +121,13 @@ function submitIntegerNumericText(value, session, requiresLocation){
         fetch("https://codecyprus.org/th/api/answer?session=" + session + "&answer= " + value.toString())
             .then(response => response.json())
             .then(jsonObject => {
+                if (jsonObject.correct === true){
+                    document.getElementById("answerFeedbackP").innerText = jsonObject.message;
+                    location.reload();
+                }else{
+                    document.getElementById("answerFeedbackP").innerText = jsonObject.message;
+                }
                 console.log(jsonObject);
-                location.reload();
             });
     }
 }
@@ -138,7 +153,12 @@ function submitMultiAndBoolean(value, session) {
                                     .then(response => response.json())
                                     .then(jsonObject => {
                                         console.log(jsonObject);
-                                        location.reload();
+                                        if (jsonObject.correct === true){
+                                            document.getElementById("answerFeedbackP").innerHtml = jsonObject.message;
+                                            location.reload();
+                                        }else{
+                                            document.getElementById("answerFeedbackP").innerHTML = jsonObject.message;
+                                        }
                                     });
                                 break;
                             }
@@ -158,7 +178,12 @@ function submitMultiAndBoolean(value, session) {
                     .then(response => response.json())
                     .then(jsonObject => {
                         console.log(jsonObject);
-                        location.reload();
+                        if (jsonObject.correct === true){
+                            document.getElementById("answerFeedbackP").innerText = jsonObject.message;
+                            location.reload();
+                        }else{
+                            document.getElementById("answerFeedbackP").innerText = jsonObject.message;
+                        }
                     });
                 break;
             }

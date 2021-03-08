@@ -26,8 +26,14 @@
             <div class ="testContainerInitial" id="heuI">
 
             </div>
+            <div class="unitTest" id="unitTestLeader" style="display: none">
+
+            </div>
             <div class ="testContainerFeedback" id="heuF">
-                <h1>Feedback</h1>
+                <p id="heuristics1"></p>
+                <p id="heuristics2"></p>
+                <p id="heuristics3"></p>
+                <p id="readMore"></p>
             </div>
             <div class ="testContainerChanges" id="heuC">
                 <h1>Changes</h1>
@@ -57,13 +63,15 @@
 
                 let treasureHuntTableName = document.createElement("h2");
 
-                fetch("https://codecyprus.org/th/test-api/leaderboard?&hasPrize&size=5") //1 2 3
+                fetch("https://codecyprus.org/th/test-api/leaderboard?&hasPrize&size=5&") //1 2 3
                     .then(response => response.json())
                     .then(jsonObject => {
 
+                        testSorted(jsonObject.leaderboard);
+                        console.log(jsonObject.leaderboard);
                         question.innerHTML = " ";
 
-                        console.log(jsonObject);
+                        // console.log(jsonObject);
 
                         treasureHuntTableName.innerText = jsonObject.treasureHuntName;
                         question.appendChild(treasureHuntTableName);
@@ -89,7 +97,62 @@
 
                     });
             }
+
+            function testSorted(scoresArray){
+
+                let testContainer = document.getElementById("unitTestLeader");
+                document.getElementById("heuF").style.display = "none";
+                document.getElementById("heuC").style.display = "none";
+                testContainer.innerHTML = " ";
+                testContainer.style.display = "flex";
+
+                let sorted = true;
+                let current = Number.MAX_VALUE;
+                for(let i = 0; i < scoresArray.length; i++){
+
+                    let testRow = document.createElement("div");
+                    testRow.setAttribute("class", "testRow");
+
+                    let back = document.createElement("p");
+                    if(i === 0){
+                        back.innerText = "99";
+                    }else{
+                        back.innerText = current.toString();
+                    }
+                    let front = document.createElement("p");
+                    front.innerText = scoresArray[i].score.toString();
+
+                    let passed = document.createElement("p");
+
+                    testRow.appendChild(back);
+                    testRow.appendChild(front);
+                    testRow.appendChild(passed);
+
+                    testContainer.appendChild(testRow);
+
+                    if(scoresArray[i].score <= current){
+
+                        passed.innerText = "Passed";
+                        current = scoresArray[i].score;
+
+                    }else{
+                        passed.innerText = "Failed";
+                        sorted = false;
+                    }
+                }
+                console.log("Array sorted is: " + sorted);
+            }
+
+
+
             function questionType(type){
+
+                let testContainer = document.getElementById("unitTestLeader");
+                document.getElementById("heuF").style.display = "flex";
+                document.getElementById("heuC").style.display = "flex";
+                testContainer.innerHTML = " ";
+                testContainer.style.display = "none";
+
                 fetch("https://codecyprus.org/th/test-api/question?completed&question-type=" + type)
                     .then(response => response.json())
                     .then(jsonObject => {
@@ -117,6 +180,10 @@
                         question.appendChild(inputField);
                         question.appendChild(button);
 
+                        document.getElementById("heuristics1").innerText = "1.\tVisibility of system status: The text should be aligned to the left with a brighter color and the link should be in a better color.";
+                        document.getElementById("heuristics2").innerText = "6.\tRecognition rather than recall: All elements, actions, and options are visible.";
+                        document.getElementById("heuristics3").innerText = "4.\tConsistency and standards: all words, situations, and actions have different roles.";
+                        document.getElementById("readMore").innerText = "Read More";
                         break;
 
                     case "TEXT":
@@ -136,6 +203,10 @@
                         question.appendChild(inputText);
                         question.appendChild(button);
 
+                        document.getElementById("heuristics1").innerText = "1.\tVisibility of system status: The text should be aligned to the left with a brighter color and the link should be in a better color";
+                        document.getElementById("heuristics2").innerText = "2.\tVisibility of system status: The text should be aligned to the left with a brighter color and the link should be in a better color";
+                        document.getElementById("heuristics3").innerText = "6.\tRecognition rather than recall: All elements, actions, and options are visible.";
+                        document.getElementById("readMore").innerText = "Read More";
                         break;
 
                     case "BOOLEAN":
@@ -167,6 +238,10 @@
                         question.appendChild(inputRadio2);
                         question.appendChild(label2);
 
+                        document.getElementById("heuristics1").innerText = "4.\tConsistency and standards: all words, situations, and actions have different roles.";
+                        document.getElementById("heuristics2").innerText = "6.\tRecognition rather than recall: All elements, actions, and options are visible.";
+                        document.getElementById("heuristics3").innerText = "10.\tHelp and documentation: a header should be added under the title of: “answer the following question.”";
+                        document.getElementById("readMore").innerText = "Read More";
                         break;
                     case "MCQ":
                         let choice1,choice2,choice3,choice4;
@@ -196,6 +271,10 @@
                         question.appendChild(choice3);
                         question.appendChild(choice4);
 
+                        document.getElementById("heuristics1").innerText = "1.\tVisibility of system status: The text should be aligned to the left with a brighter color and the link should be in a better color.";
+                        document.getElementById("heuristics2").innerText = "4.\tConsistency and standards: all words, situations, and actions have different roles.";
+                        document.getElementById("heuristics3").innerText = "6.\tRecognition rather than recall: All elements, actions, and options are visible.";
+                        document.getElementById("readMore").innerText = "Read More";
                         break;
                     case "NUMERIC":
                         let numberInput;
@@ -212,6 +291,11 @@
 
                         question.appendChild(numberInput);
                         question.appendChild(button);
+
+                        document.getElementById("heuristics1").innerText = "1.\tVisibility of system status: The text should be aligned to the left with a brighter color and the link should be in a better color.";
+                        document.getElementById("heuristics2").innerText = "4.\tConsistency and standards: all words, situations, and actions have different roles.";
+                        document.getElementById("heuristics3").innerText = "6.\tRecognition rather than recall: All elements, actions, and options are visible.";
+                        document.getElementById("readMore").innerText = "Read More";
 
                         break;
 

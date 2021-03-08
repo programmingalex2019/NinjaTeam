@@ -34,12 +34,11 @@ body {
     align-items: center;
     justify-content: center;
     flex: 1;
-
 }
 
 .form-section .shuriken img{
-    width: 10vh;
-    height: 10vh;
+    width: 12vh;
+    height: 12vh;
     animation-name: spin;
     animation-duration: 9000ms;
     animation-iteration-count: infinite;
@@ -146,14 +145,18 @@ body {
 
 .treasure-hunts-section #generated-api-hunts{
     display: flex;
-    flex: 1;
+    justify-content: space-evenly;
+    align-items: start;
+    width: 100%;
 }
 .treasure-hunts-section #generated-api-hunts div{
-    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid red;
+    border: 3px solid lightseagreen;
+    border-radius: 2px;
+    width: 40%;
+    height: 80%;
 }
 
 .treasure-hunts-section #generated-api-hunts div h1{
@@ -250,6 +253,7 @@ body {
     .treasure-hunts-section #generated-api-hunts div{
         flex: 1;
         padding-bottom: 5px;
+        width: 100%;
     }
 
     .treasure-hunts-section #generated-api-hunts div h1{
