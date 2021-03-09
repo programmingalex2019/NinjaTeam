@@ -46,7 +46,7 @@ body {
 }
 
 .header .shuriken img{ /* shuriken container img */
-    width: 6em;
+    width: 10vh;
     animation-name: spin;
     animation-duration: 5000ms;
     animation-iteration-count: infinite;
@@ -73,24 +73,27 @@ body {
 }
 
 .header .header-inner-bg .header-img img{ /* ninja logo container img */
-    width: 10em;
+    width: 15vh;
+    padding-top: 3vh;
+    display: block;
 }
 
 .questionContent .answerFeedback {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex: 0.5;
+    flex: 1;
     width: 100%;
+    height: 100%;
 }
 
 .questionContent .answerFeedback #answerFeedbackP{
     color: lightseagreen;
-    font-size: 4vh;
+    font-size: 5vh;
 }
 
 .questionContent #questionContainer{
-    flex: 3;
+    flex: 4;
     width: 100%;
     display: flex;
     align-items: center;
@@ -115,7 +118,7 @@ body {
 .questionContent #questionContainer .questionContainerContent .upperRow h1{
     text-shadow: 3px 2px 3px black;
     color: #f50b0e;
-    font-size: 3vh;
+    font-size: 5vh;
 }
 
 .questionContent #questionContainer .questionContainerContent .middleRow{
@@ -130,6 +133,7 @@ body {
     text-align: center;
     color: white;
     font-size: 4vh;
+    padding: 1vh;
 }
 
 .questionContent #questionContainer .questionContainerContent .middleRow p a{
@@ -192,8 +196,8 @@ body {
 }
 
 .questionContent #questionContainer .questionContainerContent .bottomRow .radioContainer .radioStyle{
-    height: 3vh;
-    width: 3vh;
+    height: 5vh;
+    width: 5vh;
 }
 
 .questionContent #questionContainer .questionContainerContent .bottomRow .radioContainer .labelStyle{

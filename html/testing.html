@@ -36,7 +36,8 @@
                 <p id="readMore"></p>
             </div>
             <div class ="testContainerChanges" id="heuC">
-                <h1>Changes</h1>
+<!--                <h1>Changes</h1>-->
+                <img id="changes" alt="changes">
             </div>
 
         </div>
@@ -63,7 +64,7 @@
 
                 let treasureHuntTableName = document.createElement("h2");
 
-                fetch("https://codecyprus.org/th/test-api/leaderboard?&hasPrize&size=5&") //1 2 3
+                fetch("https://codecyprus.org/th/test-api/leaderboard?&hasPrize&size=5&sorted") //1 2 3
                     .then(response => response.json())
                     .then(jsonObject => {
 
@@ -71,10 +72,6 @@
                         console.log(jsonObject.leaderboard);
                         question.innerHTML = " ";
 
-                        // console.log(jsonObject);
-
-                        treasureHuntTableName.innerText = jsonObject.treasureHuntName;
-                        question.appendChild(treasureHuntTableName);
                         const leaderTable = document.createElement("table");
 
                         let tableContain = "";
@@ -90,6 +87,9 @@
                                 "<td>"+ score+"</td>" +
                                 "</tr>"
                         }
+
+                        leaderTable.style.color ="white";
+                        leaderTable.style.width = "100%"
                         leaderTable.innerHTML += tableContain;
 
                         question.appendChild(treasureHuntTableName);
@@ -113,9 +113,17 @@
                     let testRow = document.createElement("div");
                     testRow.setAttribute("class", "testRow");
 
+                    let greaterThan = document.createElement("p");
+                    greaterThan.innerHTML = ">";
+                    greaterThan.style.color = "lightseagreen";
+
+                    let equal = document.createElement("p");
+                    equal.innerHTML = "=";
+                    equal.style.color = "lightseagreen";
+
                     let back = document.createElement("p");
                     if(i === 0){
-                        back.innerText = "99";
+                        back.innerText = "MAX";
                     }else{
                         back.innerText = current.toString();
                     }
@@ -125,7 +133,9 @@
                     let passed = document.createElement("p");
 
                     testRow.appendChild(back);
+                    testRow.appendChild(greaterThan);
                     testRow.appendChild(front);
+                    testRow.appendChild(equal);
                     testRow.appendChild(passed);
 
                     testContainer.appendChild(testRow);
@@ -133,6 +143,7 @@
                     if(scoresArray[i].score <= current){
 
                         passed.innerText = "Passed";
+                        passed.style.color = "lightseagreen";
                         current = scoresArray[i].score;
 
                     }else{
@@ -146,6 +157,8 @@
 
 
             function questionType(type){
+
+
 
                 let testContainer = document.getElementById("unitTestLeader");
                 document.getElementById("heuF").style.display = "flex";
@@ -167,6 +180,9 @@
                 switch (jsonObject.questionType){
 
                     case "INTEGER":
+
+                        document.getElementById("changes").setAttribute("src", "../assets/testing/IntegerFix.PNG");
+
                         let inputField;
                         inputField = document.createElement("input");
                         inputField.setAttribute('name',"answer");
@@ -187,6 +203,9 @@
                         break;
 
                     case "TEXT":
+
+                        document.getElementById("changes").setAttribute("src", "../assets/testing/IntegerFix.PNG");
+
                         let inputText;
 
                         inputText = document.createElement("textarea");
@@ -210,6 +229,9 @@
                         break;
 
                     case "BOOLEAN":
+
+                        document.getElementById("changes").setAttribute("src", "../assets/testing/BooleanFix.PNG");
+
                         let inputRadio1,inputRadio2,label1,label2;
                         inputRadio1 = document.createElement("input");
                         inputRadio1.setAttribute('type',"radio");
@@ -244,6 +266,9 @@
                         document.getElementById("readMore").innerText = "Read More";
                         break;
                     case "MCQ":
+
+                        document.getElementById("changes").setAttribute("src", "../assets/testing/MCQfix.PNG");
+
                         let choice1,choice2,choice3,choice4;
 
                         choice1 = document.createElement("input");
@@ -277,6 +302,9 @@
                         document.getElementById("readMore").innerText = "Read More";
                         break;
                     case "NUMERIC":
+
+                        document.getElementById("changes").setAttribute("src", "../assets/testing/IntegerFix.PNG");
+
                         let numberInput;
 
                         numberInput = document.createElement("input");

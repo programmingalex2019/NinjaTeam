@@ -28,7 +28,7 @@ body{
 
  main .display{
      /*for display the buttons*/
-     flex: 1.5;
+     flex: 1.2;
      width: 100%;
      display: flex;
      flex-direction: column;
@@ -112,27 +112,33 @@ main .heuristics #unitTestLeader .testRow p{
  main .testContainerInitial{
      flex: 1;
      font-size: 3.5vh;
-     color: #AD090D;
+     color: #f50b0e;
      display: flex;
      flex-direction: column;
      justify-content: center;
      align-items: center;
      text-align: center;
      height: 100%;
+     border-right: 2px dotted grey;
  }
 
+main .testContainerInitial  table th{
+    color: lightseagreen;
+}
+
 main .testContainerFeedback{
-    flex: 1;
+    flex: 1.5;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     text-align: center;
+    border-right: 2px dotted grey;
 }
 main .testContainerFeedback p{
-    font-size: 3.0vh;
-    color: #f50b0e;
+    font-size: 2.7vh;
+    color: white;
 }
 
 main .testContainerFeedback #readMore{
@@ -145,6 +151,12 @@ main .testContainerChanges{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+main .testContainerChanges img{
+    display: block;
+    width: 60%;
+    height: 50%;
 }
 
 .submitButtons{
@@ -177,13 +189,13 @@ main .testContainerChanges{
      background-color: white;
      border: 2px solid red;
  }
+
 footer{
     background-color: #252523;
     flex: 1;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-
 }
 
 
@@ -255,8 +267,7 @@ footer .shuriken-f2{
         flex: 3;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: space-evenly;
+        justify-content: space-between;
     }
 
     main .display .elements .buttons-heuristics-testing{
@@ -269,22 +280,52 @@ footer .shuriken-f2{
         font-size: 2vh;
     }
 
+    main .heuristics .unitTest{
+        flex: 2;
+        border-top: 2px dotted grey;
+        border-bottom: 2px dotted grey;
+    }
+
     main .testContainerInitial{
+        flex: 1.5;
+        width: 100%;
         font-size: 2.5vh;
         padding-left: 1vh;
         padding-right: 1vh;
-    }
-
-    main .heuristics #heuristics1{
-        display: none;
+        border-right: none;
+        border-top: 2px dotted grey;
+        border-bottom: 2px dotted grey;
     }
 
     main .testContainerFeedback{
-        justify-content: space-between;
+        flex: 2;
+        border-right: none;
+        justify-content: space-evenly;
+        padding-right: 1vh;
+        padding-left: 1vh;
+        border-top: 2px dotted grey;
+        border-bottom: 2px dotted grey;
+        font-size: 2vh;
     }
 
     main .heuristics .testContainerChanges{
+        flex: 0;
         display: none;
+    }
+
+
+    main .heuristics .testContainerChanges img{
+        width: 0;
+        height: 0;
+        display: none;
+    }
+
+    main .heuristics .testContainerFeedback #heuristics1{
+        display: none;
+    }
+
+    footer{
+        flex: 0.5;
     }
 
 }

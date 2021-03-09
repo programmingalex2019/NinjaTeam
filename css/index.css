@@ -74,13 +74,14 @@ header .header-inner-bg .header-img{ /* ninja logo container */
     flex: 2;
     order: 1;
     height: 90%;
+    display: flex;
+    justify-content: center;
 }
 
 header .header-inner-bg .header-img img{ /* ninja logo container img */
     display: block;
-    height: 100%;
-    width: 35%;
-    margin: 0 35%;
+    height: 90%;
+    width: 25%;
 }
 
 
@@ -98,11 +99,11 @@ header .header-inner-bg .header-text{ /* title of the header */
 }
 
 header .header-inner-bg .header-text h1{
-    font-size: 7vh;
+    font-size: 6vh;
 }
 
 header .header-inner-bg .header-text h2{
-    font-size: 5vh;
+    font-size: 4vh;
 }
 
 /* main section */
@@ -120,9 +121,6 @@ main section{ /* applies to all sections in main */
 }
 
 /* individual sections by class */
-
-
-
 main .m-section-1{
     display: flex;
     flex-direction: column;
@@ -178,9 +176,10 @@ main .m-section-1 .memberSectionTitle{
 main .m-section-1 .memberCard .memberCardDescription{
     font-family: sans-serif;
     color: white;
-    font-size: 2.3vh;
+    font-size: 2.5vh;
+    font-weight: bold;
+    line-height: 3.5vh;
     padding-right: 10px;
-    text-shadow: 3px 3px 3px black;
 }
 
 main .m-section-1 .memberCard .memberCardDescription h1{
@@ -189,10 +188,11 @@ main .m-section-1 .memberCard .memberCardDescription h1{
 
 main .m-section-1 .memberCardRight .memberCardDescriptionRight{
     font-family: sans-serif;
+    font-weight: bold;
     color: white;
-    font-size: 2.3vh;
+    font-size: 2.5vh;
+    line-height: 3.5vh;
     padding-left: 10px;
-    text-shadow: 3px 3px 3px black;
 }
 
 main .m-section-1 .memberCardRight .memberCardDescriptionRight h1{
@@ -203,24 +203,29 @@ main .m-section-2{
     margin: 0 10px;
     display: flex;
     flex: 1.4;
+    padding-bottom: 0.3vh;
+    padding-top: 0.3vh;
+    background-color: #181717;
 }
 
 main .m-section-2 iframe{
     flex: 1;
     width: 100% !important;
-    margin: 0 -9px 0 -9px;
 }
 
 main .m-section-3{
+    display: flex;
     margin-right: 10px;
     border-left: 2px solid red;
-    border-right: 2px solid red;}
+    border-right: 2px solid red;
+}
 
 main .m-section-3 .phone-wrapper{
     height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 main .m-section-3 .phone-wrapper .socialMediaTitle{
@@ -251,16 +256,17 @@ main .m-section-3 .phone-wrapper .socialMediaDescription img{
     display: block;
     width: 3vw;
     height: 6vh;
-    padding: 10px;
+    padding: 8px;
 }
 main .m-section-3 .phone-wrapper .facebook-instagram-twitter{
-    flex: 1;
     /*display: flex;*/
     justify-content: space-evenly;
     align-items: center;
     font-size: 2.6vh;
     display: none;
 }
+
+#twitter-widget-0 {height: 100% !important;}
 
 main  .m-section-3 .phone-wrapper .facebook-instagram-twitter img{
     display: none;
@@ -271,19 +277,16 @@ main .m-section-3 .phone-wrapper .socialMediaDescription p {
 }
 
 main .m-section-3 .phone-wrapper .twitter{
-    flex: 1;
+    flex: 1.5;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    /*align-items: stretch;*/
+    justify-content: center;
+    padding: 1vh;
 }
 
 main .m-section-3 .phone-wrapper .twitter .twitter-timeline .timeline-header, .timeline-footer{
-
-
-
     display:none ;
-
-
 }
 
 /* footer section */
@@ -326,8 +329,8 @@ footer .footer-inner-bg h1:hover{
 footer .shuriken-f1{
     text-align: center;
     margin-right: 60px;
-    width: 8vh;
-    height: 8vh;
+    width: 6vh;
+    height: 6vh;
     animation-name: spin;
     animation-duration: 5000ms;
     animation-iteration-count: infinite;
@@ -347,8 +350,8 @@ footer .shuriken-f1{
 footer .shuriken-f2{
     text-align: center;
     margin-left: 60px;
-    width: 8vh;
-    height: 8vh;
+    width: 6vh;
+    height: 6vh;
     animation-name: spin;
     animation-duration: 5000ms;
     animation-iteration-count: infinite;
@@ -368,7 +371,7 @@ footer .shuriken-f2{
 
 
 /* phones */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) and (orientation: portrait) {
 
     /* header section */
 
@@ -518,6 +521,7 @@ footer .shuriken-f2{
     }
 
     main  .m-section-3 .phone-wrapper .facebook-instagram-twitter{
+        height: 100%;
         display: flex;
         justify-content: space-evenly;
         align-items: center;
@@ -562,7 +566,7 @@ footer .shuriken-f2{
 }
 
 /* tablets */
-@media only screen and (max-width: 1024px) and (min-width: 600px){
+@media only screen and (max-width: 1300px) and (min-width: 600px){
 
     /* header section */
 

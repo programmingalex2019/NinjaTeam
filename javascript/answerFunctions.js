@@ -104,7 +104,7 @@ function submitIntegerNumericText(value, session, requiresLocation){
                                     location.reload();
                                 }else{
                                     if(jsonObject.message.length > 15){
-                                        document.getElementById("answerFeedbackP").style.fontSize = "2.5vh";
+                                        document.getElementById("answerFeedbackP").style.fontSize = "3vh";
                                         document.getElementById("answerFeedbackP").style.textAlign = "center";
                                         document.getElementById("answerFeedbackP").innerText = jsonObject.message;
                                     }
