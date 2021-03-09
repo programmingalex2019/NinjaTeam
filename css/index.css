@@ -367,7 +367,17 @@ footer .shuriken-f2{
     }
 }
 
+/* phones */
+@media only screen and (max-width: 3000px){
+    main{
+        flex: 4;
+    }
+    footer{
+        flex: 1;
+    }
+}
 
+#twitter-widget-0 {height: 100% !important;}
 
 
 /* phones */
