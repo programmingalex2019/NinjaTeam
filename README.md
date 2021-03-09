@@ -87,7 +87,7 @@ Fadi -> implement questions functionality
 
 Amir -> implement UI depending on questions type 
 
-**! Week 8 !** (MS call 25/02/21 -> 9pm)
+**! Week 8 !** (MS call 21/02/21 -> 9pm)
 
 We added the leaderboard functionality with,
 Fadi and Alex added the cookies functionality. 
@@ -96,7 +96,7 @@ TODO:
 Amir to make sure the leaderboard is visible on all the devices
 Alex to work on the social media/twitter/and find graphics for the web application.
 
-**! Week 9 !** (MS call 02/03/21 -> 9pm)
+**! Week 9 !** (MS call 28/02/21 -> 9pm)
 
 We discussed to make the text even lighter, 
 We discussed what to include for the testing. 
@@ -106,14 +106,14 @@ come up with an algorithm for testing,
 implement extra camera feature,
 Amir research on the user acceptance plan. 
 
-**! Week 10 !** (MS call 02/03/28 -> 9pm)
+**! Week 10 !** (MS call 02/03/21 -> 9pm)
 
 Established requirements from previous week: 
 TODO:
 Amir write a full heuristics 10 rules document -> for each type of questions.
 Fadi and Alex work on the algorithm for checkign whether the sorted parameter when fetching leaderboard api works.
 
-**! Week 11 !** (Amir's house 02/03/8 -> 6pm)
+**! Week 11 !** (Amir's house 19/03/21 -> 6pm)
 
 Record the video, 
 Sumarize issues and fix little bugs for the presentation
