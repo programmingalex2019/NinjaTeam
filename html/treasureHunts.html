@@ -60,7 +60,6 @@
                 let listOfTreasureHunts = jsonObject.treasureHunts; // the actual list from json containing the treasureHunts
 
                 /* logic */
-
                 for(let i = 0; i < listOfTreasureHunts.length; i++){ //iterating through each available treasure hunt
                     let listItem = document.createElement("div"); //creating a div depending on the current treasure hunt
 
@@ -81,6 +80,7 @@
             errorElement.innerText = "Please enter a Name";
         }
         else {
+
 
             let cookieName = readCookie("Name");
             let cookieSession = readCookie("Session");

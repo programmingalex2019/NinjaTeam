@@ -71,6 +71,7 @@ body .leaderboardContainer .scoresContainer .playerAchievements .playerRowTitleC
     border: 0.5px dotted red;
 }
 
+
 body .leaderboardContainer .scoresContainer .playerAchievements .playerRowTitleContainer .generatedRow .playerRow{
     width: 80%;
     flex: 1;
@@ -78,6 +79,46 @@ body .leaderboardContainer .scoresContainer .playerAchievements .playerRowTitleC
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+}
+
+body .leaderboardContainer .scoresContainer .playerAchievements .playerRowTitleContainer .generatedRow .playerRow #playerNameTitleContainer{
+    flex: 2;
+    display: flex;
+    width: 100%;
+}
+
+body .leaderboardContainer .scoresContainer .playerAchievements .playerRowTitleContainer .generatedRow .playerRow #playerNameTitleContainer p{
+    font-size: 3vh;
+    color: lightseagreen;
+}
+
+body .leaderboardContainer .scoresContainer .playerAchievements .playerRowTitleContainer .generatedRow .playerRow #timeScoreTitleContainer{
+    flex: 1;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 1vh;
+}
+
+body .leaderboardContainer .scoresContainer .playerAchievements .playerRowTitleContainer .generatedRow .playerRow #timeScoreTitleContainer p{
+    font-size: 3vh;
+    color: lightseagreen;
+}
+
+body .leaderboardContainer .scoresContainer .playerAchievements .playerRowTitleContainer .generatedRow .playerRow #playerNameContainer{
+    flex: 2;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+}
+
+body .leaderboardContainer .scoresContainer .playerAchievements .playerRowTitleContainer .generatedRow .playerRow #timeScoreContainer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    flex: 1;
 }
 
 body .leaderboardContainer .scoresContainer .playerAchievements .playerRowTitleContainer .generatedRow .playerTimeContainer{
@@ -155,12 +196,20 @@ body .leaderboardContainer .footer a:hover{
     }
 
     body .leaderboardContainer .scoresContainer .playerAchievements .playerRowTitleContainer .playerRowScore{
-        font-size: 2.5vh;
+        font-size: 2vh;
     }
-
 
     body .leaderboardContainer .scoresContainer .playerAchievements .playerRowTitleContainer p{
         font-size: 2.5vh;
+    }
+
+    body .leaderboardContainer .scoresContainer .playerAchievements .playerRowTitleContainer .generatedRow .playerRow #playerNameTitleContainer p{
+        font-size: 2.5vh;
+    }
+
+    body .leaderboardContainer .scoresContainer .playerAchievements .playerRowTitleContainer .generatedRow .playerRow #timeScoreTitleContainer p{
+        font-size: 2.5vh;
+        color: lightseagreen;
     }
 }
 

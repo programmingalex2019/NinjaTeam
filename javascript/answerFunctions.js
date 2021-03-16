@@ -33,6 +33,24 @@ let opts = {
     scanPeriod: 1
 };
 
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position => {
+            fetch("https://codecyprus.org/th/api/location?session="+ session + "&latitude=" + position.coords.latitude + "&longitude=" + position.coords.longitude)
+                .then(response => response.json())
+                .then(jsonObject => {
+                    console.log("latitude=" + position.coords.latitude + "longitude\n" + position.coords.longitude);
+                    console.log(jsonObject);
+                });
+        }));
+    }
+    else {
+        alert("Geolocation is not supported by your browser.");
+    }
+}
+
+setInterval(getLocation, 30000);
+
 //easier to set attributes //USED in questions.js
 function setAttributes(element, attributes) {
     Object.keys(attributes).forEach(function(name) {
@@ -131,6 +149,9 @@ function submitIntegerNumericText(value, session, requiresLocation){
             });
     }
 }
+
+
+
 
 function submitMultiAndBoolean(value, session) {
 

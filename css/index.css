@@ -240,7 +240,7 @@ main .m-section-3 .phone-wrapper .socialMediaTitle{
 }
 
 main .m-section-3 .phone-wrapper .socialMediaDescription{
-    flex: 2;
+    flex: 2.5;
     text-align: center;
     font-size: 2.8vh;
     display: flex;
@@ -248,15 +248,14 @@ main .m-section-3 .phone-wrapper .socialMediaDescription{
     justify-content: space-evenly;
     align-items: center;
     color: white;
-    padding: 10px;
-    /*border-top: 2px solid red;*/
+    padding: 1vh;
 }
 
 main .m-section-3 .phone-wrapper .socialMediaDescription img{
     display: block;
     width: 3vw;
     height: 6vh;
-    padding: 8px;
+    padding-top: 2vh;
 }
 main .m-section-3 .phone-wrapper .facebook-instagram-twitter{
     /*display: flex;*/
@@ -266,23 +265,23 @@ main .m-section-3 .phone-wrapper .facebook-instagram-twitter{
     display: none;
 }
 
-#twitter-widget-0 {height: 100% !important;}
+/*#twitter-widget-0 {height: 80% !important;}*/
 
 main  .m-section-3 .phone-wrapper .facebook-instagram-twitter img{
     display: none;
 }
 
 main .m-section-3 .phone-wrapper .socialMediaDescription p {
-    padding: 0 10px;
+    padding: 0 2px;
 }
 
 main .m-section-3 .phone-wrapper .twitter{
-    flex: 1.5;
+    flex: 2.5;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 1vh;
+    padding: 0 2vh 2vh 2vh;
 }
 
 main .m-section-3 .phone-wrapper .twitter .twitter-timeline .timeline-header, .timeline-footer{
@@ -376,9 +375,6 @@ footer .shuriken-f2{
         flex: 1;
     }
 }
-
-#twitter-widget-0 {height: 100% !important;}
-
 
 /* phones */
 @media only screen and (max-width: 600px) and (orientation: portrait) {

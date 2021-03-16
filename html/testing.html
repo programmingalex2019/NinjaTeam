@@ -20,8 +20,12 @@
             <div class="unitTestContainer">
                 <button type="submit" class="buttons-unit-testing" onclick="LeaderBoard()">Leader <br> Board</button>
             </div>
+            <div class="testingHeaders" id="testingHeader">
+                <h1>Before</h1>
+                <h1>Nielsen Applied</h1>
+                <h1>After</h1>
+            </div>
         </div>
-
         <div class="heuristics">
             <div class ="testContainerInitial" id="heuI">
 
@@ -30,13 +34,13 @@
 
             </div>
             <div class ="testContainerFeedback" id="heuF">
+                <h1 id="NielsenTitle" style="display: none">Nielsen Applied</h1>
                 <p id="heuristics1"></p>
                 <p id="heuristics2"></p>
                 <p id="heuristics3"></p>
                 <a href="https://twitter.com/Alex30295623/status/1369412434570735625"><p id="readMore"></p></a>
             </div>
             <div class ="testContainerChanges" id="heuC">
-<!--                <h1>Changes</h1>-->
                 <img id="changes">
             </div>
 
@@ -62,6 +66,8 @@
 
             function LeaderBoard(){
 
+                document.getElementById("testingHeader").style.display = "none";
+
                 let treasureHuntTableName = document.createElement("h2");
 
                 fetch("https://codecyprus.org/th/test-api/leaderboard?&hasPrize&size=5&sorted") //1 2 3
@@ -73,10 +79,10 @@
                         question.innerHTML = " ";
 
                         const leaderTable = document.createElement("table");
-
+                        leaderTable.setAttribute("class", "leaderboardTable");
                         let tableContain = "";
 
-                        leaderTable.innerHTML = "<tr><th>Player Name</th><th>Score</th></tr>";
+                        leaderTable.innerHTML = "<h1 style='color: grey; font-size: 4vh;font-weight: bold; text-align: center; width: 100%'>Leaderboard</h1>" + "</br>" + "<tr><th>Player Name</th><th>Score</th></tr>";
                         for (let i = 0; i < jsonObject.leaderboard.length; i++){
                             const entry = jsonObject.leaderboard[i];
                             const playerName = entry.player;
@@ -101,11 +107,16 @@
             function testSorted(scoresArray){
 
                 let testContainer = document.getElementById("unitTestLeader");
+
                 document.getElementById("heuF").style.display = "none";
                 document.getElementById("heuC").style.display = "none";
                 testContainer.innerHTML = " ";
                 testContainer.style.display = "flex";
 
+                let unitTestTitle = document.createElement("h1");
+                unitTestTitle.setAttribute("class", "unitTestTitle");
+                unitTestTitle.innerText = "Unit Tests";
+                testContainer.appendChild(unitTestTitle);
                 let sorted = true;
                 let current = Number.MAX_VALUE;
                 for(let i = 0; i < scoresArray.length; i++){
@@ -158,7 +169,9 @@
 
             function questionType(type){
 
-
+                if(window.innerWidth > 1024){
+                    document.getElementById("testingHeader").style.display = "flex";
+                }
 
                 let testContainer = document.getElementById("unitTestLeader");
                 document.getElementById("heuF").style.display = "flex";
@@ -170,15 +183,26 @@
                     .then(response => response.json())
                     .then(jsonObject => {
 
-                        question.innerHTML = jsonObject.questionText + "<br>";
+
+                        let title = document.createElement("h1");
+                        title.innerText = "Before";
+
+                        question.innerHTML = "<h1 class='beforeTitle'> Before </h1>" + "<br>" + jsonObject.questionText + "<br>";
                         buildUI(jsonObject);
 
                     });
             }
 
             function buildUI(jsonObject){
-                switch (jsonObject.questionType){
 
+                if(window.innerWidth < 1024){
+                    document.getElementById("NielsenTitle").style.display = "block";
+                }else{
+                    document.getElementById("NielsenTitle").style.display = "none";
+                }
+
+
+                switch (jsonObject.questionType){
                     case "INTEGER":
 
                         document.getElementById("changes").setAttribute("src", "../assets/testing/IntegerFix.PNG");

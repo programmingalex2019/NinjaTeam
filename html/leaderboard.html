@@ -40,7 +40,7 @@
 
         let scoresContainer = document.getElementById("playerRowTitleContainer");
 
-        fetch("https://codecyprus.org/th/api/leaderboard?session=" + session + "&sorted&limit=5")
+        fetch("https://codecyprus.org/th/api/leaderboard?session=" + session + "&sorted&limit=10")
             .then(response => response.json())
             .then(jsonObject => {
 
@@ -52,17 +52,26 @@
                 let playerDivRowTitle = document.createElement("div");
                 playerDivRowTitle.setAttribute("class", "playerRow");
 
+                let playerNameTitleContainer = document.createElement("div");
+                playerNameTitleContainer.setAttribute("id", "playerNameTitleContainer");
+
                 let playerNameTitle = document.createElement("p");
                 playerNameTitle.innerText = "Name";
-                playerNameTitle.style.color = "lightseagreen";
-                playerNameTitle.style.fontSize = "4vh";
+                let playerTimeTitle = document.createElement("p");
+                playerNameTitleContainer.appendChild(playerNameTitle);
+
+                let timeScoreTitleContainer = document.createElement("div");
+                timeScoreTitleContainer.setAttribute("id", "timeScoreTitleContainer");
+                playerTimeTitle.innerText = "Time(s) ";
+
                 let playerScoreTitle = document.createElement("p");
                 playerScoreTitle.innerText = "Score";
-                playerScoreTitle.style.color = "lightseagreen";
-                playerScoreTitle.style.fontSize = "4vh";
 
-                playerDivRowTitle.appendChild(playerNameTitle);
-                playerDivRowTitle.appendChild(playerScoreTitle);
+                timeScoreTitleContainer.appendChild(playerTimeTitle);
+                timeScoreTitleContainer.appendChild(playerScoreTitle);
+
+                playerDivRowTitle.appendChild(playerNameTitleContainer);
+                playerDivRowTitle.appendChild(timeScoreTitleContainer);
 
                 generatedRowTitle.appendChild(playerDivRowTitle)
 
@@ -77,28 +86,30 @@
                     playerDivRow.setAttribute("class", "playerRow");
                     let playerName = document.createElement("p");
                     let playerScore = document.createElement("p");
-
-                    playerName.innerHTML = jsonObject.leaderboard[i].player + ": ";
-                    playerScore.innerHTML = jsonObject.leaderboard[i].score + " points";
-
-
-                    let playerDivTime = document.createElement("div");
-                    playerDivTime.setAttribute("class", "playerTimeContainer");
-
                     let playerTime = document.createElement("p");
+
                     let seconds = parseInt(jsonObject.leaderboard[i].completionTime);
                     let dateObject = new Date(seconds);
 
-                    playerTime.innerHTML = "Completion Time: " + dateObject.getSeconds() + " seconds";
+                    playerName.innerHTML = jsonObject.leaderboard[i].player;
+                    playerScore.innerHTML = jsonObject.leaderboard[i].score;
+                    playerTime.innerHTML = dateObject.getSeconds();
                     playerTime.style.color = "lightseagreen";
-                    playerDivTime.appendChild(playerTime);
 
+                    let playerNameContainer = document.createElement("div");
+                    playerNameContainer.setAttribute("id", "playerNameContainer");
+                    playerNameContainer.appendChild(playerName);
 
-                    playerDivRow.appendChild(playerName);
-                    playerDivRow.appendChild(playerScore);
+                    let timeScore = document.createElement("div");
+                    timeScore.setAttribute("id", "timeScoreContainer");
+                    timeScore.appendChild(playerTime);
+                    timeScore.appendChild(playerScore);
+
+                    playerDivRow.appendChild(playerNameContainer);
+                    playerDivRow.appendChild(timeScore);
+
 
                     generatedRow.appendChild(playerDivRow);
-                    generatedRow.appendChild(playerDivTime);
                     scoresContainer.appendChild(generatedRow);
 
                 }
