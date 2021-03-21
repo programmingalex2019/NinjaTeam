@@ -9,33 +9,71 @@
     background-color: #252523;
 }
 /* whole page */
-
 body {
     display: flex;
     flex-direction: column;
-    height: 100vh; /* height of the whole device */
     width: 100vw;
     background-color: #181717;
 }
 
+/*Whole leaderboard container*/
 body .leaderboardContainer{
-    width: 100%;
-    height: 100%;
+    padding: 4vh;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-content: center;
 }
-
+/*Title section*/
 body .leaderboardContainer .leaderboardHeader{
     display: flex;
-    flex: 1;
+    flex: 2;
     justify-content: center;
     align-items: center;
     color: #f50b0e;
-    font-family: "AssassinNinja", sans-seri, serif;
+    font-family: "AssassinNinja", sans-serif, serif;
     font-size: 2.5vh;
 }
+/*Users results*/
+body .leaderboardContainer .refreshAndPlayerResult{
+    display: flex;
+    flex: 1;
+    width: 80%;
+    justify-content: space-evenly;
+    padding: 5vh;
+}
+/*Refresh button*/
+body .leaderboardContainer .refreshAndPlayerResult button{
+    height: 5vh;
+    width: 15%;
+    background-color: #343131;
+    text-align: center;
+    color: lightseagreen;
+    font-weight: bold;
+    font-size: 2vh;
+    border-radius: 3vh;
+    border: 2px solid red;
+}
+
+body .leaderboardContainer .refreshAndPlayerResult .results{
+    display: flex;
+    width: 80%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+body .leaderboardContainer .refreshAndPlayerResult .results h2{
+    color: #f50b0e;
+    font-family: "AssassinNinja", sans-serif, serif;
+    font-size: 3.5vh;
+}
+
+body .leaderboardContainer .refreshAndPlayerResult .results h1{
+    color: lightseagreen;
+    font-family: "AssassinNinja", sans-serif, serif;
+    font-size: 2.5vh;
+}
+/*Containers that will container all the players*/
 body .leaderboardContainer .scoresContainer{
     display: flex;
     flex-direction: column;
@@ -51,7 +89,7 @@ body .leaderboardContainer .scoresContainer .playerAchievements{
     flex-direction: column;
     align-items: center;
 }
-
+/*Title of the table*/
 body .leaderboardContainer .scoresContainer .playerAchievements .playerRowTitleContainer{
     width: 100%;
     flex: 1;
@@ -60,7 +98,7 @@ body .leaderboardContainer .scoresContainer .playerAchievements .playerRowTitleC
     align-items: center;
     justify-content: space-evenly;
 }
-
+/*Each generated row in the leaderboard*/
 body .leaderboardContainer .scoresContainer .playerAchievements .playerRowTitleContainer .generatedRow{
     display: flex;
     width: 60%;
@@ -70,8 +108,7 @@ body .leaderboardContainer .scoresContainer .playerAchievements .playerRowTitleC
     align-items: center;
     border: 0.5px dotted red;
 }
-
-
+/**/
 body .leaderboardContainer .scoresContainer .playerAchievements .playerRowTitleContainer .generatedRow .playerRow{
     width: 80%;
     flex: 1;
@@ -81,6 +118,7 @@ body .leaderboardContainer .scoresContainer .playerAchievements .playerRowTitleC
     justify-content: space-between;
 }
 
+/*Name title container*/
 body .leaderboardContainer .scoresContainer .playerAchievements .playerRowTitleContainer .generatedRow .playerRow #playerNameTitleContainer{
     flex: 2;
     display: flex;
@@ -91,7 +129,7 @@ body .leaderboardContainer .scoresContainer .playerAchievements .playerRowTitleC
     font-size: 3vh;
     color: lightseagreen;
 }
-
+/*Time and Score container of the row*/
 body .leaderboardContainer .scoresContainer .playerAchievements .playerRowTitleContainer .generatedRow .playerRow #timeScoreTitleContainer{
     flex: 1;
     display: flex;
@@ -141,15 +179,13 @@ body .leaderboardContainer .scoresContainer .playerAchievements .playerRowTitleC
 
 }
 
-
 body .leaderboardContainer .scoresContainer .playerAchievements .playerRowTitleContainer p{
     color: #f50b0e;
     font-size: 3.5vh;
     font-weight: bold;
     padding: 1%;
 }
-
-
+/*Footer section*/
 body .leaderboardContainer .footer{
     flex: 1;
     display: flex;
@@ -158,7 +194,7 @@ body .leaderboardContainer .footer{
     font-family: "AssassinNinja" , sans-serif;
     text-shadow: 3px 2px 3px black;
     font-size: 4vh;
-
+    padding: 4vh;
 }
 
 body .leaderboardContainer .footer a{
@@ -170,8 +206,55 @@ body .leaderboardContainer .footer a:hover{
     color: white;
 }
 
+/*Tablets and phones*/
 @media only screen and (max-width: 1024px) {
 
+    body .leaderboardContainer{
+        padding: 2vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-content: center;
+    }
+
+    body .leaderboardContainer .refreshAndPlayerResult{
+        display: flex;
+        flex: 1;
+        width: 100%;
+        justify-content: space-evenly;
+        padding: 5vh 0 5vh 0;
+    }
+
+    body .leaderboardContainer .refreshAndPlayerResult button{
+        height: 5vh;
+        width: 20vw;
+        background-color: #343131;
+        text-align: center;
+        color: lightseagreen;
+        font-weight: bold;
+        font-size: 1.8vh;
+        border-radius: 3vh;
+        border: 2px solid red;
+    }
+
+    body .leaderboardContainer .refreshAndPlayerResult .results{
+        display: flex;
+        width: 70%;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    body .leaderboardContainer .refreshAndPlayerResult .results h2{
+        color: #f50b0e;
+        font-family: "AssassinNinja", sans-serif, serif;
+        font-size: 2.5vh;
+    }
+
+    body .leaderboardContainer .refreshAndPlayerResult .results h1{
+        color: lightseagreen;
+        font-family: "AssassinNinja", sans-serif, serif;
+        font-size: 2vh;
+    }
 
 
     body .leaderboardContainer .scoresContainer .playerAchievements .playerRowTitleContainer{

@@ -10,7 +10,6 @@
     background-color: #252523;
 }
 /* whole page */
-
 body {
     display: flex;
     flex-direction: column;
@@ -31,9 +30,8 @@ body {
 }
 
 /* HEADER */
-
 .questionContent .header{
-    flex: 1;
+    flex: 0.5;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,7 +44,7 @@ body {
 }
 
 .header .shuriken img{ /* shuriken container img */
-    width: 10vh;
+    width: 8vh;
     animation-name: spin;
     animation-duration: 5000ms;
     animation-iteration-count: infinite;
@@ -73,8 +71,8 @@ body {
 }
 
 .header .header-inner-bg .header-img img{ /* ninja logo container img */
-    width: 15vh;
-    padding-top: 3vh;
+    width: 11vh;
+    /*padding-top: 1vh;*/
     display: block;
 }
 
@@ -111,8 +109,13 @@ body {
 .questionContent #questionContainer .questionContainerContent .upperRow{
     flex: 1;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
+}
+
+.questionContent #questionContainer .questionContainerContent .upperRow img{
+    padding-top: 2vh;
+    width: 8vh;
 }
 
 .questionContent #questionContainer .questionContainerContent .upperRow h1{
@@ -149,7 +152,6 @@ body {
 }
 
 /* ACTS FOR ALL TYPES OF QUESTIONS */
-
 .questionContent #questionContainer .questionContainerContent .upperRow #openCamera{
     /*border: 2px solid lightseagreen;*/
     color: lightseagreen;
@@ -192,7 +194,6 @@ body {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-
 }
 
 .questionContent #questionContainer .questionContainerContent .bottomRow .radioContainer .radioStyle{
@@ -297,7 +298,6 @@ body {
 
 
 /* The Close Button */
-
 .questionContent #questionContainer .modal .modal-content .close {
     color: #aaa;
     margin-left: 80%;
@@ -313,7 +313,6 @@ body {
 }
 
 /*MODAL CAMERA*/
-
 .questionContent #questionContainer .modalCamera {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -351,17 +350,13 @@ body {
     align-items: center;
 }
 
-
-
 .questionContent #questionContainer .modalCamera .modal-content-camera h1{
     text-align: center;
     color: #f50b0e;
     font-size: 7vh;
 }
 
-
 /* The Close Button */
-
 .questionContent #questionContainer .modalCamera .modal-content-camera .modal-wrapper-camera .exitCamera{
     width: 100%;
     display: flex;
@@ -398,8 +393,6 @@ body {
     text-decoration: none;
     cursor: pointer;
 }
-
-
 
 /* phones - tables */
 @media only screen and (max-width: 1024px) {
@@ -494,7 +487,6 @@ body {
 
 
     /*MODAL*/
-
     .questionContent #questionContainer .modal .modal-content h1 {
         font-size: 4vh;
     }
@@ -506,7 +498,6 @@ body {
         color: white;
         font-size: 3vh;
     }
-
 }
 
 

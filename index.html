@@ -18,9 +18,11 @@
 
             <!--middle header section-->
             <section class="header-inner-bg">
+                <!--Main logo section-->
                 <div class="header-img">
                     <img src="assets/base/ninjaLogo.png" alt="ninjaLogo">
                 </div>
+                <!--Main title section-->
                 <div class="header-text">
                     <h1>Treasure Hunt</h1>
                     <h2>Ninja Team</h2>
@@ -34,8 +36,12 @@
         </header>
     <!-- main section -->
         <main>
+            <!--Section one represents the members of Ninja Team-->
             <section class="m-section-1">
+                <!--phone wrapper used to change the design when displayed on the phone-->
                 <div class="phone-wrapper">
+                    <!--memberCard classes are left aligned containers-->
+                    <!--memberCardRight is aright aligned container-->
                     <div class="memberCard">
                         <img src="assets/avatars/FadiLogo.jpg" alt="Fadi" class="memberCardImg">
                         <div class="memberCardDescription">
@@ -58,43 +64,53 @@
                         </div>
                     </div>
                 </div>
+                <!--memberDescriptionPhone will be displayed for the phone devices only-->
                 <div class="memberDescriptionPhone">
                     <h1>Ninjas</h1>
                     <p>This Treasure Hunt Game was fully tested to provide you the best experience while playing. Press here to see how we were testing some parts of the game!</p>
                 </div>
             </section>
+            <!--Social media section -> represents the video filmed by ninja team-->
             <section class="m-section-2">
                 <iframe src="https://www.youtube.com/embed/HMcXHqrA54o" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </section>
+            <!--Extra social media section and the testing links-->
             <section class="m-section-3">
+                <!--Again phone wrapper used to change the design when displayed on the phone devices-->
                 <div class="phone-wrapper">
+                    <!--social Media Description includes the testing links-->
                     <div class="socialMediaDescription">
                         <p>This Treasure Hunt Game was fully tested to provide you the best experience while playing. Press here to see how we were testing some parts of the game</p>
-                        <img src="assets/socialMedia/testing.png" alt="settings" onclick="testingFunction()">
-
+                        <div class="testing-container">
+                            <img src="assets/socialMedia/testing.png" alt="settings" onclick="testingFunction()">
+                            <button type="button" class="UAT-button" onclick="uatFunction()">UAT</button>
+                        </div>
                     </div>
+                    <!--facebook-instagram-twitter is used only when on phone/tables devices-->
+                    <!--Named facebook-instagram-twitter since in plan to implement facebook and instagram in the future (currently only twitter)-->
                     <div class="facebook-instagram-twitter">
                         <img src="assets/socialMedia/twitter.png" alt="twitter" onclick="TwitterFunction()">
+                        <button type="button" class="UAT-button" onclick="uatFunction()">UAT</button>
                         <img src="assets/socialMedia/testing.png" alt="settings" onclick="testingFunction()">
                     </div>
+                    <!--When on desktop an embed twitter widget used to display twitter feed-->
                     <div class="twitter">
                         <a class="twitter-timeline" data-theme="dark" data-chrome="nofooter" data-tweet-limit="1" href="https://twitter.com/Alex30295623?ref_src=twsrc%5Etfw"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                     </div>
                 </div>
             </section>
         </main>
-    <!-- bottom section -->
+        <!-- footer section -->
         <footer>
             <section class="footer-inner-bg">
                 <img src="assets/base/Shuriken.png" alt="shuriken" class="shuriken-f1">
-                <h1 id="startTreasureHunt">Start Treasure Hunt</h1>
+                <h1 id="startTreasureHunt">Start Treasure Hunt</h1> <!--On click takes the used to the treasure Hunt selection-->
                 <img src="assets/base/Shuriken.png" alt="shuriken" class="shuriken-f2">
             </section>
         </footer>
     
         <script>
-            //since a tag does not display the text on the mobile version
-            //a custom function was implemented bellow.
+
             document.getElementById("startTreasureHunt").onclick = function() { myFunction()};
 
             function myFunction() {
@@ -106,6 +122,10 @@
 
             function testingFunction(){
                 window.location.href = "html/testing.html";
+            }
+
+            function uatFunction() {
+                window.location.href = "html/UAT.html";
             }
 
         </script>

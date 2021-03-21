@@ -25,7 +25,6 @@ a {
 }
 
 /* header section */
-
 header{
     background-color: #252523;
     flex: 2;
@@ -162,6 +161,7 @@ main .m-section-1 img{ /* for all images in the section 2 */
     margin: 0 10px;
 }
 
+/*Member section design*/
 main .m-section-1 .memberSectionTitle{
     flex: 1;
     display: flex;
@@ -199,6 +199,7 @@ main .m-section-1 .memberCardRight .memberCardDescriptionRight h1{
     color: lightseagreen;
 }
 
+/*Section that includes the video*/
 main .m-section-2{
     margin: 0 10px;
     display: flex;
@@ -213,6 +214,7 @@ main .m-section-2 iframe{
     width: 100% !important;
 }
 
+/*Social media and Testing section*/
 main .m-section-3{
     display: flex;
     margin-right: 10px;
@@ -251,11 +253,31 @@ main .m-section-3 .phone-wrapper .socialMediaDescription{
     padding: 1vh;
 }
 
-main .m-section-3 .phone-wrapper .socialMediaDescription img{
+main .m-section-3 .phone-wrapper .socialMediaDescription .testing-container{
+    display: flex;
+    width: 90%;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-top: 2vh;
+}
+
+main .m-section-3 .phone-wrapper .socialMediaDescription .testing-container .UAT-button{
+    width: 20%;
+    height: 5vh;
+    background-color: #343131;
+    text-align: center;
+    color: lightseagreen;
+    font-weight: bold;
+    font-size: 2vh;
+    border-radius: 5vh;
+    border: 2px solid lightseagreen;
+}
+
+main .m-section-3 .phone-wrapper .socialMediaDescription .testing-container img{
     display: block;
     width: 3vw;
     height: 6vh;
-    padding-top: 2vh;
+
 }
 main .m-section-3 .phone-wrapper .facebook-instagram-twitter{
     /*display: flex;*/
@@ -289,7 +311,6 @@ main .m-section-3 .phone-wrapper .twitter .twitter-timeline .timeline-header, .t
 }
 
 /* footer section */
-
 footer{
     background-color: #252523;
     flex: 0.5;
@@ -302,7 +323,6 @@ footer{
     padding-top: 30px;
 
 }
-
 
 footer .footer-inner-bg{
     background-color: #252523;
@@ -335,7 +355,7 @@ footer .shuriken-f1{
     animation-iteration-count: infinite;
     animation-timing-function: linear;
 }
-
+/*Spin shuriken*/
 @keyframes spin {
     from {
         transform:rotate(0deg);
@@ -344,7 +364,6 @@ footer .shuriken-f1{
         transform:rotate(360deg);
     }
 }
-
 
 footer .shuriken-f2{
     text-align: center;
@@ -366,7 +385,7 @@ footer .shuriken-f2{
     }
 }
 
-/* phones */
+/* big screens */
 @media only screen and (max-width: 3000px){
     main{
         flex: 4;
@@ -380,7 +399,6 @@ footer .shuriken-f2{
 @media only screen and (max-width: 600px) and (orientation: portrait) {
 
     /* header section */
-
     header{
         flex: 3;
     }
@@ -399,7 +417,6 @@ footer .shuriken-f2{
 
     header .shuriken img{
         display: none;
-
     }
 
     header .header-inner-bg .header-text{
@@ -416,12 +433,10 @@ footer .shuriken-f2{
     }
 
     /* main section */
-
     main{
         flex-direction: column;
         flex: 9;
         margin: 0 10px 0 10px;
-
     }
 
     main section{
@@ -437,9 +452,7 @@ footer .shuriken-f2{
     main .m-section-1{
         flex: 4;
         flex-direction: column;
-        /*margin: 10px 0;*/
         display: flex;
-
     }
 
     main .m-section-1 .phone-wrapper{
@@ -458,7 +471,6 @@ footer .shuriken-f2{
         height: 180px;
         display: flex;
         flex-direction: column;
-        /*font-family: "AssassinNinja" , sans-serif;*/
     }
 
     main .m-section-1 .memberDescriptionPhone h1{
@@ -499,7 +511,6 @@ footer .shuriken-f2{
         display: none;
     }
 
-
     main .m-section-2{
         margin: 0;
         display: flex;
@@ -507,7 +518,6 @@ footer .shuriken-f2{
         padding: 11px;
         border: 2px solid red;
         background-color: #252523;
-
     }
 
     main .m-section-3{
@@ -533,6 +543,19 @@ footer .shuriken-f2{
         align-items: center;
     }
 
+    main  .m-section-3 .phone-wrapper .facebook-instagram-twitter .UAT-button{
+        width: 20%;
+        height: 5vh;
+        background-color: #343131;
+        text-align: center;
+        color: lightseagreen;
+        font-weight: bold;
+        font-size: 2vh;
+        border-radius: 5vh;
+        border: 2px solid lightseagreen;
+
+    }
+
     main  .m-section-3 .phone-wrapper .facebook-instagram-twitter .testing{
         font-family: sans-serif;
         text-shadow: 3px 2px 3px black;
@@ -546,7 +569,6 @@ footer .shuriken-f2{
     }
 
     /* footer section */
-
     footer{
         flex: 1;
     }
@@ -566,20 +588,15 @@ footer .shuriken-f2{
     footer .shuriken-f2{
         display: none;
     }
-
-
-
 }
 
 /* tablets */
 @media only screen and (max-width: 1300px) and (min-width: 600px){
 
     /* header section */
-
     header{
         flex: 3;
         margin: 10px 10px -10px 10px;
-
     }
 
     header .header-inner-bg{
@@ -592,7 +609,6 @@ footer .shuriken-f2{
 
     header .header-inner-bg .header-img img{
         width: 50%;
-
     }
 
     header .header-inner-bg .header-text h1{
@@ -604,7 +620,6 @@ footer .shuriken-f2{
     }
 
     /* main section */
-
     main{
         flex-direction: column;
         flex: 9;
@@ -647,7 +662,6 @@ footer .shuriken-f2{
         height: 180px;
         display: flex;
         flex-direction: column;
-        /*margin-top: 10px;*/
     }
 
     main .m-section-1 .memberDescriptionPhone h1{
@@ -740,7 +754,6 @@ footer .shuriken-f2{
     }
 
     /* footer section */
-
     footer{
         flex: 1;
     }
@@ -756,7 +769,6 @@ footer .shuriken-f2{
     footer .shuriken-f2{
         display: none;
     }
-
     /* main inner content container manipulation */
 }
 

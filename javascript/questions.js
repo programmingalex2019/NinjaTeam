@@ -88,7 +88,7 @@ window.onclick = function(event) {
 function buildUI(jsonObject){
 
     if(jsonObject.completed === true){
-        window.location.href = 'leaderboard.html?session=' + session; //switch to leaderboard screen
+        window.location.href = 'leaderboard.html?session=' + session + "&score="; //switch to leaderboard screen
     }else{
 
         //Current Question Number
@@ -193,33 +193,10 @@ function buildUI(jsonObject){
             case "MCQ":
 
                 console.log(jsonObject); //for debugging
-
                 //CAMERA not displayed for BOOLEAN AND MCQ
                 document.getElementById("openCamera").style.display = "none";
-
                 middleRowJS.style.flexDirection = "column";
 
-                let multiQuestionSelectionContainer = document.createElement("div");
-                setAttributes(multiQuestionSelectionContainer, {class: "multiQuestionSelectionContainer"});
-
-                let multiQuestionAnswerA= document.createElement("p");
-                multiQuestionAnswerA.innerText = "A answer";
-
-                let multiQuestionAnswerB= document.createElement("p");
-                multiQuestionAnswerB.innerText = "B answer";
-
-                let multiQuestionAnswerC= document.createElement("p");
-                multiQuestionAnswerC.innerText = "C answer";
-
-                let multiQuestionAnswerD= document.createElement("p");
-                multiQuestionAnswerD.innerText = "D answer";
-
-                multiQuestionSelectionContainer.appendChild(multiQuestionAnswerA);
-                multiQuestionSelectionContainer.appendChild(multiQuestionAnswerB);
-                multiQuestionSelectionContainer.appendChild(multiQuestionAnswerC);
-                multiQuestionSelectionContainer.appendChild(multiQuestionAnswerD);
-
-                middleRowJS.appendChild(multiQuestionSelectionContainer);
 
                 let multiContainer = document.createElement("div");
                 setAttributes(multiContainer, {class: "multiContainer"});

@@ -5,93 +5,73 @@
     <title>Questions</title>
     <link rel="stylesheet" href="../css/questions.css">
     <link rel="shortcut icon" type="image/x-icon" href="../assets/base/ninjaLogo.png"/>
-    <script type="text/javascript" src="../javascript/instascan.min.js"></script>
+    <script type="text/javascript" src="../javascript/instascan.min.js"></script> <!--Script that opens the camera and scans a QR code-->
+
 </head>
-<body>
+    <body>
 
-    <div class="questionContent">
+        <div class="questionContent">
+            <!--container that will show feedback whether answer correct or wrong-->
+            <div class="answerFeedback">
+                <p id="answerFeedbackP"></p>
+            </div>
 
-        <div class="header">
-
-            <!--left shuriken-->
-            <section class="shuriken">
-                <img src="../assets/base/Shuriken.png" alt="shuriken">
-            </section>
-
-            <!--middle header section-->
-            <section class="header-inner-bg">
-                <div class="header-img">
-                    <img src="../assets/base/ninjaLogo.png" alt="ninjaLogo">
-                </div>
-            </section>
-
-            <!--right shuriken-->
-            <section class="shuriken">
-                <img src="../assets/base/Shuriken.png" alt="shuriken">
-            </section>
-
-        </div>
-
-        <div class="answerFeedback">
-            <p id="answerFeedbackP"></p>
-        </div>
-
-        <div id="questionContainer">
-
-            <div id="myModal" class="modal">
-
-                <!-- Modal content -->
-                <div class="modal-content">
-                    <div class="modal-wrapper">
-                        <span class="close">&times;</span>
-                        <div class="confirmQuestion">
-                            <h1>Are you sure?</h1>
-                        </div>
-                        <div class="confirmButtons">
-                            <button id="myBtnYes" onclick="setToYes()">Yes</button>
-                            <button id="myBtnNo" onclick="setToNo()">No</button>
+            <div id="questionContainer">
+                <!--Modal hidden container that will pop up if user chooses to skip question-->
+                <div id="myModal" class="modal">
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <div class="modal-wrapper">
+                            <!--User is asked if sure or not-->
+                            <span class="close">&times;</span> <!--Ability to close by X span-->
+                            <div class="confirmQuestion">
+                                <h1>Are you sure?</h1>
+                            </div>
+                            <!--Confirmation buttons-->
+                            <div class="confirmButtons">
+                                <button id="myBtnYes" onclick="setToYes()">Yes</button>
+                                <button id="myBtnNo" onclick="setToNo()">No</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div id="myModalCamera" class="modalCamera">
-                <div class="modal-content-camera">
-                    <div class="modal-wrapper-camera">
-                        <div class="exitCamera"><span class="close-camera">&times;</span></div>
-                        <video id="preview"></video>
-                        <div class="switchCameraContainer"><span class="switch-camera">↺</span></div>
+                <!--Camera is implemented in the same manner as confirmation modal-->
+                <div id="myModalCamera" class="modalCamera">
+                    <div class="modal-content-camera">
+                        <div class="modal-wrapper-camera">
+                            <!--Span to close the camera modal-->
+                            <div class="exitCamera"><span class="close-camera">&times;</span></div>
+                            <video id="preview"></video> <!--Will stream the user camera-->
+                            <!--Switch camera will work only if the user has a back camera-->
+                            <div class="switchCameraContainer"><span class="switch-camera">↺</span></div>
+                        </div>
                     </div>
                 </div>
+
+                <!--The fetched questions-->
+                <section class="questionContainerContent">
+                    <div class="upperRow">
+                        <!--Changes depending on the current question-->
+                        <h1 id="questionNumberJS">Question: </h1>
+                        <!--Opens camera modal-->
+                        <img src="../assets/base/camera.png" onclick="openCamera()" id="openCamera" alt="scan">
+                        <!--Changes depending on the current score of the treasure hunt-->
+                        <h1 id="currentScoreJS">Score: </h1>
+                    </div>
+                    <!--Section that is being modified depending on the question type-->
+                    <div class="middleRow" id="middleRowJS">
+                        <p class="question" id="questionContentJS"></p>
+                    </div>
+                    <!--Container Input section/Submit and Skip if question allows to skip-->
+                    <div class="bottomRow" id="inputSectionJS"></div>
+                </section>
             </div>
-
-            <section class="questionContainerContent">
-                <div class="upperRow">
-                    <h1 id="questionNumberJS">Question: </h1>
-                    <h1 id="openCamera" onclick="openCamera()">Scan</h1>
-<!--                    <button type="button" onclick="openCamera()" id="openCamera">Scan</button>-->
-                    <h1 id="currentScoreJS">Score: </h1>
-                </div>
-
-                <div class="middleRow" id="middleRowJS">
-                    <p class="question" id="questionContentJS">
-
-                    </p>
-                </div>
-
-                <div class="bottomRow" id="inputSectionJS">
-
-                </div>
-            </section>
-
-
         </div>
 
+        <!--Script functionalities of the questions page-->
+        <script src="../javascript/answerFunctions.js"></script>
+        <script src="../javascript/questions.js"></script>
 
-    </div>
-
-    <script src="../javascript/answerFunctions.js"></script>
-    <script src="../javascript/questions.js"></script>
-
-</body>
+    </body>
 </html>

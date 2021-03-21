@@ -65,6 +65,7 @@ function fetchCurrentScore(element, session){
         .then(jsonObject => {
             element.innerText = "Score:  " + jsonObject.score;
         });
+
 }
 
 //when questions allows to skip
@@ -126,6 +127,7 @@ function submitIntegerNumericText(value, session, requiresLocation){
                                         document.getElementById("answerFeedbackP").style.textAlign = "center";
                                         document.getElementById("answerFeedbackP").innerText = jsonObject.message;
                                     }
+                                    fetchCurrentScore(questionScoreJS, session);
                                     document.getElementById("answerFeedbackP").innerText = jsonObject.message;
                                 }
                             });
@@ -143,6 +145,7 @@ function submitIntegerNumericText(value, session, requiresLocation){
                     document.getElementById("answerFeedbackP").innerText = jsonObject.message;
                     location.reload();
                 }else{
+                    fetchCurrentScore(questionScoreJS, session);
                     document.getElementById("answerFeedbackP").innerText = jsonObject.message;
                 }
                 console.log(jsonObject);
@@ -178,6 +181,7 @@ function submitMultiAndBoolean(value, session) {
                                             document.getElementById("answerFeedbackP").innerHtml = jsonObject.message;
                                             location.reload();
                                         }else{
+                                            fetchCurrentScore(questionScoreJS, session);
                                             document.getElementById("answerFeedbackP").innerHTML = jsonObject.message;
                                         }
                                     });
@@ -203,6 +207,7 @@ function submitMultiAndBoolean(value, session) {
                             document.getElementById("answerFeedbackP").innerText = jsonObject.message;
                             location.reload();
                         }else{
+                            fetchCurrentScore(questionScoreJS, session);
                             document.getElementById("answerFeedbackP").innerText = jsonObject.message;
                         }
                     });

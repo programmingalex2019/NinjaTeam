@@ -1,136 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Geolocation</title>
-    <link rel="stylesheet" href="../css/treasureHunts.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="../assets/base/ninjaLogo.png"/>
+    <head>
+        <meta charset="UTF-8">
+        <title>NinjaTreasureHunt</title>
+        <link rel="stylesheet" href="../css/treasureHunts.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" type="image/x-icon" href="../assets/base/ninjaLogo.png"/> <!--To be displayed in the browser tab-->
+    </head>
+    <body>
 
-</head>
-<body>
+        <!--Form section that includes a logo and an input field-->
+        <section class="form-section">
+            <!--Left shuriken only for PC-->
+            <section class="shuriken">
+                <img src="../assets/base/Shuriken.png" alt="ninja logo">
+            </section>
 
-<section class="form-section">
+            <!--Ninja logo-->
+            <section class="ninja-logo">
+                <img src="../assets/base/ninjaLogo.png" alt="ninja logo">
+            </section>
+            <!--Form is not submitted when user clicks enter-->
+            <form id="form" onkeydown="return event.key !== 'Enter';">
+                <!--Input section-->
+                <div class="name-input">
+                    <div class="label-text"><h1>Name</h1></div>
+                    <!--Autocompletion off-->
+                    <label for="name"></label><input id="name" name="name" type="text" autocomplete="off" required>
+                    <!--Error section used to display errors that come from the API-->
+                    <div id="error-message"><h1></h1></div>
+                </div>
+            </form>
 
-    <section class="shuriken">
-        <img src="../assets/base/Shuriken.png" alt="ninja logo">
-    </section>
-    <section class="ninja-logo">
-        <img src="../assets/base/ninjaLogo.png" alt="ninja logo">
-    </section>
-    <form id="form" onkeydown="return event.key !== 'Enter';">
-        <div class="name-input">
-            <div class="label-text"><h1>Name</h1></div>
-            <label for="name"></label><input id="name" name="name" type="text" autocomplete="off" required>
-            <div id="error-message"><h1></h1></div>
-        </div>
-    </form>
+            <!--Right shuriken only for PC-->
+            <section class="shuriken">
+                <img src="../assets/base/Shuriken.png" alt="ninja logo">
+            </section>
+        </section>
 
-    <section class="shuriken">
-        <img src="../assets/base/Shuriken.png" alt="ninja logo">
-    </section>
-
-</section>
-
-<section class="treasure-hunts-section">
-
-
-    <div id="generated-api-hunts">
-
-    </div>
-
-
-</section>
-
-
-
-<script>
-
-    const name = document.getElementById('name');
-    const errorElement = document.getElementById("error-message");
-
-    function fetchTreasureHunts() {
-
-        //fetching treasureHunts from the API
-        fetch("https://codecyprus.org/th/api/list")
-            .then(response => response.json()) // taking the json from the response
-            .then(jsonObject => { //awaited ready to use json
-
-                let myList = document.getElementById("generated-api-hunts"); //flexible div that will contain treasure hunts divs
-                let listOfTreasureHunts = jsonObject.treasureHunts; // the actual list from json containing the treasureHunts
-
-                /* logic */
-                for(let i = 0; i < listOfTreasureHunts.length; i++){ //iterating through each available treasure hunt
-                    let listItem = document.createElement("div"); //creating a div depending on the current treasure hunt
-
-                    // the div will contain a button which will have an id of the current treasure hunt -> that id will go into on click function -> which can be manipulated
-                    listItem.innerHTML = "<button type=submit class=treasure onclick='startTreasureHunt(id)' id=" + listOfTreasureHunts[i].uuid +">" + "<h1>" + listOfTreasureHunts[i].name + "</h1>" + "</button";
-                    myList.appendChild(listItem); //populating the buttons into the divs
-                }
-            });
-    }
-
-    fetchTreasureHunts();
-
-    function startTreasureHunt(uid){
-
-        errorElement.innerText = "";
-
-        if(name.value.length === 0){
-            errorElement.innerText = "Please enter a Name";
-        }
-        else {
-
-
-            let cookieName = readCookie("Name");
-            let cookieSession = readCookie("Session");
-
-            if(name.value === cookieName){
-                window.location.href = 'questions.html?session=' + cookieSession;
-            }else{
-                let callURL = "https://codecyprus.org/th/api/start" + "?player="
-                    + name.value + "&app=" + "NinjaTeam" + "&treasure-hunt-id=" + uid;
-                fetch(callURL)
-                    .then(response => response.json())
-                    .then(jsonObject => {
-
-                        console.log(jsonObject);
-                        if(jsonObject.status === "ERROR"){
-                            errorElement.innerText = jsonObject.errorMessages[0];
-                        }
-                        else {
-
-                            setCookie("Name", name.value, 360);
-                            setCookie("Session", jsonObject.session, 360);
-
-                            window.location.href = 'questions.html?session=' + jsonObject.session;
-                        }
-                    });
-            }
-        }
-    }
-
-    function readCookie(name) {
-        let nameEQ = name + "=";
-        let ca = document.cookie.split(';');
-        for(let i = 0;i < ca.length;i++) {
-            let c = ca[i];
-            while (c.charAt(0) === ' ') c = c.substring(1,c.length);
-            if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length,c.length);
-        }
-        return null;
-    }
-
-    function setCookie(cookieName, cookieValue, expireDays) {
-        let date = new Date();
-        date.setTime(date.getTime() + (expireDays * 24 * 60 * 60 * 1000));
-        let expires = "expires=" + date.toUTCString();
-        document.cookie = cookieName + "=" + cookieValue + ";" + expires + ";path=/";
-    }
-
-
-
-</script>
-
-</body>
+        <!--Using flex treasure-hunts-section displays the available treasure hunt which are clickable-->
+        <section class="treasure-hunts-section">
+            <div id="generated-api-hunts"></div>
+        </section>
+        <!--Script Requires to be at the end of body, to access manipulate DOM elements after generated-->
+        <script type="text/javascript" src="../javascript/treasureHunts.js"></script>
+    </body>
 </html>

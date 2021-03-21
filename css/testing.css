@@ -71,6 +71,20 @@ main .display .elements{
      font-size: 3vh;
      border: 2px solid red;
  }
+footer .buttons-heuristics-indicate{
+    text-align: center;
+    color: #f50b0e;
+    font-weight: bold;
+    font-size: 2.5vh;
+}
+
+footer .buttons-unit-testing-indicate{
+    text-align: center;
+    color: lightseagreen;
+    font-weight: bold;
+    font-size: 2.5vh;
+}
+
 
 main .display .unitTestContainer{
     width: 100%;
@@ -97,6 +111,7 @@ main .display .unitTestContainer .buttons-unit-testing{
      display: flex;
      align-items: center;
      justify-content: space-evenly;
+     border-bottom: 2px dotted grey;
  }
 
 main .heuristics .unitTest{
@@ -413,6 +428,21 @@ footer .shuriken-f2{
 
     footer{
         flex: 0.5;
+    }
+    footer .buttons-heuristics-indicate{
+        width: 30%;
+        text-align: center;
+        color: #f50b0e;
+        font-weight: bold;
+        font-size: 1.8vh;
+    }
+
+    footer .buttons-unit-testing-indicate{
+        text-align: center;
+        color: lightseagreen;
+        font-weight: bold;
+        font-size: 1.8vh;
+        width: 30%;
     }
 
 }

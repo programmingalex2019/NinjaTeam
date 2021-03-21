@@ -7,117 +7,36 @@
     <link rel="shortcut icon" type="image/x-icon" href="../assets/base/ninjaLogo.png"/>
 
 </head>
-<body>
-
-    <div class="leaderboardContainer" id="leaderboardContainer">
-
-        <div class="leaderboardHeader">
-
-            <h1 class="leaderboardTitle">Leaderboard</h1>
-
-        </div>
-
-        <div class="scoresContainer" id="scoresContainer">
-            <div class="playerAchievements">
-                <div class="playerRowTitleContainer" id="playerRowTitleContainer">
-
-                </div>
+    <body>
+        <!--Leaderboard-->
+        <div class="leaderboardContainer" id="leaderboardContainer">
+            <!--Leaderboard Title-->
+            <div class="leaderboardHeader">
+                <h1 class="leaderboardTitle">Leaderboard</h1>
             </div>
 
+            <!--Container that will users score and name, also refresh button-->
+            <div class="refreshAndPlayerResult">
+                <div class="results">
+                    <h2>Your Results: </h2>
+                    <h1 id="playerName"></h1>
+                    <h1 id="playerScore"></h1>
+                </div>
+                <!--Refreshes the page-->
+                <button type="button" onclick="refresh()">Refresh</button>
+            </div>
+            <!--Leaderboard table with generated rows dependant on UI-->
+            <div class="scoresContainer" id="scoresContainer">
+                <div class="playerAchievements">
+                    <div class="playerRowTitleContainer" id="playerRowTitleContainer"></div>
+                </div>
+            </div>
+            <!--Takes user back home-->
+            <div class="footer">
+                <a href="../index.html">Home</a>
+            </div>
         </div>
-
-        <div class="footer">
-            <a href="../index.html">Home</a>
-        </div>
-
-    </div>
-
-
-    <script>
-
-        let ref = new URLSearchParams(window.location.search);
-        let session = ref.get("session");
-
-        let scoresContainer = document.getElementById("playerRowTitleContainer");
-
-        fetch("https://codecyprus.org/th/api/leaderboard?session=" + session + "&sorted&limit=10")
-            .then(response => response.json())
-            .then(jsonObject => {
-
-                console.log(jsonObject);
-
-                let generatedRowTitle = document.createElement("div");
-                generatedRowTitle.setAttribute("class", "generatedRow");
-
-                let playerDivRowTitle = document.createElement("div");
-                playerDivRowTitle.setAttribute("class", "playerRow");
-
-                let playerNameTitleContainer = document.createElement("div");
-                playerNameTitleContainer.setAttribute("id", "playerNameTitleContainer");
-
-                let playerNameTitle = document.createElement("p");
-                playerNameTitle.innerText = "Name";
-                let playerTimeTitle = document.createElement("p");
-                playerNameTitleContainer.appendChild(playerNameTitle);
-
-                let timeScoreTitleContainer = document.createElement("div");
-                timeScoreTitleContainer.setAttribute("id", "timeScoreTitleContainer");
-                playerTimeTitle.innerText = "Time(s) ";
-
-                let playerScoreTitle = document.createElement("p");
-                playerScoreTitle.innerText = "Score";
-
-                timeScoreTitleContainer.appendChild(playerTimeTitle);
-                timeScoreTitleContainer.appendChild(playerScoreTitle);
-
-                playerDivRowTitle.appendChild(playerNameTitleContainer);
-                playerDivRowTitle.appendChild(timeScoreTitleContainer);
-
-                generatedRowTitle.appendChild(playerDivRowTitle)
-
-                scoresContainer.appendChild(generatedRowTitle);
-
-                for(let i = 0; i < jsonObject.limit; i++){
-
-                    let generatedRow = document.createElement("div");
-                    generatedRow.setAttribute("class", "generatedRow");
-
-                    let playerDivRow = document.createElement("div");
-                    playerDivRow.setAttribute("class", "playerRow");
-                    let playerName = document.createElement("p");
-                    let playerScore = document.createElement("p");
-                    let playerTime = document.createElement("p");
-
-                    let seconds = parseInt(jsonObject.leaderboard[i].completionTime);
-                    let dateObject = new Date(seconds);
-
-                    playerName.innerHTML = jsonObject.leaderboard[i].player;
-                    playerScore.innerHTML = jsonObject.leaderboard[i].score;
-                    playerTime.innerHTML = dateObject.getSeconds();
-                    playerTime.style.color = "lightseagreen";
-
-                    let playerNameContainer = document.createElement("div");
-                    playerNameContainer.setAttribute("id", "playerNameContainer");
-                    playerNameContainer.appendChild(playerName);
-
-                    let timeScore = document.createElement("div");
-                    timeScore.setAttribute("id", "timeScoreContainer");
-                    timeScore.appendChild(playerTime);
-                    timeScore.appendChild(playerScore);
-
-                    playerDivRow.appendChild(playerNameContainer);
-                    playerDivRow.appendChild(timeScore);
-
-
-                    generatedRow.appendChild(playerDivRow);
-                    scoresContainer.appendChild(generatedRow);
-
-                }
-            });
-
-
-
-    </script>
-
-</body>
+        <!--Leaderboard Logic-->
+        <script src="../javascript/leaderboard.js"></script>
+    </body>
 </html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UAT</title>
+    <link rel="stylesheet" href="../css/UAT.css">
+</head>
+    <body>
+        <!--Title of the page-->
+        <div class="headerContainer">
+            <h1 class="title">User Testing</h1>
+        </div>
+        <!--Container that holds the testing table-->
+        <div class="tests">
+            <!--Table that holds the specific user testing cases-->
+            <table class="testsTable">
+                <!--Table headers-->
+                <tr>
+                    <th>ID</th>
+                    <th>Case</th>
+                    <th>Tester</th>
+                    <th>Result</th>
+                    <th>Date</th>
+                </tr>
+                <!--Tables data-->
+                <!--the class passed and failed display specific UI-->
+                <tr>
+                    <td>1</td>
+                    <td>Starting Treasure Hunt</td>
+                    <td>Pila Bassil</td>
+                    <td class="passed">Passed</td>
+                    <td>11/03/2021</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Scanning QR code</td>
+                    <td>Alex</td>
+                    <td class="passed">Passed</td>
+                    <td>13/03/2021</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Answer with geolocation</td>
+                    <td>Philip</td>
+                    <td class="passed">Passed</td>
+                    <td>15/03/2021</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Switching camera on PC</td>
+                    <td>Natalia</td>
+                    <td class="failed">Failed</td>
+                    <td>16/03/2021</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Accessing Twitter page</td>
+                    <td>Bambos</td>
+                    <td class="passed">Passed</td>
+                    <td>16/03/2021</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Refreshing Leaderboard</td>
+                    <td>Denise</td>
+                    <td class="passed">Passed</td>
+                    <td>18/03/2021</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Playing the landing video</td>
+                    <td>Felicia</td>
+                    <td class="passed">Passed</td>
+                    <td>20/03/2021</td>
+                </tr>
+            </table>
+        </div>
+        <!--Footer-->
+        <div class="footerContainer">
+            <h1 class="title" onclick="home()">Home</h1>
+        </div>
+        <!--Simple script that takes user back home when home clicked in footer-->
+        <script>
+            function home() {
+                window.location.href = "../index.html";
+            }
+        </script>
+    </body>
+</html>
