@@ -119,3 +119,13 @@ Record the video,
 Sumarize issues and fix little bugs for the presentation
 Alex add Nielson's 10 rules document to twitter and redirect from website,
 Fadi and Alex implement the testing of the leaderboard.
+
+**! Week 12 !** (22/03/21 -> 6pm)
+
+Final Commit -> Alex worked on the User Acceptance testing 
+Fadi worked on the commenting of the CSS style, 
+The commit from Amir did not work so -> Alex pushed instead, 
+
+It's been an interesting Journey !!!
+
+Thank you 
