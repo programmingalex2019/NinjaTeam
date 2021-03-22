@@ -35,7 +35,7 @@ header{
     border: 2px solid red;
     margin: 10px 10px 0 10px;
 }
-
+/*shuriken design*/
 header .shuriken{ /* for left and right shuriken container of the header */
     flex: 1;
     text-align: center;
@@ -49,7 +49,7 @@ header .shuriken img{ /* shuriken container img */
     animation-iteration-count: infinite;
     animation-timing-function: linear;
 }
-
+/*spinning of the shurikens*/
 @keyframes spin {
     from {
         transform:rotate(0deg);
@@ -58,7 +58,7 @@ header .shuriken img{ /* shuriken container img */
         transform:rotate(360deg);
     }
 }
-
+/* center container that will display ninjaLogo and text */
 header .header-inner-bg{ /* center container that will display ninjaLogo and text */
     background-color: #252523;
     width: 60%;
@@ -68,7 +68,7 @@ header .header-inner-bg{ /* center container that will display ninjaLogo and tex
     justify-content: space-around;
     align-items: center;
 }
-
+/* ninja logo container */
 header .header-inner-bg .header-img{ /* ninja logo container */
     flex: 2;
     order: 1;
@@ -76,14 +76,14 @@ header .header-inner-bg .header-img{ /* ninja logo container */
     display: flex;
     justify-content: center;
 }
-
+/* ninja logo container img */
 header .header-inner-bg .header-img img{ /* ninja logo container img */
     display: block;
     height: 90%;
     width: 25%;
 }
 
-
+/* title of the header */
 header .header-inner-bg .header-text{ /* title of the header */
     height: 180px;
     flex: 2;
@@ -127,7 +127,7 @@ main .m-section-1{
     border-left: 2px solid red;
     border-right: 2px solid red;
 }
-
+/*design of section 1*/
 main .m-section-1 .phone-wrapper{ /* made to manipulate design when at phone devices */
     height: 100%;
     display: flex;

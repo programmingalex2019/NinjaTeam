@@ -19,20 +19,45 @@ body{
 .title{
     color: #f50b0e;
     font-size: 4vh;
+    padding: 1vh;
+    font-family: "AssassinNinja" , sans-serif;
 }
 
 .headerContainer{
-    flex: 1;
+    flex: 2;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+.headerContainer .UAT-plan{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    text-align: center;
+    color: white;
+    border: 1vh dotted grey;
+}
+.headerContainer .UAT-plan h1{
+    padding: 1vh;
+    font-size: 4vh;
+    color: lightseagreen;
+    font-family: "AssassinNinja" , sans-serif;
+}
+
+.headerContainer .UAT-plan p{
+    font-size: 1.8vh;
+    padding: 1vh;
+}
 .tests{
     flex: 3;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 1vh;
 }
 .tests .testsTable{
     display: flex;
@@ -80,8 +105,10 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: "AssassinNinja" , sans-serif;
 }
 
 .footerContainer .title:hover{
     color: white;
+
 }

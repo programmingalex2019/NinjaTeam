@@ -108,7 +108,7 @@ body .leaderboardContainer .scoresContainer .playerAchievements .playerRowTitleC
     align-items: center;
     border: 0.5px dotted red;
 }
-/**/
+
 body .leaderboardContainer .scoresContainer .playerAchievements .playerRowTitleContainer .generatedRow .playerRow{
     width: 80%;
     flex: 1;

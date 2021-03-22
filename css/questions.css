@@ -97,7 +97,7 @@ body {
     align-items: center;
     justify-content: center;
 }
-
+/*design of the question container content*/
 .questionContent #questionContainer .questionContainerContent{
     width: 85%;
     height: 90%;
@@ -105,7 +105,7 @@ body {
     display: flex;
     flex-direction: column;
 }
-
+/*design of the question container content of the upper row*/
 .questionContent #questionContainer .questionContainerContent .upperRow{
     flex: 1;
     display: flex;
@@ -117,13 +117,13 @@ body {
     padding-top: 2vh;
     width: 8vh;
 }
-
+/*design of the question container content of the upper row header*/
 .questionContent #questionContainer .questionContainerContent .upperRow h1{
     text-shadow: 3px 2px 3px black;
     color: #f50b0e;
     font-size: 5vh;
 }
-
+/*design of the question container content of the middle row*/
 .questionContent #questionContainer .questionContainerContent .middleRow{
     flex: 3;
     display: flex;
@@ -131,7 +131,7 @@ body {
     align-items: center;
 }
 
-
+/*design of the question container content of the middle row paragraph*/
 .questionContent #questionContainer .questionContainerContent .middleRow p{
     text-align: center;
     color: white;
@@ -139,11 +139,13 @@ body {
     padding: 1vh;
 }
 
+/*design of the question container content of the middle row paragraph links*/
 .questionContent #questionContainer .questionContainerContent .middleRow p a{
     color: lightseagreen;
     text-decoration: none;
 }
 
+/*design of the question container content of the bottom row*/
 .questionContent #questionContainer .questionContainerContent .bottomRow{
     flex: 1;
     display: flex;
@@ -159,7 +161,7 @@ body {
     font-size: 4vh;
     text-shadow: 3px 2px 3px black;
 }
-
+/*design of the submit button in the bottom row*/
 .questionContent #questionContainer .questionContainerContent .bottomRow .submit{
     border: 2px solid #f50b0e;
     color: white;
@@ -167,7 +169,7 @@ body {
     font-size: 3vh;
     width: 20%;
 }
-
+/*design of the skip button in the bottom row*/
 .questionContent #questionContainer .questionContainerContent .bottomRow .skip{
     border: 2px solid lightseagreen;
     color: white;
@@ -208,6 +210,7 @@ body {
 /* BOOLEAN */
 
 /* MCQ */
+/*design of the multiple choice container in the middle row*/
 .questionContent #questionContainer .questionContainerContent .middleRow .multiQuestionSelectionContainer{
     width: 85%;
     flex: 1;
@@ -216,7 +219,7 @@ body {
     justify-content: space-evenly;
     align-items: start;
 }
-
+/*design of the multi container in the button row*/
 .questionContent #questionContainer .questionContainerContent .bottomRow .multiContainer{
     width: 35%;
     display: flex;
@@ -227,6 +230,7 @@ body {
     height: 3vh;
     width: 3vh;
 }
+/*design of the multiple choice label in the button row*/
 .questionContent #questionContainer .questionContainerContent .bottomRow .multiContainer .labelStyle{
     color: white;
     font-size: 4vh;
